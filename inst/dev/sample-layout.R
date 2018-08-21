@@ -14,17 +14,20 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
     h3("This is data preview")
   ),
   vizControls(label = "Personaliza tu vis",
-    h4("This is vis controls")
+    h4("This is vis controls"),
+    radioButtons("radios",NULL,choices = c("XXXX", "YYYY")),
+    textInput("title",NULL)
   ),
   vizPreview(
     p("THIS IS VIZ PREVIEW"),
     plotOutput("viz")
-  )
+  ),
+  dsModal("hola", h2("MODAL"))
 )
 
 server <- function(input,output,session){
   output$debug <- renderPrint({
-    "HELLO"
+    input$radios
   })
   output$viz <- renderPlot(
     plot(cars)

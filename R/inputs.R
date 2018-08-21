@@ -1,5 +1,20 @@
 
-dsRadioInput <- function(inputId, label = NULL,
+
+dsModal <- function(inputId,..., header = NULL, footer = NULL){
+  x <- list(...)
+  tagList(
+    div(class="ds__modal-wrapper",
+        div(class="ds__modal",
+            h3(class="ds__modal-header", header),
+            div(class="ds__modal-body",x),
+            div(class="ds__modal-footer",footer)
+            )
+        )
+  )
+}
+
+
+dsRadioButtons <- function(inputId, label = NULL,
                          choices = NULL, selected = NULL){
   if(is.null(names(choices))) names(choices) <- choices
   #choices <- c(EDIT="edit", UPLOAD="upload")

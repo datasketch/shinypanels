@@ -18,27 +18,19 @@
 *,
 *:before,
 *:after {
-	box-sizing: inherit;
-	outline: none;
+  box-sizing: inherit;
+  outline: none;
 }
 
 html,
 body {
-	box-sizing: border-box;
+  box-sizing: border-box;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
-	margin: 0;
-	padding: 0;
-	width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
-
-/* .layout {
-  background: var(--valentino);
-  display: flex;
-  height: 100%;
-  padding: 15px 0;
-  position: relative;  
-} */
 
 img {
   max-width: 100%;
@@ -49,6 +41,15 @@ img {
   flex-wrap: wrap;
 }
 
+.button {
+  background: var(--aqua);
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 5px 15px;
+  cursor: pointer:
+}
+
 .layout {
   background: var(--valentino);
   color: #ffffff;
@@ -56,6 +57,61 @@ img {
   flex-direction: column;
   min-height: 100%;
   padding: 15px;
+  position: relative;
+}
+
+/*====================*/
+/*       Modal       */
+/*====================*/
+.ds__modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 3, 41, 0.8);
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 150ms;
+  color: var(--valentino);
+}
+
+.ds__modal-wrapper.opened {
+  opacity: 1;
+  z-index: 10;
+}
+
+.ds__modal {
+  background: #ffffff;
+  border-radius: 3px;
+  padding: 15px;
+  min-width: 300px;
+  max-width: 50%;
+  transition-delay: 150ms;
+  transition: all 200ms cubic-bezier(1.000, -0.070, 0.460, 1.430);
+  transform: scale(0);
+  max-height: 70%;
+  overflow-y: auto;
+}
+
+.ds__modal.opened {
+  transform: scale(1);
+}
+
+.ds__modal-header {
+  margin: 0;
+}
+
+.ds__modal-body {
+  padding: 15px 0; 
+}
+
+.ds__modal-footer {
+  text-align: right;
 }
 
 /*====================*/
@@ -80,7 +136,7 @@ img {
   padding-right: 15px;
 }
 
-.vis__nav {
+.viz__nav {
   display: flex;
   font-size: small;
   justify-content: space-between;
@@ -88,9 +144,10 @@ img {
   padding-left: 15px;
 }
 
-.vis__nav a {
+.section__nav a {
   color: inherit;
   text-decoration: none;
+  font-size: small;
 }
 
 /*====================*/
@@ -103,7 +160,7 @@ img {
   position: relative;
 }
 
-.vis {
+.viz {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -111,22 +168,22 @@ img {
   width: 50%;
 }
 
-.vis__result {
+.viz__result {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.vis__result.shrinked {
+.viz__result.shrinked {
   width: 65%;
 }
 
-.vis__settings {
+.viz__settings {
   overflow: hidden;
   width: 0;
 }
 
-.vis__settings.grown {
+.viz__settings.grown {
   max-height: 500px;
   overflow: auto;
   width: 30%;
@@ -209,10 +266,10 @@ img {
 
 input[type="radio"] {
   -webkit-appearance: none;
-	border-radius: 3px;
-	border: 1px solid var(--aqua);
-	padding: 8px;
-	position: relative;
+  border-radius: 3px;
+  border: 1px solid var(--aqua);
+  padding: 8px;
+  position: relative;
   appearance: none;
   background-color: transparent;
   display: inline-block;
@@ -224,7 +281,7 @@ input[type="radio"] {
 input[type="radio"]:active,
 input[type="radio"]:checked:active,
 input[type="radio"]:checked {
-	border-color: var(--disco);
+  border-color: var(--disco);
   background-color: var(--magenta);
 }
 
@@ -233,10 +290,10 @@ input[type="radio"]:checked + label {
 }
 
 input[type="radio"]:checked:after {
-	background: var(--polar);
-	left: 50%;
-	position: absolute;
-	top: 50%;
+  background: var(--polar);
+  left: 50%;
+  position: absolute;
+  top: 50%;
   border-radius: 50%;
   content: '';
   height: 5px;
@@ -254,6 +311,7 @@ input[type="radio"]:checked:after {
   font-size: small;
 }
 
+#edit-data.active,
 #edit-graphic.active {
   color: var(--magenta);
 }
@@ -264,17 +322,25 @@ input[type="radio"]:checked:after {
   height: 3px;
 }
 
+
 .settings::-webkit-scrollbar {
   height: 3px;
   width: 3px;
 }
 
+.ds__modal::-webkit-scrollbar {
+  width: 5px;
+  height: 100%;
+}
+
+.ds__modal::-webkit-scrollbar-track,
 .data__nav::-webkit-scrollbar-track,
 .settings::-webkit-scrollbar-track {
   border-radius: 10px;
   background: var(--gumbo);
 }
 
+.ds__modal::-webkit-scrollbar-thumb,
 .data__nav::-webkit-scrollbar-thumb,
 .settings::-webkit-scrollbar-thumb {
   background: var(--aqua);

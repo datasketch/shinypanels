@@ -1,7 +1,7 @@
 
 #' @export
 dsAppPage <- function(dataControls, dataPreview,
-                      vizControls, vizPreview,
+                      vizControls, vizPreview, ...,
                       skin = "magenta", styles = "", debug = FALSE){
   deps <- list(
     htmlDependency("font-awesome", "4.1.0",
@@ -17,6 +17,7 @@ dsAppPage <- function(dataControls, dataPreview,
                    stylesheet = "style.css"
     )
   )
+  extra <- list(...)
 
   jsfile <- system.file("srcjs", "index.js", package = "dsAppLayout")
   indexJS <- tags$script(HTML(paste0(readLines(jsfile),collapse="\n")))
@@ -26,14 +27,15 @@ dsAppPage <- function(dataControls, dataPreview,
         # NAV
         div(class="layout__nav",
             div(class="section__nav data__nav",
-                dsRadioInput("selectDataSource",
-                             choices = list(Edit = "edit", Upload = "upload"))
+                a(class = "section__nav-action",href= "", id="edit-data",
+                  "Edit Data"
+                )
             ),
-            div(class="section__nav vis__nav",
+            div(class="section__nav viz__nav",
                 a(class = "section__nav-action",href= "", id="edit-graphic",
-                  "Edit Visualization"
+                  "Edit visualization"
                 ),
-                a(class = "section__nav-action",href= "", id="edit-graphic",
+                a(class = "section__nav-action modal-trigger",href= "", id="edit-publish",
                   "Publish")
             )
         ),
@@ -46,12 +48,15 @@ dsAppPage <- function(dataControls, dataPreview,
                 )
             ),
             div(class="drag js-drag"),
-            div(class="section__content vis",
+            div(class="section__content viz",
                 vizControls,
-                div(class="vis__result",
+                div(class="viz__result",
                     vizPreview
                 )
             )
+        ),
+        div(
+          extra
         )
     ),
     debugJS,
@@ -90,7 +95,7 @@ dataPreview <- function(..., on = NULL){
 vizControls <- function(..., label = NULL, on = NULL){
   x <- list(...)
   tagList(
-    shiny::tags$form(class="settings vis__settings",
+    shiny::tags$form(class="settings viz__settings",
                      shiny::tags$fieldset(
                        shiny::tags$legend(label),
                        x
