@@ -1,5 +1,54 @@
 
 
+dsHot <- function(inputId, data = NULL,
+                  options = NULL){
+  defaultOpts <- list(
+    maxRows = NULL %||% nrow(data),
+    height = NULL,
+    manualRowMove = TRUE,
+    manualColumnMove = TRUE
+  )
+
+  addResourcePath(
+    prefix='handsontable',
+    directoryPath=system.file("lib/handsontable",
+                              package='dsAppLayout'))
+  # addResourcePath(
+  #   prefix='dsHot',
+  #   directoryPath=system.file("lib/dsHot",
+  #                             package='dsAppLayout'))
+
+
+  options <- modifyList(options %||% list(), defaultOpts)
+  #hotJs <- system.file("lib/handsontable/handsontable.full.min.js", package = "dsAppLayout")
+  #hotCss <- system.file("lib/handsontable/handsontable.full.min.css", package = "dsAppLayout")
+  js <- system.file("lib/dsHot/dsHot.js", package = "dsAppLayout")
+  css <- system.file("lib/dsHot/dsHot.css", package = "dsAppLayout")
+
+  id <- glue("hot_",inputId)
+  id <- "hot"
+  json_opts <- jsonlite::toJSON(options, auto_unbox = TRUE)
+  tagList(
+    singleton(tags$head(
+      tags$link(rel = 'stylesheet',
+                type = 'text/css',
+                href = 'handsontable/handsontable.full.min.css'),
+      tags$script(src = 'handsontable/handsontable.full.min.js')
+      # tags$link(rel = 'stylesheet',
+      #           type = 'text/css',
+      #           href = 'dsHot/dsHot.css'),
+      # tags$script(src = 'dsHot/dsHot.js')
+    )),
+    div(id = id,
+        `data-hotOpts` = HTML(json_opts)),
+    tags$style(HTML(paste0(readLines(css),collapse="\n"))),
+    tags$script(HTML(paste0(readLines(js),collapse="\n")))
+
+  )
+}
+
+
+
 dsModal <- function(inputId,..., header = NULL, footer = NULL){
   x <- list(...)
   tagList(

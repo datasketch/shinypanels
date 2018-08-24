@@ -9,6 +9,7 @@ Description: Steps layout
 Depends:
     R (>= 3.1.2),
     htmltools,
+    glue,
     shiny,
     shinyjs
 Imports:    

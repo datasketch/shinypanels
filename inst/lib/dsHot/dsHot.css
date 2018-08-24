@@ -1,0 +1,35 @@
+:root{
+  --gray1: #888;
+  --gray2: #ccc;
+  --aqua: #A6CEDE;
+  --magenta: #B70F7F;
+  --valentino: #0E0329;
+}
+  /*colHeader1*/
+  .ht_clone_left tr:nth-child(1) th{
+    background-color: var(--valentino);
+  }
+  /*colHeader2*/
+  tr:nth-child(2) th{
+    background-color: #DDD/*var(--gray1)*/;
+  }
+
+.tableHeader{
+  font-size: 12pt;
+  font-weight: lighter;
+}
+
+.tableCtype{
+  font-size: 8pt;
+}
+
+.invalidCell{
+  background-color: #000;
+}
+
+.handsontable td.htInvalid {
+    background-color: #A6CEDE!important;
+}
+.handsontable .htAutocompleteArrow {
+    color: #A6CEDE;
+}

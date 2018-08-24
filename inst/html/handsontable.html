@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.css">
+<link rel="stylesheet" type="text/css" href="https://handsontable.com/static/css/main.css">
+<script src="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
+ -->
+<link rel="stylesheet" type="text/css" href="../lib/handsontable/handsontable.full.min.css">
+<script src="../lib/handsontable/handsontable.full.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../lib/dsHot/dsHot.css">
+
+</head>
+<body>
+<div id="hot"
+data-hotOpts = '{
+  "manualRowMove": true,
+  "manualColumnMove": true,
+  "maxRows" : 22,
+  "width": 806,
+  "autoWrapRow": true,
+  "height": 487,
+  "maxRows": 22
+
+}' 
+data-dataDic = '[
+    {
+      "data": "a",
+      "label": "Valor",
+      "type": "numeric",
+      "ctype": "Numeric",
+      "width": 40,
+      "validator": "valiNumeric"
+    },
+    {
+      "data": "b",
+      "label": "Cats",
+      "ctype": "Category",
+      "type": "text",
+      "validator": "valiCategoric"
+    },
+    {
+      "data": "c",
+      "label": "Número",
+      "ctype": "Numeric",
+      "type": "numeric",
+      "numericFormat": {
+        "pattern": "0.0000"
+      }
+    },
+    {
+      "data": "d",
+      "label": "Fecha",
+      "ctype": "Date",
+      "type": "date",
+      "dateFormat": "YYYY-MM-DD"
+    }
+]'
+data-dataInput = '[
+
+  {
+    "a": 1,
+    "b": "Euro",
+    "c": 0.9033,
+    "d": "08/19/2018"
+  },
+  {
+    "a": 2,
+    "b": "Japanese Yen",
+    "c": 124.3870,
+    "d": "08/19/2018"
+  },
+  {
+    "a": 3,
+    "b": "Pound Sterling",
+    "c": 0.6396,
+    "d": "08/19/2018"
+  },
+  {
+    "a": 4,
+    "b": "Swiss Franc",
+    "c": 0.9775,
+    "d": "08/19/2018"
+  },
+  {
+    "a": 5,
+    "b": "Canadian Dollar",
+    "c": 1.3097,
+    "d": "08/19/2018"
+  },
+  {
+    "a": "some text",
+    "b": "Australian Dollar",
+    "c": 1.3589,
+    "d": "08/19/2018"
+  }
+]'
+>
+</div>
+
+
+
+<script type="text/javascript" src="../lib/dsHot/dsHot.js"></script>
+
+</body>
+</html>
