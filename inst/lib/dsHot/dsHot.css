@@ -6,8 +6,18 @@
   --valentino: #0E0329;
 }
 
+.hot-container{
+  width: 100%;
+  background-color: green;
+  overflow: auto;
+}
+
 .hot{
   color: var(--valentino);
+  overflow: hidden;
+
+  /*max-width: 100%;*/
+  /*overflow-x: auto;*/
 }
 
   /*colHeader1*/
@@ -34,3 +44,15 @@
 .handsontable .htAutocompleteArrow {
     color: #A6CEDE;
 }
+
+.shiny-html-output{
+  background-color: #FFFFFF;
+  color: var(--valentino);
+}
+
+
+
+/*    
+*/
+
+

@@ -104,13 +104,14 @@ var hotElementContainer = hotElement.parentNode;
 var hotSettings = {
   data: dataObject,
   columns: dataDic,
-  stretchH: 'all',
+  stretchH: 'none',
   width: hotOpts.width,
-  autoWrapRow: true,
+  autoWrapRow: hotOpts.autoWrapRow,
   height: hotOpts.height,
   maxRows: hotOpts.maxRows + 2,
   rowHeaders: [null,null].concat(rowsIdx),
   colHeaders: true,
+  stretchH: 'all',
   manualRowMove: hotOpts.manualRowMove,
   manualColumnMove: hotOpts.manualColumnMove,
   // invalidCellClassName: 'highlight--error',
@@ -153,6 +154,53 @@ var hotSettings = {
 };
 var hot = new Handsontable(hotElement, hotSettings);
 hot.validateCells();
+
+hot.getPlugin('autoColumnSize');
+// document.addEventListener('mousemove',function(event){
+//   hot.updateSettings({
+//       width: $('#hot').width()
+//   });
+// });
+
+
+
+
+
+// HELPERS
+function parseHotInput(d) {
+    var letters = "abcdefghijklmnopqrstuvwxyz".split("");
+    var ncols = d[0].length;
+    var letter_ids = letters.slice(0, ncols);
+    // console.log(letters.slice(0,ncols));
+    var dic = d.slice(0, 2).concat([letter_ids]);
+    var data = d.slice(2);
+    // console.log("dic", dic)
+    // console.log("data", data)
+    function transpose(matrix) {
+        return matrix[0].map((col, i) => matrix.map(row => row[i]));
+    }
+
+    function dicToDataframe(arr) {
+        return arrayToObj(transpose(arr), ["ctype", "label", "id"])
+    }
+
+    function arrayToObj(arr, keys) {
+        return arr.map(function(x) {
+            var obj = x.reduce(function(acc, cur, i) {
+                // console.log("acc: ", acc, "\ncur: ", cur, "\ni: ",i);
+                acc[keys[i]] = cur;
+                return acc;
+            }, {});
+            return obj;
+        });
+    }
+    return{
+      data: arrayToObj(data, letter_ids),
+      dic: dicToDataframe(dic)
+    }
+
+}
+
 
 
 
@@ -199,10 +247,7 @@ if (typeof Shiny != "undefined") {
 
   binding.getValue = function(el) {
     console.log("GET: ", hot.getData());
-    var ell = el;
-    return {
-      data:hot.getData()
-    }
+    return parseHotInput(hot.getData())
   };
 
   binding.setValue = function(el, value) {

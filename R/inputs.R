@@ -49,14 +49,28 @@ dsHot <- function(inputId, data = NULL, dic = NULL,
       #           href = 'dsHot/dsHot.css'),
       # tags$script(src = 'dsHot/dsHot.js')
     )),
-    div(id = id, class = "hot",
-        `data-hotOpts` = HTML(json_opts),
-        `data-table` = HTML(json_table),
-        `data-dic` = HTML(json_dic)),
+    div(class="hot-container",
+      div(id = id, class = "hot",
+          `data-hotOpts` = HTML(json_opts),
+          `data-table` = HTML(json_table),
+          `data-dic` = HTML(json_dic))
+    ),
     tags$style(HTML(paste0(readLines(css),collapse="\n"))),
     tags$script(HTML(paste0(readLines(js),collapse="\n")))
-
   )
+}
+
+hot_data <- function(x, labels = FALSE){
+  data <- map(transpose(x$data),unlist) %>% as_tibble()
+  if(labels){
+    dic <- map(transpose(x$dic),unlist) %>% as_tibble()
+    names(data) <- dic$label
+  }
+  data
+}
+
+hot_dic <- function(x){
+  map(transpose(x$dic),unlist) %>% as_tibble()
 }
 
 

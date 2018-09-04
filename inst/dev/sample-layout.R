@@ -2,6 +2,7 @@
 library(dsAppLayout)
 library(shinyjs)
 library(tidyverse)
+library(DT)
 
 styles <- "#sidebar{background-color: #f9f9f9}"
 
@@ -12,8 +13,8 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
     ),
   dataPreview(
     h3("This is data preview"),
-    verbatimTextOutput("debug_data"),
-    dsHot("dataTable", data = cars)
+    dsHot("dataTable", data = mtcars),
+    verbatimTextOutput("debug_data")
   ),
   vizControls(label = "Personaliza tu vis",
     h4("This is vis controls"),
@@ -22,21 +23,27 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
   ),
   vizPreview(
     p("THIS IS VIZ PREVIEW"),
-    plotOutput("viz")
+    uiOutput("viz")
   ),
   dsModal("hola", h2("MODAL"))
 )
 
 server <- function(input,output,session){
   output$debug_data <- renderPrint({
-    input$dataTable
+    data <- hot_data(input$dataTable)
+    data
   })
     output$debug <- renderPrint({
     input$radios
   })
-  output$viz <- renderPlot(
-    plot(cars)
+  output$viz <- renderUI(
+    dataTableOutput("vizData")
   )
+  output$vizData <- renderDataTable({
+    #input$dataTable
+    data <- hot_data(input$dataTable, labels = TRUE)
+    DT::datatable(data)
+  })
 
 }
 shinyApp(ui,server)
