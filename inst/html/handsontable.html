@@ -6,6 +6,12 @@
 <link rel="stylesheet" type="text/css" href="https://handsontable.com/static/css/main.css">
 <script src="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
  -->
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+ 
 <link rel="stylesheet" type="text/css" href="../lib/handsontable/handsontable.full.min.css">
 <script src="../lib/handsontable/handsontable.full.min.js"></script>
 
@@ -13,7 +19,7 @@
 
 </head>
 <body>
-<div id="hot"
+<div id="hot" class="hot"
 data-hotOpts = '{
   "manualRowMove": true,
   "manualColumnMove": true,
@@ -24,9 +30,9 @@ data-hotOpts = '{
   "maxRows": 22
 
 }' 
-data-dataDic = '[
+data-dic = '[
     {
-      "data": "a",
+      "id": "a",
       "label": "Valor",
       "type": "numeric",
       "ctype": "Numeric",
@@ -34,14 +40,14 @@ data-dataDic = '[
       "validator": "valiNumeric"
     },
     {
-      "data": "b",
+      "id": "b",
       "label": "Cats",
       "ctype": "Category",
       "type": "text",
       "validator": "valiCategoric"
     },
     {
-      "data": "c",
+      "id": "c",
       "label": "Número",
       "ctype": "Numeric",
       "type": "numeric",
@@ -50,14 +56,14 @@ data-dataDic = '[
       }
     },
     {
-      "data": "d",
+      "id": "d",
       "label": "Fecha",
       "ctype": "Date",
       "type": "date",
       "dateFormat": "YYYY-MM-DD"
     }
 ]'
-data-dataInput = '[
+data-table = '[
 
   {
     "a": 1,
@@ -102,6 +108,5 @@ data-dataInput = '[
 
 
 <script type="text/javascript" src="../lib/dsHot/dsHot.js"></script>
-
 </body>
 </html>

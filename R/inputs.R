@@ -1,6 +1,6 @@
 
 
-dsHot <- function(inputId, data = NULL,
+dsHot <- function(inputId, data = NULL, dic = NULL,
                   options = NULL){
   defaultOpts <- list(
     maxRows = NULL %||% nrow(data),
@@ -8,6 +8,9 @@ dsHot <- function(inputId, data = NULL,
     manualRowMove = TRUE,
     manualColumnMove = TRUE
   )
+
+  f <- fringe(data)
+
 
   addResourcePath(
     prefix='handsontable',
@@ -25,9 +28,16 @@ dsHot <- function(inputId, data = NULL,
   js <- system.file("lib/dsHot/dsHot.js", package = "dsAppLayout")
   css <- system.file("lib/dsHot/dsHot.css", package = "dsAppLayout")
 
-  id <- glue("hot_",inputId)
-  id <- "hot"
+  id <- inputId
+  #id <- "hot"
+
+  data <- f$d
+  dic <- dic %||% f$dic_$d
+  dic$id <- letters[1:ncol(data)]
+
   json_opts <- jsonlite::toJSON(options, auto_unbox = TRUE)
+  json_table <- jsonlite::toJSON(data, auto_unbox = TRUE)
+  json_dic <- jsonlite::toJSON(dic, auto_unbox = TRUE)
   tagList(
     singleton(tags$head(
       tags$link(rel = 'stylesheet',
@@ -39,8 +49,10 @@ dsHot <- function(inputId, data = NULL,
       #           href = 'dsHot/dsHot.css'),
       # tags$script(src = 'dsHot/dsHot.js')
     )),
-    div(id = id,
-        `data-hotOpts` = HTML(json_opts)),
+    div(id = id, class = "hot",
+        `data-hotOpts` = HTML(json_opts),
+        `data-table` = HTML(json_table),
+        `data-dic` = HTML(json_dic)),
     tags$style(HTML(paste0(readLines(css),collapse="\n"))),
     tags$script(HTML(paste0(readLines(js),collapse="\n")))
 
@@ -83,6 +95,7 @@ dsRadioButtons <- function(inputId, label = NULL,
     )
     )
 }
+
 
 
 

@@ -5,6 +5,11 @@
   --magenta: #B70F7F;
   --valentino: #0E0329;
 }
+
+.hot{
+  color: var(--valentino);
+}
+
   /*colHeader1*/
   .ht_clone_left tr:nth-child(1) th{
     background-color: var(--valentino);
@@ -21,10 +26,6 @@
 
 .tableCtype{
   font-size: 8pt;
-}
-
-.invalidCell{
-  background-color: #000;
 }
 
 .handsontable td.htInvalid {

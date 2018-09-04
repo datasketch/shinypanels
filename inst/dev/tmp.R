@@ -5,12 +5,16 @@
 
 
 ui <- fluidPage(
-  verbatimTextOutput("debug"),
-  dsHot("in")
+  column(3,
+    verbatimTextOutput("debug")
+         ),
+  column(9,
+  dsHot("indata2", data = mtcars)
+         )
 )
 server <- function(input,output,session){
   output$debug <- renderPrint({
-    #input$in
+    str(input$indata2)
   })
 }
 shinyApp(ui,server)

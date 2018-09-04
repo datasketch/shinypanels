@@ -1,21 +1,35 @@
-console.log(document.getElementById('hot').getAttribute('data-dataDic'));
-var dataDic = JSON.parse(document.getElementById('hot').getAttribute('data-dataDic'));
-var dataInput = JSON.parse(document.getElementById('hot').getAttribute('data-dataInput'));
-var hotOpts = JSON.parse(document.getElementById('hot').getAttribute('data-hotOpts'));
 
-console.log(dataDic); 
+
+var elid = document.getElementsByClassName('hot');
+
+console.log(document.getElementsByClassName('hot')
+  // .getAttribute('data-dic')
+  );
+
+
+// var dataDic = JSON.parse(document.getElementById('hot').getAttribute('data-dic'));
+// var dataInput = JSON.parse(document.getElementById('hot').getAttribute('data-table'));
+// var hotOpts = JSON.parse(document.getElementById('hot').getAttribute('data-hotOpts'));
+var dataDic = JSON.parse(elid[0].getAttribute('data-dic'));
+var dataInput = JSON.parse(elid[0].getAttribute('data-table'));
+var hotOpts = JSON.parse(elid[0].getAttribute('data-hotOpts'));
+
+console.log(dataInput); 
 
 var dataHeaders = [];
 dataHeaders[0] = dataDic.reduce(function (final, item) {
+  item.data = item.id;
   final[item.data] = item.ctype;
   return final
 }, {});
 dataHeaders[1] = dataDic.reduce(function (final, item) {
+  item.data = item.id;
   final[item.data] = item.label;
   return final
 }, {});
 
 var dataObject = dataHeaders.concat(dataInput);
+console.log("dataObject", dataObject)
 
 // More renderers https://handsontable.com/blog/articles/getting-started-with-cell-renderers
 ctypeRenderer = function(instance, td, row, col, prop, value, cellProperties) {
@@ -23,7 +37,7 @@ ctypeRenderer = function(instance, td, row, col, prop, value, cellProperties) {
   td.style.backgroundColor = '#0E0329';
   td.style.fontWeight = 'italic';
   td.style.color = '#A6CEDE';
-    td.className = 'tableCtype'
+  td.className = 'tableCtype'
 
 };
 // https://docs.handsontable.com/5.0.1/tutorial-cell-types.html
@@ -83,7 +97,9 @@ settings.maxRows = 50;
 var rowsIdx = Array.from(new Array(settings.maxRows),(val,index)=>index+1);
 settings.availableCtypes = ["Numeric","Categoric","Date"];
 
-var hotElement = document.querySelector('#hot');
+// var hotElement = document.querySelector('#hot');
+var hotElement = elid[0];
+
 var hotElementContainer = hotElement.parentNode;
 var hotSettings = {
   data: dataObject,
@@ -137,3 +153,83 @@ var hotSettings = {
 };
 var hot = new Handsontable(hotElement, hotSettings);
 hot.validateCells();
+
+
+
+
+
+(function() {
+
+// $(document).on("change", ".hot select", function() {
+//     updateChooser($(this).parents(".hot"));
+// });
+
+// $(document).on("click", ".hot .right-arrow", function() {
+//     move($(this).parents(".hot"), ".left", ".right");
+// });
+
+// $(document).on("click", ".hot .left-arrow", function() {
+//     move($(this).parents(".hot"), ".right", ".left");
+// });
+
+// $(document).on("dblclick", ".hot select.left", function() {
+//     move($(this).parents(".hot"), ".left", ".right");
+// });
+
+// $(document).on("dblclick", ".hot select.right", function() {
+//     move($(this).parents(".hot"), ".right", ".left");
+// });
+
+
+
+
+if (typeof Shiny != "undefined") {
+  console.log("Shiny defined");
+
+  var binding = new Shiny.InputBinding();
+
+  binding.find = function(scope) {
+    console.log("FIND: ",$(scope).find(".hot"));
+    return $(scope).find(".hot");
+  };
+
+  // binding.initialize = function(el) {
+  //   updateChooser(el);
+  // };
+
+  binding.getValue = function(el) {
+    console.log("GET: ", hot.getData());
+    var ell = el;
+    return {
+      data:hot.getData()
+    }
+  };
+
+  binding.setValue = function(el, value) {
+    // TODO: implement
+  };
+
+  binding.subscribe = function(el, callback) {
+    $(el).on("change.hotBinding", function(e) {
+      callback();
+    });
+  };
+
+  binding.unsubscribe = function(el) {
+    $(el).off(".hotBinding");
+  };
+
+  // binding.getType = function() {
+  //   return "shinyjsexamples.hot";
+  // };
+
+  Shiny.inputBindings.register(binding);
+
+
+}
+
+
+
+})();
+
+

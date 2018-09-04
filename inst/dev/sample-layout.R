@@ -11,7 +11,9 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
     br()
     ),
   dataPreview(
-    h3("This is data preview")
+    h3("This is data preview"),
+    verbatimTextOutput("debug_data"),
+    dsHot("dataTable", data = cars)
   ),
   vizControls(label = "Personaliza tu vis",
     h4("This is vis controls"),
@@ -26,7 +28,10 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
 )
 
 server <- function(input,output,session){
-  output$debug <- renderPrint({
+  output$debug_data <- renderPrint({
+    input$dataTable
+  })
+    output$debug <- renderPrint({
     input$radios
   })
   output$viz <- renderPlot(
