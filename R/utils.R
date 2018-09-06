@@ -1,3 +1,8 @@
+is.reactive <- function(obj){
+  all(class(obj) %in% c("reactiveExpr","reactive"))
+}
+
+
 `%||%` <- function (x, y)
 {
   if (is.empty(x))

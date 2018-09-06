@@ -19,13 +19,23 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
   vizControls(label = "Personaliza tu vis",
     h4("This is vis controls"),
     radioButtons("radios",NULL,choices = c("XXXX", "YYYY")),
-    textInput("title",NULL)
+    radioButtons("radios2",NULL,choices = c("XXXX", "YYYY"), inline = TRUE),
+    hr(),
+    textInput("title","Título"),
+    textInput("subtitle","Subtítulo"),
+    textInput("titlex","Título Eje Horizontal"),
+    textInput("titley","Título Eje Vertical")
   ),
   vizPreview(
     p("THIS IS VIZ PREVIEW"),
-    uiOutput("viz")
+    uiOutput("viz"),
+    br()
   ),
-  dsModal("hola", h2("MODAL"))
+  dsModal("hola", h2("MODAL")),
+  tags$link(rel = 'stylesheet',
+            type = 'text/css',
+            href = 'http://127.0.0.1:8080/lib/dsHot/dsHot.css'),
+  tags$script(src = 'http://127.0.0.1:8080/lib/dsHot/dsHot.js')
 )
 
 server <- function(input,output,session){
@@ -42,7 +52,7 @@ server <- function(input,output,session){
   output$vizData <- renderDataTable({
     #input$dataTable
     data <- hot_data(input$dataTable, labels = TRUE)
-    DT::datatable(data)
+    DT::datatable(data, options = list(scrollX = TRUE))
   })
 
 }

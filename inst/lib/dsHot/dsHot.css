@@ -1,21 +1,21 @@
-:root{
+/*:root{
   --gray1: #888;
   --gray2: #ccc;
   --aqua: #A6CEDE;
   --magenta: #B70F7F;
   --valentino: #0E0329;
-}
+}*/
 
 .hot-container{
-  width: 100%;
+  /*width: 500px;*/
   background-color: green;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 .hot{
   color: var(--valentino);
-  overflow: hidden;
-
+  /*overflow: hidden;*/
+  /*width:500px;*/
   /*max-width: 100%;*/
   /*overflow-x: auto;*/
 }

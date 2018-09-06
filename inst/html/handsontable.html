@@ -20,13 +20,13 @@
 </head>
 <body>
 
- <div id="hotContainer" style="width: 550px;background-color: green;overflow: auto;">
-<div id="hot" class="hot"
+ <div class="hot-container">
+<div id="hot" class="hot" 
 data-hotOpts = '{
   "manualRowMove": true,
   "manualColumnMove": true,
   "maxRows" : 22,
-  "width": 606,
+  "width": 406,
   "autoWrapRow": true,
   "height": 687,
   "maxRows": 22
@@ -110,6 +110,82 @@ data-table = '[
 
 
 
-<script type="text/javascript" src="../lib/dsHot/dsHot.js"></script>
+<script type="text/javascript" src="../lib/dsHot/dsHotHelpers.js"></script>
+<script>
+  
+    var elid = document.getElementsByClassName('hot');
+    // https://jsfiddle.net/04r5cgsb/1/ add comments to cells
+    var settings = {};
+    settings.maxRows = 50;
+    var rowsIdx = Array.from(new Array(settings.maxRows), (val, index) => index + 1);
+    settings.availableCtypes = ["Numeric", "Categoric", "Date"];
+
+    // var hotElement = document.querySelector('#hot');
+    var hotElement = elid[0];
+    var params = formatDataParams(hotElement);
+
+    var hotElementContainer = hotElement.parentNode;
+    var hotSettings = {
+        data: params.dataObject,
+        columns: params.dataDic,
+        stretchH: 'none',
+        width: params.hotOpts.width,
+        autoWrapRow: params.hotOpts.autoWrapRow,
+        height: params.hotOpts.height,
+        maxRows: params.hotOpts.maxRows + 2,
+        rowHeaders: [null, null].concat(rowsIdx),
+        colHeaders: true,
+        fixedRowsTop: 2,
+        stretchH: 'all',
+        // preventOverflow: 'horizontal',
+        manualRowMove: params.hotOpts.manualRowMove,
+        manualColumnMove: params.hotOpts.manualColumnMove,
+        // invalidCellClassName: 'highlight--error',
+        cells: function(row, col, prop) {
+            // console.log(this);
+            if (row === 0) {
+                this.renderer = ctypeRenderer;
+                this.type = 'dropdown';
+                this.source = settings.availableCtypes;
+                this.validator = null;
+                return (this)
+            }
+            if (row === 1) {
+                // console.log(row)
+                this.renderer = headRenderer;
+                this.validator = null;
+                return (this)
+            }
+            //Get current ctype
+            var ctype = this.instance.getDataAtCell(0, col);
+            if (ctype == "Numeric") {
+                this.validator = valiNumeric;
+            }
+            if (ctype == "Categoric") {
+                this.validator = valiCategoric;
+            }
+            // if(ctype == "Date"){
+            //    this.validator = valiDate;
+            // }
+            // console.log(!this.valid, this.instance.getDataAtCell(row,col),ctype );
+            // if(this.valid === false){
+            //    this.renderer = invalidRenderer;
+            // }
+        }
+    };
+    var hot = new Handsontable(hotElement, hotSettings);
+    hot.validateCells();
+
+    // hot.getPlugin('autoColumnSize');
+
+    document.addEventListener('mousemove', function(event) {
+        hot.updateSettings({
+            width: $('.hot').parent().width()
+        });
+    });
+
+
+
+</script>
 </body>
 </html>

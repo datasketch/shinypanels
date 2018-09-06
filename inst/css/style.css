@@ -13,6 +13,8 @@
   --gunsmoke: #868888;
   --silver-sand: #C2C4C4;
   --porcelain: #EEF1F2;
+  --gray1: #888;
+  --gray2: #ccc;
 }
 
 *,
@@ -218,6 +220,11 @@ img {
   width: 30%;
 }
 
+/*CUSTOM JP*/
+.section__content.data{
+  overflow: auto;
+}
+
 /*====================*/
 /*       Dragbar      */
 /*====================*/
@@ -231,7 +238,88 @@ img {
 /*====================*/
 /*   Shared styles    */
 /*====================*/
-.input__field {
+
+
+.shiny-input-container {
+  align-items: center;
+  align-items: center;
+  color: inherit;
+  display: flex;
+  font-size: small;
+  margin: 0 15px 0 0;
+  white-space: nowrap;
+  /*margin-bottom: 10px;*/
+}
+
+.settings hr{
+  border-color: var(--disco);
+}
+
+.shiny-input-container label {
+  font-weight: lighter;
+  margin: 0 0 0 5px;
+}
+
+.shiny-input-container {
+  align-items: stretch;
+  flex-direction: column;
+  margin: 0 0 15px 0;
+}
+
+.shiny-input-container input[type="text"] {
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  border-radius: 3px;
+  border: 1px solid var(--aqua);
+  padding: 8px;
+  position: relative;
+  appearance: none;
+  background-color: transparent;
+  display: inline-block;
+  margin: 0;
+  outline: none;
+  transition: all 0.25s;
+}
+
+input[type="radio"]:active,
+input[type="radio"]:checked:active,
+input[type="radio"]:checked {
+  border-color: var(--disco);
+  background-color: var(--magenta);
+}
+
+input[type="radio"]:checked + span{
+  color: var(--magenta)
+}
+
+.radio label, .radio-inline{
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="radio"]:checked:after {
+  background: var(--polar);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  content: '';
+  height: 5px;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  z-index: 1;
+}
+
+
+
+/*.input__field {
   align-items: center;
   align-items: center;
   color: inherit;
@@ -301,7 +389,7 @@ input[type="radio"]:checked:after {
   width: 5px;
   z-index: 1;
 }
-
+*/
 .settings fieldset {
   border: 1px solid var(--aqua);
 }
