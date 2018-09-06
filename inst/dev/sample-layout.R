@@ -31,11 +31,7 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
     uiOutput("viz"),
     br()
   ),
-  dsModal("hola", h2("MODAL")),
-  tags$link(rel = 'stylesheet',
-            type = 'text/css',
-            href = 'http://127.0.0.1:8080/lib/dsHot/dsHot.css'),
-  tags$script(src = 'http://127.0.0.1:8080/lib/dsHot/dsHot.js')
+  dsModal("hola", h2("MODAL"))
 )
 
 server <- function(input,output,session){

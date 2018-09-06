@@ -40,7 +40,6 @@
             rowHeaders: [null, null].concat(rowsIdx),
             colHeaders: true,
             fixedRowsTop: 2,
-            stretchH: 'all',
             // preventOverflow: 'horizontal',
             manualRowMove: params.hotOpts.manualRowMove,
             manualColumnMove: params.hotOpts.manualColumnMove,
@@ -98,20 +97,20 @@
     };
 
     binding.subscribe = function(el, callback) {
-        document.addEventListener('mousemove', function(event) {
-            var hot = window[[el.id]];
-            hot.updateSettings({
-                width: $(el).parent().width()
-            });
-            callback();
-        });
+        // document.addEventListener('mousemove', function(event) {
+        //     var hot = window[[el.id]];
+        //     hot.updateSettings({
+        //         width: $(el).parent().width()
+        //     });
+        //     callback();
+        // });
         // $(el).on("change.hotBinding", function(e) {
         //     callback();
         // });
     };
 
     binding.unsubscribe = function(el) {
-        // $(el).off(".hotBinding");
+        $(el).off(".hotBinding");
     };
 
     // binding.getType = function() {
