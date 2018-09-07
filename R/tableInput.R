@@ -1,7 +1,7 @@
 
 #' @export
 tableInputUI <- function(id,
-                         choices = c("pasted","fileUpload","sampleData"),
+                         choices = c("pasted","fileUpload","sampleData", "googleSheet"),
                          selected = "pasted"
 ){
   # UI
@@ -45,14 +45,38 @@ tableInput <- function(input,output,session,
                                          'text/comma-separated-values,text/plain',
                                          '.csv','.xls')),
       "sampleData" = selectInput(ns("inputDataSample"),"Seleccione Datos de Muestra",
-                                 choices = sampleFiles)
+                                 choices = sampleFiles),
+      "googleSheet" = list(
+        textInput(ns("inputDataGoogleSheet"),"GoogleSheet URL"),
+        numericInput(ns("inputDataGoogleSheetSheet"),"Sheet",1)
+        )
     )
     tableInputControls[[input$tableInput]]
+  })
+
+
+  queryData <- reactive({
+    #d <- read_csv("inst/dev/sample1.csv") %>% jsonlite::toJSON()
+    #URLencode(d)
+    query <- parseQueryString(session$clientData$url_search)
+    json_str <- query[["json_data"]]
+    data <- NULL
+    # OJO Add Clip data
+    if(!is.null(json_str)){
+      data <- jsonlite::fromJSON(URLdecode(json_str))
+    }
+    data
   })
 
   inputData <- reactive({
     inputType <- input$tableInput
     #readDataFromInputType(inputType)
+
+    queryData <- queryData()
+    if(!is.null(queryData)){
+      return(queryData)
+    }
+
     if(inputType == "pasted"){
       if(input$inputDataPasted == "")
         return()
@@ -69,9 +93,15 @@ tableInput <- function(input,output,session,
       file <- input$inputDataSample
       df <- read_csv(file)
     }
+    if(inputType == "googleSheet"){
+      url <- input$inputDataGoogleSheet
+      ws <- input$inputDataGoogleSheetSheet
+      s <- gs_url(url)
+      tabs <- gs_ws_ls(s)
+      df <- gs_read_csv(s, ws = ws)
+    }
     return(df)
   })
-
   inputData
 }
 

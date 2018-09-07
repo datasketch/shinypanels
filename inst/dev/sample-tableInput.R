@@ -10,10 +10,12 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                 #### DATA
                 dataControls(label = "Edit data",
                              verbatimTextOutput("debug"),
-                             tableInputUI("dataIn",  selected = "sampleData",
+                             tableInputUI("dataIn",  selected = "pasted",
                                           choices = list("Copiar & Pegar"="pasted",
                                                          "Cargar"="fileUpload",
-                                                         "Muestra"="sampleData")),
+                                                         "GoogleSheet" = "googleSheet",
+                                                         "Muestra"="sampleData")
+                                          ),
                              br()
                 ),
                 dataPreview(

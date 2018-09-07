@@ -10,6 +10,8 @@ Depends:
     R (>= 3.1.2),
     htmltools,
     datafringe,
+    googlesheets,
+    rio,
     glue,
     shiny,
     shinyjs
