@@ -1,5 +1,5 @@
 
-
+#' @export
 dsHot <- function(inputId, data = NULL, dic = NULL,
                   options = NULL){
   defaultOpts <- list(
@@ -76,7 +76,7 @@ hot_dic <- function(x){
 }
 
 
-
+#' @export
 dsModal <- function(inputId,..., header = NULL, footer = NULL){
   x <- list(...)
   tagList(
@@ -90,7 +90,7 @@ dsModal <- function(inputId,..., header = NULL, footer = NULL){
   )
 }
 
-
+#' @export
 dsRadioButtons <- function(inputId, label = NULL,
                          choices = NULL, selected = NULL){
   if(is.null(names(choices))) names(choices) <- choices
