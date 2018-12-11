@@ -18,6 +18,9 @@ var modalTrigger = document.querySelector('.modal-trigger');
 console.log(modalTrigger)
 var modalWrapper = document.querySelector('.ds__modal-wrapper');
 var modal = document.querySelector('.ds__modal');
+var dsTabs = document.querySelector('.ds__tabs');
+var activeTab = document.querySelector('.ds__tab.active');
+
 
 document.addEventListener('mousedown', function (event) {
   if (event.target === dragbar) {
@@ -127,3 +130,29 @@ function altWidth(el, val) {
     ? el.forEach(e => e.style.width = val)
     : el.style.width = val
 }
+
+
+dsTabs.addEventListener('click', function (event) {
+  var element = event.target;
+  if (!element.matches('.ds__tab') || element === activeTab) {
+    return;
+  }
+  // Set active
+  activeTab = element;
+  // Get tab id
+  const tab = element.dataset.tab;
+  // Get tab content div
+  const content = document.getElementById(tab);
+  // Remove class to actual active element
+  document.querySelector('.ds__tab.active').classList.remove('active');
+  // Add class to clicked element
+  element.classList.add('active');
+  // Hide actual active tab content
+  document.querySelector('.ds__tab-content-pane.active').classList.remove('active');
+  // Show content
+  content.classList.add('active');
+});
+
+
+
+
