@@ -63,6 +63,7 @@ server <- function(input,output,session){
       h4("basic")
     )
   })
+  # https://stackoverflow.com/questions/36613018/r-shiny-uioutput-not-rendering-inside-menuitem
   output$advanced <- renderUI({})
   outputOptions(output, "advanced", suspendWhenHidden = FALSE)
   output$advanced <-renderUI({

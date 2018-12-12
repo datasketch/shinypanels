@@ -1,7 +1,7 @@
 
 #' @export
 tableInputUI <- function(id,
-                         choices = c("pasted","fileUpload","sampleData", "googleSheet"),
+                         choices = c("pasted","fileUpload","sampleData", "googleSheet", "dsLibrary"),
                          selected = "pasted"
 ){
   # UI
@@ -49,7 +49,8 @@ tableInput <- function(input,output,session,
       "googleSheet" = list(
         textInput(ns("inputDataGoogleSheet"),"GoogleSheet URL"),
         numericInput(ns("inputDataGoogleSheetSheet"),"Sheet",1)
-      )
+      ),
+      "dsLibrary" = dsDataInputUI(ns("dsFileInput"))
     )
     if(is.null(input$tableInput)){
       return()
@@ -75,7 +76,7 @@ tableInput <- function(input,output,session,
   inputData <- reactive({
 
     if(is.null(input$tableInput)){
-      warning("inputType must be one of pasted, fileUpload, sampleData, googlesheet")
+      warning("inputType must be one of pasted, fileUpload, sampleData, googlesheet, dsLibrary")
       return()
     }
 
@@ -102,13 +103,18 @@ tableInput <- function(input,output,session,
       file <- input$inputDataSample
       df <- read_csv(file)
     } else if(inputType == "googleSheet"){
-      if(input$inputDataPasted == "")
+      if(is.null(input$inputDataGoogleSheet))
+        return()
+      if(input$inputDataGoogleSheet == "")
         return()
       url <- input$inputDataGoogleSheet
       ws <- input$inputDataGoogleSheetSheet
       s <- gs_url(url)
       tabs <- gs_ws_ls(s)
       df <- gs_read_csv(s, ws = ws)
+    } else if(inputType == "dsLibrary"){
+      df <- callModule(dsDataInput,"dsFileInput")
+      df <- df()
     }
     return(df)
   })

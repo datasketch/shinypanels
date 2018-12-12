@@ -14,11 +14,14 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                                           choices = list("Copiar & Pegar"="pasted",
                                                          "Cargar"="fileUpload",
                                                          "GoogleSheet" = "googleSheet",
-                                                         "Muestra"="sampleData")
-                                          ),
+                                                         "Muestra"="sampleData",
+                                                         "Mi librería" = "dsLibrary"
+                                          )
+                             ),
                              br()
                 ),
                 dataPreview(
+                  #dsDataInputUI("dsFileInput"),
                   uiOutput("data_preview"),
                   #dsHot("dataTable2", data = cars),
                   verbatimTextOutput("debug_data")
@@ -39,13 +42,16 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                   uiOutput("viz"),
                   br()
                 ),
-                dsModal("hola", h2("MODAL"))
+                dsModal("hola", h2("MODAL")),
+                dsModal("hola2", h2("MODAL 2"))
 )
 
 server <- function(input,output,session){
   output$debug_data <- renderPrint({
-    inputData()
+    #dsData()
   })
+
+  #dsData <- callModule(dsDataInput,"dsFileInput")
 
   inputData <- callModule(tableInput, "dataIn",
                           sampleFile = list("File1"="sample1.csv","Archivo2"="sample2.csv"))
@@ -54,10 +60,11 @@ server <- function(input,output,session){
     if(is.null(inputData())){
       warning("null inputData")
       return()
-      }
+    }
     list(
       dsHot("dataTable", data = inputData())
       #dsHot("dataTable", data = mtcars)
+      #dsData()
     )
   })
 
