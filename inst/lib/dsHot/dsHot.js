@@ -132,6 +132,11 @@
 		var hot = window[[el.id]];
 		var userSelectedCols = window.userSelectedColumns
 		console.log('getHot', window[[el.id]]);
+
+
+
+		console.log('selectedCols', window.userSelectedColumns)
+
 		return JSON.stringify(parseHotInput(hot.getData(), userSelectedCols));
 	};
 
@@ -148,6 +153,9 @@
 			callback();
 		}); */
 		$(el).on('change.hotBinding', function (e) {
+			callback();
+		});
+		$(el).on('click.hotBinding', function (e) {
 			callback();
 		});
 	};

@@ -56,6 +56,7 @@ server <- function(input,output,session){
     input$dataTable
   })
   output$debug <- renderPrint({
+    input$dataTable$selected
   })
   output$basic <-renderUI({
     list(
@@ -77,7 +78,13 @@ server <- function(input,output,session){
   )
   output$vizData <- renderDataTable({
     #input$dataTable
-    data <- input$dataTable$data
+    if(is.null(input$dataTable$selected)){
+      data <- input$dataTable$data
+    }else{
+      data <- input$dataTable$data %>%
+        select(one_of(input$dataTable$selected$id))
+      names(data) <- input$dataTable$selected$label
+    }
     DT::datatable(data, options = list(scrollX = TRUE))
   })
 }

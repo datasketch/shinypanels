@@ -118,7 +118,6 @@ function parseHotInput(d, userSelectedCols) {
   return {
     data: arrayToObj(data, letter_ids),
     dic: dicToDataframe(dic),
-    selectedCols: selected,
-    userSelectedCols: userSelectedCols
+    selectedCols: userSelectedCols 
   }
 }

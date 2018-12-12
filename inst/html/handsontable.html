@@ -209,12 +209,15 @@
       })
     }
 
+
     // hot.getPlugin('autoColumnSize');
 
     document.addEventListener('mousemove', function(event) {
       hot.updateSettings({
         width: $('.hot').parent().width()
       });
+      console.log(window.userSelectedColumns)
+
     });
   </script>
 </body>
