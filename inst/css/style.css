@@ -34,6 +34,10 @@ body {
   width: 100%;
 }
 
+p {
+  color: orange;
+}
+
 img {
   max-width: 100%;
 }
@@ -49,7 +53,7 @@ img {
   border-radius: 2px;
   display: inline-block;
   padding: 5px 15px;
-  cursor: pointer:
+  cursor: pointer;
 }
 
 .layout {
@@ -100,6 +104,11 @@ img {
   overflow-y: auto;
 }
 
+.shiny-html-output {
+  background-color: transparent;
+  color: #ffffff;
+}
+
 .ds__modal.opened {
   transform: scale(1);
 }
@@ -109,7 +118,7 @@ img {
 }
 
 .ds__modal-body {
-  padding: 15px 0; 
+  padding: 15px 0;
 }
 
 .ds__modal-footer {
