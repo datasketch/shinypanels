@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="hot-container">
-    <div id="hot" class="hot" 
+    <div id="hot" class="hot"
       data-hotOpts = '{
         "manualRowMove": true,
         "manualColumnMove": true,
@@ -22,7 +22,7 @@
         "height": 687,
         "maxRows": 22,
         "selecttionMode": "multiple"
-      }' 
+      }'
       data-dic = '[
         {
           "id": "a",
@@ -96,14 +96,15 @@
       ]'
     >
     </div>
-  </div> 
+  </div>
   <script type="text/javascript" src="../lib/dsHot/dsHotHelpers.js"></script>
   <script>
     var elid = document.getElementsByClassName('hot');
     // https://jsfiddle.net/04r5cgsb/1/ add comments to cells
+    var columnsSelected;
     var settings = {};
     settings.maxRows = 50;
-    var rowsIdx = Array.from(new Array(settings.maxRows), (val, index) => index + 1);
+    var rowsIdx = Array.from(new Array(settings.maxRows), function (val, index) { return index + 1 });
     settings.availableCtypes = ["Numeric", "Categoric", "Date"];
 
     // var hotElement = document.querySelector('#hot');
@@ -156,33 +157,34 @@
         // if(this.valid === false){
         //    this.renderer = invalidRenderer;
         // }
+      },
+      // Bind event after selection
+      afterSelectionEnd: function (startRow, startColumn, endRow, endColumn, layer) {
+        if (startRow !== 0) {
+          return
         }
-      };
+        var selected = {};
+        // If greater than 0, the user selected multiple columns using CTRL key
+        selected.layer = layer
+        selected.columns = this.getSelected().reduce(function (cols, range) {
+          cols.push(range[1]); // Start column
+          cols.push(range[3]); // End column
+          return cols;
+        }, []);
+        // Unique values
+        selected.columns = selected.columns.reduce(function (cols, col) {
+          // Short-circuit evaluation
+          !cols.includes(col) && cols.push(col)
+          return cols;
+        }, []);
+        // Filter dictionary
+        columnsSelected = filterDict.apply(this, [selected])
+        // Save under global window object
+        window.userSelectedColumns = columnsSelected
+      }
+    };
     var hot = new Handsontable(hotElement, hotSettings);
     hot.validateCells();
-    // Bind after selection event
-    Handsontable.hooks.add('afterSelectionEnd', function (startRow, startColumn, endRow, endColumn, layer) {
-      if (startRow !== 0) {
-        return
-      }
-      var selected = {};
-      // If greater than 0, the user selected multiple columns using CTRL key
-      selected.layer = layer
-      selected.columns = this.getSelected().reduce(function (cols, range) {
-        cols.push(range[1]); // Start column
-        cols.push(range[3]); // End column
-        return cols;
-      }, []);
-      // Unique values
-      selected.columns = selected.columns.reduce(function (cols, col) {
-        if (!cols.includes(col)) {
-          cols.push(col);
-        }
-        return cols;
-      }, []);
-      // Filter dictionary
-      filterDict.apply(this, [selected])
-    })
 
     var filterDict = function (info) {
       var props = []
