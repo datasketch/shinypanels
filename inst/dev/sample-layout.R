@@ -20,6 +20,7 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                 vizControls(label = "Personaliza tu vis",
                             basic = list(
                               h4("Basic controls"),
+                              uiOutput("basic"),
                               radioButtons("radios",NULL,choices = c("XXXX", "YYYY")),
                               radioButtons("radios2",NULL,choices = c("XXXX", "YYYY"), inline = TRUE),
                               hr(),
@@ -30,6 +31,7 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                             ),
                             advanced = list(
                               h4("Advanced controls"),
+                              uiOutput("advanced"),
                               radioButtons("adv_radios",NULL,choices = c("XXXX", "YYYY")),
                               radioButtons("adv_radios2",NULL,choices = c("XXXX", "YYYY"), inline = TRUE),
                               hr(),
@@ -54,6 +56,20 @@ server <- function(input,output,session){
     input$dataTable
   })
   output$debug <- renderPrint({
+  })
+  output$basic <-renderUI({
+    list(
+      h4("hola"),
+      h4("basic")
+    )
+  })
+  output$advanced <- renderUI({})
+  outputOptions(output, "advanced", suspendWhenHidden = FALSE)
+  output$advanced <-renderUI({
+    list(
+      h4("hola"),
+      h4("advanced")
+    )
   })
   output$viz <- renderUI(
     dataTableOutput("vizData")
