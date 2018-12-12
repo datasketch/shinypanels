@@ -81,6 +81,7 @@ function formatDataParams (el) {
 
 
 function parseHotInput(d) {
+<<<<<<< HEAD
   var letters = "abcdefghijklmnopqrstuvwxyz".split("");
   var ncols = d[0].length;
   var letter_ids = letters.slice(0, ncols);
@@ -109,6 +110,51 @@ function parseHotInput(d) {
     data: arrayToObj(data, letter_ids),
     dic: dicToDataframe(dic)
   }
+=======
+    console.log("DDD",d)
+    var letters = "abcdefghijklmnopqrstuvwxyz".split("");
+    var ncols = d[0].length;
+    var letter_ids = letters.slice(0, ncols);
+    // console.log(letters.slice(0,ncols));
+    var dic = d.slice(0, 2).concat([letter_ids]);
+    var data = d.slice(2);
+    // console.log("dic", dic)
+    // console.log("data", data)
+    function transpose(matrix) {
+        return matrix[0].map((col, i) => matrix.map(row => row[i]));
+    }
+
+
+    function dicToDataframe(arr) {
+        return arrayToObj(transpose(arr), ["ctype", "label", "id"])
+    }
+
+    function arrayToObj(arr, keys) {
+        return arr.map(function(x) {
+            var obj = x.reduce(function(acc, cur, i) {
+                acc[keys[i]] = cur;
+                return acc;
+            }, {});
+            return obj;
+        });
+    };
+ 
+    var dic_ = dicToDataframe(dic);
+
+    //SELECT columns at random
+    const shuffled = dic_.sort(() => .5 - Math.random());// shuffle  
+    let selected =shuffled.slice(0,2) ; //get sub-array of first n elements AFTER shuffle
+    console.log("SelectedCols",selected);
+
+    console.log("data", JSON.stringify(arrayToObj(data, letter_ids)));
+
+    return{
+      data: arrayToObj(data, letter_ids),
+      dic: dicToDataframe(dic),
+      selectedCols: selected
+    }
+
+>>>>>>> 5d2da06a3ceac5ddc788feee6e1b8b422852fc0c
 }
 
 

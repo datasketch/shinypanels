@@ -274,6 +274,39 @@ img {
   padding: 5px;
 }
 
+.shiny-input-container input[type="number"] {
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+.form-group{
+  background: var(--valentino);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+.selectize-control.single .selectize-input{
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+.selectize-control.single .selectize-dropdown{
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+
 input[type="radio"] {
   -webkit-appearance: none;
   border-radius: 3px;
@@ -434,3 +467,44 @@ input[type="radio"]:checked:after {
   background: var(--aqua);
   border-radius: 10px;
 }
+
+
+/*====================*/
+/*        Tabs        */
+/*====================*/
+.ds__tabs {
+  display: flex;
+  font-size: small;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ds__tab {
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 3px 10px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.ds__tab.active {
+  background: var(--magenta);
+}
+
+.ds__tab-content {
+  padding: 5px 0;
+}
+
+.ds__tab-content-pane {
+  display: none;
+}
+
+.ds__tab-content-pane.active {
+  display: block;
+}
+
+
+
+
