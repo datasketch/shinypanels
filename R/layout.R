@@ -92,12 +92,29 @@ dataPreview <- function(..., on = NULL){
 
 
 #' @export
-vizControls <- function(..., label = NULL, on = NULL){
+vizControls <- function(...,
+                        basic = NULL,
+                        advanced = NULL,
+                        label = NULL, on = NULL){
   x <- list(...)
   tagList(
     shiny::tags$form(class="settings viz__settings",
                      shiny::tags$fieldset(
                        shiny::tags$legend(label),
+                       tags$ul(class = "ds__tabs",
+                          tags$li(class = "ds__tab active", `data-tab`="options__general","General"),
+                          tags$li(class = "ds__tab", `data-tab`="options__advanced","Avanzado")
+                          ),
+                       div(id="options__general", class="ds__tab-content-pane active",
+                           div(class="flex", style="border-bottom: 1px solid var(--disco); padding: 5px 0; margin: 0 0 10px;",
+                                basic
+                               )
+                           ),
+                       div(id="options__advanced", class="ds__tab-content-pane",
+                           div(class="flex", style="border-bottom: 1px solid var(--disco); padding: 5px 0; margin: 0 0 10px;",
+                               advanced
+                           )
+                       ),
                        x
                      )
     )
