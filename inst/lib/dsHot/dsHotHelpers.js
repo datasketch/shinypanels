@@ -16,6 +16,7 @@ headRenderer = function (instance, td, row, col, prop, value, cellProperties) {
   td.style.color = '#B70F7F';
   td.className = 'tableHeader';
 };
+
 invalidRenderer = function (instance, td, row, col, prop, value, cellProperties) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   // td.style.backgroundColor = '#F00!important';
@@ -53,7 +54,6 @@ Handsontable.validators.registerValidator('valiNumeric', valiNumeric);
 Handsontable.validators.registerValidator('valiCategoric', valiCategoric);
 Handsontable.validators.registerValidator('valiDate', valiDate);
 
-
 function formatDataParams (el) {
   var dataDic = JSON.parse(el.dataset.dic);
   var dataInput = JSON.parse(el.dataset.table);
@@ -80,81 +80,45 @@ function formatDataParams (el) {
 }
 
 
-function parseHotInput(d) {
-<<<<<<< HEAD
-  var letters = "abcdefghijklmnopqrstuvwxyz".split("");
+function parseHotInput(d, userSelectedCols) {
+  var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
   var ncols = d[0].length;
   var letter_ids = letters.slice(0, ncols);
-  // console.log(letters.slice(0,ncols));
   var dic = d.slice(0, 2).concat([letter_ids]);
   var data = d.slice(2);
-  // console.log("dic", dic)
-  // console.log("data", data)
+
   function transpose(matrix) {
     return matrix[0].map((col, i) => matrix.map(row => row[i]));
   }
+
   function dicToDataframe(arr) {
     return arrayToObj(transpose(arr), ["ctype", "label", "id"])
   }
+
   function arrayToObj(arr, keys) {
     return arr.map(function(x) {
       var obj = x.reduce(function(acc, cur, i) {
-      // console.log("acc: ", acc, "\ncur: ", cur, "\ni: ",i);
         acc[keys[i]] = cur;
         return acc;
       }, {});
       return obj;
     });
-  }
+  };
+
+  var dic_ = dicToDataframe(dic);
+
+  //SELECT columns at random
+  var shuffled = dic_.sort(() => .5 - Math.random()); // shuffle
+  var selected = shuffled.slice(0,2); //get sub-array of first n elements AFTER shuffle
+  // console.log('Selected columns');
+  // console.log(selected);
+  // console.log('Data')
+  // console.log(JSON.stringify(arrayToObj(data, letter_ids)));
+
   return {
     data: arrayToObj(data, letter_ids),
-    dic: dicToDataframe(dic)
+    dic: dicToDataframe(dic),
+    selectedCols: selected,
+    userSelectedCols: userSelectedCols
   }
-=======
-    console.log("DDD",d)
-    var letters = "abcdefghijklmnopqrstuvwxyz".split("");
-    var ncols = d[0].length;
-    var letter_ids = letters.slice(0, ncols);
-    // console.log(letters.slice(0,ncols));
-    var dic = d.slice(0, 2).concat([letter_ids]);
-    var data = d.slice(2);
-    // console.log("dic", dic)
-    // console.log("data", data)
-    function transpose(matrix) {
-        return matrix[0].map((col, i) => matrix.map(row => row[i]));
-    }
-
-
-    function dicToDataframe(arr) {
-        return arrayToObj(transpose(arr), ["ctype", "label", "id"])
-    }
-
-    function arrayToObj(arr, keys) {
-        return arr.map(function(x) {
-            var obj = x.reduce(function(acc, cur, i) {
-                acc[keys[i]] = cur;
-                return acc;
-            }, {});
-            return obj;
-        });
-    };
- 
-    var dic_ = dicToDataframe(dic);
-
-    //SELECT columns at random
-    const shuffled = dic_.sort(() => .5 - Math.random());// shuffle  
-    let selected =shuffled.slice(0,2) ; //get sub-array of first n elements AFTER shuffle
-    console.log("SelectedCols",selected);
-
-    console.log("data", JSON.stringify(arrayToObj(data, letter_ids)));
-
-    return{
-      data: arrayToObj(data, letter_ids),
-      dic: dicToDataframe(dic),
-      selectedCols: selected
-    }
-
->>>>>>> 5d2da06a3ceac5ddc788feee6e1b8b422852fc0c
 }
-
-
