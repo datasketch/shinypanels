@@ -90,7 +90,6 @@ dataPreview <- function(..., on = NULL){
   )
 }
 
-
 #' @export
 vizControls <- function(...,
                         basic = NULL,
@@ -128,9 +127,6 @@ vizPreview <- function(..., on = NULL){
     x
   )
 }
-
-
-
 
 stepsCSS <- function(styles = ""){
   tags$style(

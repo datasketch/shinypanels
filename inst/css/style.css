@@ -274,6 +274,39 @@ img {
   padding: 5px;
 }
 
+.shiny-input-container input[type="number"] {
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+.form-group{
+  background: var(--valentino);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+.selectize-control.single .selectize-input{
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+.selectize-control.single .selectize-dropdown{
+  background: var(--purple-rock);
+  color: var(--polar);
+  border: none;
+  margin: 5px 0 0;
+  padding: 5px;
+}
+
+
 input[type="radio"] {
   -webkit-appearance: none;
   border-radius: 3px;
