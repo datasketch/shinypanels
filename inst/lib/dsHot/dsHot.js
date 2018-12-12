@@ -5,14 +5,14 @@
 
     // BINDINGS
 
-    var binding = new Shiny.InputBinding();
+    var dsHotBinding = new Shiny.InputBinding();
 
-    binding.find = function(scope) {
+    dsHotBinding.find = function(scope) {
         // console.log("FIND: ", $(scope).find(".hot"));
         return $(scope).find(".hot");
     };
 
-    binding.initialize = function(el) {
+    dsHotBinding.initialize = function(el) {
 
         // console.log("INIT: ", el.id);
         // // var elid = document.getElementsByClassName('hot');
@@ -43,6 +43,7 @@
             // preventOverflow: 'horizontal',
             manualRowMove: params.hotOpts.manualRowMove,
             manualColumnMove: params.hotOpts.manualColumnMove,
+            selectionMode: "multiple",
             // invalidCellClassName: 'highlight--error',
             cells: function(row, col, prop) {
                 // console.log(this);
@@ -86,17 +87,17 @@
         // updateChooser(el);
     };
 
-    binding.getValue = function(el) {
+    dsHotBinding.getValue = function(el) {
         var hot = window[[el.id]];
         console.log("getHot",window[[el.id]]);
-        return parseHotInput(hot.getData())
+        return JSON.stringify(parseHotInput(hot.getData()));
     };
 
-    binding.setValue = function(el, value) {
+    dsHotBinding.setValue = function(el, value) {
         // TODO: implement
     };
 
-    binding.subscribe = function(el, callback) {
+    dsHotBinding.subscribe = function(el, callback) {
         // document.addEventListener('mousemove', function(event) {
         //     var hot = window[[el.id]];
         //     hot.updateSettings({
@@ -104,22 +105,21 @@
         //     });
         //     callback();
         // });
-        // $(el).on("change.hotBinding", function(e) {
-        //     callback();
-        // });
+        $(el).on("change.hotBinding", function(e) {
+            callback();
+        });
+
     };
 
-    binding.unsubscribe = function(el) {
+    dsHotBinding.unsubscribe = function(el) {
         $(el).off(".hotBinding");
     };
 
-    // binding.getType = function() {
-    //   return "shinyjsexamples.hot";
-    // };
+    dsHotBinding.getType = function() {
+      return "dsHotBinding";
+    };
 
-    Shiny.inputBindings.register(binding);
-
-
+    Shiny.inputBindings.register(dsHotBinding);
 
 
 

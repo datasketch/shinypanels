@@ -140,6 +140,7 @@ data-table = '[
         // preventOverflow: 'horizontal',
         manualRowMove: params.hotOpts.manualRowMove,
         manualColumnMove: params.hotOpts.manualColumnMove,
+        selectionMode: "multiple",
         // invalidCellClassName: 'highlight--error',
         cells: function(row, col, prop) {
             // console.log(this);
@@ -183,6 +184,8 @@ data-table = '[
             width: $('.hot').parent().width()
         });
     });
+
+    console.log(parseHotInput(hot.getData()))
 
 
 

@@ -61,19 +61,35 @@ dsHot <- function(inputId, data = NULL, dic = NULL,
   )
 }
 
-hot_data <- function(x, labels = FALSE){
-  if(is.null(x)) return()
-  data <- map(transpose(x$data),unlist) %>% as_tibble()
-  if(labels){
-    dic <- map(transpose(x$dic),unlist) %>% as_tibble()
-    names(data) <- dic$label
-  }
-  data
-}
+try({ removeInputHandler("dsHotBinding") })
 
-hot_dic <- function(x){
-  map(transpose(x$dic),unlist) %>% as_tibble()
-}
+shiny::registerInputHandler("dsHotBinding", function(x, ...) {
+  if (is.null(x))
+    NULL
+  else{
+    x <- jsonlite::fromJSON(x)
+    list(data = x$data,
+         dic = x$dic,
+         selected = x$selected
+         )
+  }
+}, force = TRUE)
+
+
+# hot_data <- function(x, labels = FALSE){
+#   if(is.null(x)) return()
+#   str(data)
+#   data <- transpose(x$data) %>% as_tibble()
+#   if(labels){
+#     dic <- transpose(x$dic) %>% as_tibble()
+#     names(data) <- dic$label
+#   }
+#   data
+# }
+
+
+####
+
 
 
 #' @export
