@@ -32,7 +32,7 @@ tableInput <- function(input,output,session,
     if(is.reactive(sampleFiles))
       sampleFiles <- sampleFiles()
 
-    if(input$tableInput == "sampleData"){
+    if(!is.null(input$tableInput) && input$tableInput == "sampleData"){
       if(!all(map_lgl(sampleFiles,file.exists)))
         stop("All Sample Files must exist")
     }
@@ -49,9 +49,13 @@ tableInput <- function(input,output,session,
       "googleSheet" = list(
         textInput(ns("inputDataGoogleSheet"),"GoogleSheet URL"),
         numericInput(ns("inputDataGoogleSheetSheet"),"Sheet",1)
-        )
+      )
     )
-    tableInputControls[[input$tableInput]]
+    if(is.null(input$tableInput)){
+      return()
+    }else{
+      tableInputControls[[input$tableInput]]
+    }
   })
 
 
@@ -69,6 +73,12 @@ tableInput <- function(input,output,session,
   })
 
   inputData <- reactive({
+
+    if(is.null(input$tableInput)){
+      warning("inputType must be one of pasted, fileUpload, sampleData, googlesheet")
+      return()
+    }
+
     inputType <- input$tableInput
     #readDataFromInputType(inputType)
 
@@ -78,22 +88,22 @@ tableInput <- function(input,output,session,
     }
 
     if(inputType == "pasted"){
+      if(is.null(input$inputDataPasted)) return()
       if(input$inputDataPasted == "")
         return()
       df <- read_tsv(input$inputDataPasted)
-    }
-    if(inputType ==  "fileUpload"){
+    } else if(inputType ==  "fileUpload"){
       if(is.null(input$inputDataUpload)) return()
       old_path <- input$inputDataUpload$datapath
       path <- file.path(tempdir(),input$inputDataUpload$name)
       file.copy(old_path,path)
       df <- rio::import(path)
-    }
-    if(inputType ==  "sampleData"){
+    } else if(inputType ==  "sampleData"){
       file <- input$inputDataSample
       df <- read_csv(file)
-    }
-    if(inputType == "googleSheet"){
+    } else if(inputType == "googleSheet"){
+      if(input$inputDataPasted == "")
+        return()
       url <- input$inputDataGoogleSheet
       ws <- input$inputDataGoogleSheetSheet
       s <- gs_url(url)

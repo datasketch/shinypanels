@@ -10,7 +10,7 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                 #### DATA
                 dataControls(label = "Edit data",
                              verbatimTextOutput("debug"),
-                             tableInputUI("dataIn",  selected = "pasted",
+                             tableInputUI("dataIn",  selected = "sample",
                                           choices = list("Copiar & Pegar"="pasted",
                                                          "Cargar"="fileUpload",
                                                          "GoogleSheet" = "googleSheet",
@@ -39,17 +39,11 @@ ui <- dsAppPage(skin = "magenta",styles = styles,
                   uiOutput("viz"),
                   br()
                 ),
-                dsModal("hola", h2("MODAL")),
-                tags$link(rel = 'stylesheet',
-                          type = 'text/css',
-                          href = 'http://127.0.0.1:8080/lib/dsHot/dsHot.css'),
-                tags$script(src = 'http://127.0.0.1:8080/lib/dsHot/dsHot.js')
+                dsModal("hola", h2("MODAL"))
 )
 
 server <- function(input,output,session){
   output$debug_data <- renderPrint({
-    #data <- hot_data(input$dataTable)
-    #data
     inputData()
   })
 
@@ -57,8 +51,13 @@ server <- function(input,output,session){
                           sampleFile = list("File1"="sample1.csv","Archivo2"="sample2.csv"))
 
   output$data_preview <- renderUI({
+    if(is.null(inputData())){
+      warning("null inputData")
+      return()
+      }
     list(
       dsHot("dataTable", data = inputData())
+      #dsHot("dataTable", data = mtcars)
     )
   })
 
@@ -71,7 +70,8 @@ server <- function(input,output,session){
   )
   output$vizData <- renderDataTable({
     #input$dataTable
-    data <- hot_data(input$dataTable, labels = TRUE)
+    #data <- input$dataTable$data
+    data <- inputData()
     DT::datatable(data, options = list(scrollX = TRUE))
   })
 
