@@ -9,7 +9,7 @@ library(ggmagic)
 library(webshot)
 
 styles <- "#sidebar{background-color: #f9f9f9} .shiny-html-output {
-background-color: transparent; color: white;} .non {display: none;}"
+background-color: transparent; color: white;} #vizEnd{background:#ffffff;}"
 random_name <- function(n = 10) {
   paste0(sample(c(LETTERS,letters,0:9), n, TRUE),collapse = "")
 }
