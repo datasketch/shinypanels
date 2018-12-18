@@ -6,6 +6,8 @@ library(DT)
 
 styles <- "#sidebar{background-color: #f9f9f9}"
 
+
+
 ui <- dsAppPage(skin = "magenta",styles = styles,
                 #### DATA
                 dataControls(label = "Edit data",

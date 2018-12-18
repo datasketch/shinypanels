@@ -1,123 +1,110 @@
 <!doctype html>
 <html>
 <head>
-
-<!-- <link rel="stylesheet" type="text/css" href="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.css">
-<link rel="stylesheet" type="text/css" href="https://handsontable.com/static/css/main.css">
-<script src="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
- -->
-
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
- 
-<link rel="stylesheet" type="text/css" href="../lib/handsontable/handsontable.full.min.css">
-<script src="../lib/handsontable/handsontable.full.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="../lib/dsHot/dsHot.css">
-
+  <!-- <link rel="stylesheet" type="text/css" href="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.css">
+  <link rel="stylesheet" type="text/css" href="https://handsontable.com/static/css/main.css">
+  <script src="https://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
+  -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../lib/handsontable/handsontable.full.min.css">
+  <script src="../lib/handsontable/handsontable.full.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../lib/dsHot/dsHot.css">
 </head>
 <body>
-
- <div class="hot-container">
-<div id="hot" class="hot" 
-data-hotOpts = '{
-  "manualRowMove": true,
-  "manualColumnMove": true,
-  "maxRows" : 22,
-  "width": 406,
-  "autoWrapRow": true,
-  "height": 687,
-  "maxRows": 22
-
-}' 
-data-dic = '[
-    {
-      "id": "a",
-      "label": "Valor",
-      "type": "numeric",
-      "ctype": "Numeric",
-      "width": 40,
-      "validator": "valiNumeric"
-    },
-    {
-      "id": "b",
-      "label": "Cats",
-      "ctype": "Category",
-      "type": "text",
-      "validator": "valiCategoric"
-    },
-    {
-      "id": "c",
-      "label": "Número",
-      "ctype": "Numeric",
-      "type": "numeric",
-      "numericFormat": {
-        "pattern": "0.0000"
-      }
-    },
-    {
-      "id": "d",
-      "label": "Fecha",
-      "ctype": "Date",
-      "type": "date",
-      "dateFormat": "YYYY-MM-DD"
-    }
-]'
-data-table = '[
-
-  {
-    "a": 1,
-    "b": "Euro",
-    "c": 0.9033,
-    "d": "08/19/2018"
-  },
-  {
-    "a": 2,
-    "b": "Japanese Yen",
-    "c": 124.3870,
-    "d": "08/19/2018"
-  },
-  {
-    "a": 3,
-    "b": "Pound Sterling",
-    "c": 0.6396,
-    "d": "08/19/2018"
-  },
-  {
-    "a": 4,
-    "b": "Swiss Franc",
-    "c": 0.9775,
-    "d": "08/19/2018"
-  },
-  {
-    "a": 5,
-    "b": "Canadian Dollar",
-    "c": 1.3097,
-    "d": "08/19/2018"
-  },
-  {
-    "a": "some text",
-    "b": "Australian Dollar",
-    "c": 1.3589,
-    "d": "08/19/2018"
-  }
-]'
->
-</div>
-</div> 
-
-
-
-<script type="text/javascript" src="../lib/dsHot/dsHotHelpers.js"></script>
-<script>
-  
+  <div class="hot-container">
+    <div id="hot" class="hot"
+      data-hotOpts = '{
+        "manualRowMove": true,
+        "manualColumnMove": true,
+        "maxRows" : 22,
+        "width": 406,
+        "autoWrapRow": true,
+        "height": 687,
+        "maxRows": 22,
+        "selecttionMode": "multiple"
+      }'
+      data-dic = '[
+        {
+          "id": "a",
+          "label": "Valor",
+          "type": "numeric",
+          "ctype": "Numeric",
+          "width": 40,
+          "validator": "valiNumeric"
+        },
+        {
+          "id": "b",
+          "label": "Cats",
+          "ctype": "Category",
+          "type": "text",
+          "validator": "valiCategoric"
+        },
+        {
+          "id": "c",
+          "label": "Número",
+          "ctype": "Numeric",
+          "type": "numeric",
+          "numericFormat": {
+            "pattern": "0.0000"
+          }
+        },
+        {
+          "id": "d",
+          "label": "Fecha",
+          "ctype": "Date",
+          "type": "date",
+          "dateFormat": "YYYY-MM-DD"
+        }
+      ]'
+      data-table = '[
+        {
+          "a": 1,
+          "b": "Euro",
+          "c": 0.9033,
+          "d": "08/19/2018"
+        },
+        {
+          "a": 2,
+          "b": "Japanese Yen",
+          "c": 124.3870,
+          "d": "08/19/2018"
+        },
+        {
+          "a": 3,
+          "b": "Pound Sterling",
+          "c": 0.6396,
+          "d": "08/19/2018"
+        },
+        {
+          "a": 4,
+          "b": "Swiss Franc",
+          "c": 0.9775,
+          "d": "08/19/2018"
+        },
+        {
+          "a": 5,
+          "b": "Canadian Dollar",
+          "c": 1.3097,
+          "d": "08/19/2018"
+        },
+        {
+          "a": "some text",
+          "b": "Australian Dollar",
+          "c": 1.3589,
+          "d": "08/19/2018"
+        }
+      ]'
+    >
+    </div>
+  </div>
+  <script type="text/javascript" src="../lib/dsHot/dsHotHelpers.js"></script>
+  <script>
     var elid = document.getElementsByClassName('hot');
     // https://jsfiddle.net/04r5cgsb/1/ add comments to cells
+    var columnsSelected;
     var settings = {};
     settings.maxRows = 50;
-    var rowsIdx = Array.from(new Array(settings.maxRows), (val, index) => index + 1);
+    var rowsIdx = Array.from(new Array(settings.maxRows), function (val, index) { return index + 1 });
     settings.availableCtypes = ["Numeric", "Categoric", "Date"];
 
     // var hotElement = document.querySelector('#hot');
@@ -126,69 +113,112 @@ data-table = '[
 
     var hotElementContainer = hotElement.parentNode;
     var hotSettings = {
-        data: params.dataObject,
-        columns: params.dataDic,
-        stretchH: 'none',
-        width: params.hotOpts.width,
-        autoWrapRow: params.hotOpts.autoWrapRow,
-        height: params.hotOpts.height,
-        maxRows: params.hotOpts.maxRows + 2,
-        rowHeaders: [null, null].concat(rowsIdx),
-        colHeaders: true,
-        fixedRowsTop: 2,
-        stretchH: 'all',
-        // preventOverflow: 'horizontal',
-        manualRowMove: params.hotOpts.manualRowMove,
-        manualColumnMove: params.hotOpts.manualColumnMove,
-        selectionMode: "multiple",
-        // invalidCellClassName: 'highlight--error',
-        cells: function(row, col, prop) {
-            // console.log(this);
-            if (row === 0) {
-                this.renderer = ctypeRenderer;
-                this.type = 'dropdown';
-                this.source = settings.availableCtypes;
-                this.validator = null;
-                return (this)
-            }
-            if (row === 1) {
-                // console.log(row)
-                this.renderer = headRenderer;
-                this.validator = null;
-                return (this)
-            }
-            //Get current ctype
-            var ctype = this.instance.getDataAtCell(0, col);
-            if (ctype == "Numeric") {
-                this.validator = valiNumeric;
-            }
-            if (ctype == "Categoric") {
-                this.validator = valiCategoric;
-            }
-            // if(ctype == "Date"){
-            //    this.validator = valiDate;
-            // }
-            // console.log(!this.valid, this.instance.getDataAtCell(row,col),ctype );
-            // if(this.valid === false){
-            //    this.renderer = invalidRenderer;
-            // }
+      data: params.dataObject,
+      columns: params.dataDic,
+      width: params.hotOpts.width,
+      autoWrapRow: params.hotOpts.autoWrapRow,
+      height: params.hotOpts.height,
+      maxRows: params.hotOpts.maxRows + 2,
+      rowHeaders: [null, null].concat(rowsIdx),
+      colHeaders: true,
+      fixedRowsTop: 2,
+      stretchH: 'all',
+      // preventOverflow: 'horizontal',
+      manualRowMove: params.hotOpts.manualRowMove,
+      manualColumnMove: params.hotOpts.manualColumnMove,
+      // invalidCellClassName: 'highlight--error',
+      cells: function(row, col, prop) {
+        // console.log(this);
+        if (row === 0) {
+          this.renderer = ctypeRenderer;
+          this.type = 'dropdown';
+          this.source = settings.availableCtypes;
+          this.validator = null;
+          return (this)
         }
+        if (row === 1) {
+          // console.log(row)
+          this.renderer = headRenderer;
+          this.validator = null;
+          return (this)
+        }
+        //Get current ctype
+        var ctype = this.instance.getDataAtCell(0, col);
+        if (ctype == "Numeric") {
+          this.validator = valiNumeric;
+        }
+        if (ctype == "Categoric") {
+          this.validator = valiCategoric;
+        }
+        // if(ctype == "Date"){
+        //    this.validator = valiDate;
+        // }
+        // console.log(!this.valid, this.instance.getDataAtCell(row,col),ctype );
+        // if(this.valid === false){
+        //    this.renderer = invalidRenderer;
+        // }
+      },
+      // Bind event after selection
+      afterSelectionEnd: function (startRow, startColumn, endRow, endColumn, layer) {
+        if (startRow !== 0) {
+          return
+        }
+        var selected = {};
+        // If greater than 0, the user selected multiple columns using CTRL key
+        selected.layer = layer
+        selected.columns = this.getSelected().reduce(function (cols, range) {
+          cols.push(range[1]); // Start column
+          cols.push(range[3]); // End column
+          return cols;
+        }, []);
+        // Unique values
+        selected.columns = selected.columns.reduce(function (cols, col) {
+          // Short-circuit evaluation
+          !cols.includes(col) && cols.push(col)
+          return cols;
+        }, []);
+        // Filter dictionary
+        columnsSelected = filterDict.apply(this, [selected])
+        // Save under global window object
+        window.userSelectedColumns = columnsSelected
+      }
     };
     var hot = new Handsontable(hotElement, hotSettings);
     hot.validateCells();
 
+    var filterDict = function (info) {
+      var props = []
+      var self = this;
+      if (info.layer > 0) {
+        // Each value represents a column
+        info.columns.map(function (col) {
+          var meta = self.getCellMeta(0, col);
+          props.push(meta.prop)
+        })
+      } else {
+        // The array represents a range
+        var start = info.columns[0]
+        var end = info.columns[1] || start
+        for (var i = start; i <= end; i++) {
+          var meta = self.getCellMeta(0, i);
+          props.push(meta.prop)
+        }
+      }
+      return params.dataDic.filter(function (item) {
+        return props.includes(item.id)
+      })
+    }
+
+
     // hot.getPlugin('autoColumnSize');
 
     document.addEventListener('mousemove', function(event) {
-        hot.updateSettings({
-            width: $('.hot').parent().width()
-        });
+      hot.updateSettings({
+        width: $('.hot').parent().width()
+      });
+      console.log(window.userSelectedColumns)
+
     });
-
-    console.log(parseHotInput(hot.getData()))
-
-
-
-</script>
+  </script>
 </body>
 </html>
