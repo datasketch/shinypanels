@@ -6,10 +6,13 @@ library(tidyverse)
 library(DT)
 library(hgchmagic)
 library(ggmagic)
+library(webshot)
 
 styles <- "#sidebar{background-color: #f9f9f9} .shiny-html-output {
 background-color: transparent; color: white;} .non {display: none;}"
-
+random_name <- function(n = 10) {
+  paste0(sample(c(LETTERS,letters,0:9), n, TRUE),collapse = "")
+}
 conf <- fromJSON("ds-app-config.json", simplifyDataFrame = FALSE)
 initial_values_df <- data.frame("name" = c("title", "subtitle", "caption", "horLabel", "verLabel", "tooltip", "legendTitle",
                                            "horLine", "verLine",
@@ -51,23 +54,22 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                 ),
                 vizControls(label = "Personaliza tu vis",
                             basic = list(uiOutput("basic")),
-                            advanced = list(uiOutput("advanced"))
-                            # uiOutput("libraryDiv")
+                            advanced = list(uiOutput("advanced")),
+                            uiOutput("libraryDiv")
 
-                            ),
+                ),
                 #simular
                 vizPreview(
-                  radioButtons("library", label = "Librería de visualización", choices = c("hgchmagic", "ggmagic"), inline = TRUE),
-                radioButtons('typeGrf', 'graficos', c('bar', 'pie')),
-                radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum")),
-                p("THIS IS VIZ PREVIEW"),
-                # uiOutput("vizData"),
-                highchartOutput("vizHgchmagic"),
-                plotOutput('vizGgmagic'),
-
-                br()
+                  #radioButtons("library", label = "Librería de visualización", choices = c("hgchmagic", "ggmagic"), inline = TRUE),
+                  radioButtons('typeGrf', 'graficos', c('bar', 'pie')),
+                  radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum")),
+                  p("THIS IS VIZ PREVIEW"),
+                  uiOutput('vizEnd'),
+                  br()
                 ),
-                dsModal("hola", h2("MODAL"))
+                dsModal("hola",
+                        uiOutput('downOptions')
+                        )
 )
 
 server <- function(input, output, session) {
@@ -83,8 +85,8 @@ server <- function(input, output, session) {
   conf_filtrado <- reactiveValues()
 
   # radiobutton para escoger librería y filtrando archivo de cofiguración
-  # output$libraryDiv <- renderUI({
-  observe({
+ output$libraryDiv <- renderUI({
+  #observe({
     # reactivo tipo viz
     gtype <- input$typeGrf
     # reactivo ctypes
@@ -95,30 +97,30 @@ server <- function(input, output, session) {
     lib_values <- map_chr(seq_along(conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library), ~conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library[[.x]]$id_library)
     names(lib_values) <- map_chr(seq_along(conf[[which(c0)]]$canonic_ctypes[[which(c1)]]), ~conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library[[.x]]$label_library) ### NOMBRE:¿?¿?¿?
     conf_filtrado$conf0 <- conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library
-    # radioButtons("library", label = "Librería de visualización", choices = lib_values, selected = input$library, inline = TRUE)
+    radioButtons("library", label = "Librería de visualización", choices = lib_values, selected = input$library, inline = TRUE)
   })
 
   # generando datos (mientras tanto)
   dt0 <- reactive({
     if (!is.null(input$typeC)) {
-    if (input$typeC %in% "Cat") {
-      d <- data.frame("Njdn" = c(rep("Sjd kaka dj dj", 5),
-                            rep("AJ djajfk ja", 8),
-                            rep(NA, 3),
-                            rep("AJ djajfkkdsjfs fjdshfjsa fjs", 13),
-                            rep("AJ sdfjsahjfdhjsa sdf dsajfjd jdsf", 18)),
-                 # "JSJS" = 1,
-                 stringsAsFactors = FALSE)
-    }
-    if (input$typeC %in% "CatNum") {
-      d <- sampleData("Cat-Num")
-    }
-    if (input$typeC %in% "CatCat") {
-      d <- sampleData("Cat-Cat")
-    }
-    if (input$typeC %in% "CatCatNum") {
-      d <- sampleData("Cat-Cat-Num")
-    }
+      if (input$typeC %in% "Cat") {
+        d <- data.frame("Njdn" = c(rep("Sjd kaka dj dj", 5),
+                                   rep("AJ djajfk ja", 8),
+                                   rep(NA, 3),
+                                   rep("AJ djajfkkdsjfs fjdshfjsa fjs", 13),
+                                   rep("AJ sdfjsahjfdhjsa sdf dsajfjd jdsf", 18)),
+                        # "JSJS" = 1,
+                        stringsAsFactors = FALSE)
+      }
+      if (input$typeC %in% "CatNum") {
+        d <- sampleData("Cat-Num")
+      }
+      if (input$typeC %in% "CatCat") {
+        d <- sampleData("Cat-Cat")
+      }
+      if (input$typeC %in% "CatCatNum") {
+        d <- sampleData("Cat-Cat-Num")
+      }
       d
     }
   })
@@ -147,7 +149,7 @@ server <- function(input, output, session) {
       childs_basico <- map_lgl(which(basico), ~!is.null(c1[[.x]]$child_params))
       childs_avanzado <- map_lgl(which(avanzado), ~!is.null(c1[[.x]]$child_params))
 
-### hacer listas por fuera... después renderizar.. esto para los hijos
+      ### hacer listas por fuera... después renderizar.. esto para los hijos
       output$basic <- renderUI({
         map(unique(secciones_basico), function(z) {
           n0 <- which(secciones_basico == z)
@@ -180,13 +182,6 @@ server <- function(input, output, session) {
                                               s0,
                                               initial_values_df$choices[[which(initial_values_df$name == cb[[s]]$name)]]))
               })
-              ### FALTAN LOS HIJOS... SE PODRÍA HACER ASIGNANDO LISTAS CON NOMBRES DE SECCIONES Y AGREGANDO
-              ### LO QUE SE NECESITE A CADA LISTA (tagList)
-              # if (!is.null(cb[[s]]$child_params)) {
-              #   # arreglar
-              #   n1 <- which(!map_lgl(1:20, ~is.null(conf[[1]]$canonic_ctypes[[1]]$library[[1]]$params[[.x]]$child_params)))
-              #   map(n1, ~conf[[1]]$canonic_ctypes[[1]]$library[[1]]$params[[.x]]$label_panel)
-              # }
           )
         })
       })
@@ -238,265 +233,116 @@ server <- function(input, output, session) {
     }
   })
 
+ parametros <- reactive({
+   p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
+   i <- map(p, ~input[[.x]])
+   names(i) <- p
+   # if ()
+   w <- which(p %in% c("tooltip", "format", "marks"))
+   i <- i[-w]
+   i
+ })
 
-  # output$vizData <- renderUI({
-  #   library <- input$library
-  #   if (is.null(library)) return()
-  #   # if (library == 'hgchmagic') {
-  #   #   h <- highchartOutput('vizHgchmagic')}
-  #   if (library == 'ggmagic') {
-  #     plotOutput('vizGgmagic')
-  #   }
-  #
-  # })
+ plot_ggmagic <- reactive({
+   if (input$library != "ggmagic") return()
+   ctype <- input$typeC
+   gtype <- input$typeGrf
+   typeV <- paste0('gg_', gtype, '_', ctype)
+   print(typeV)
+   viz <- do.call(typeV, c(list(dt0()), parametros()))
+ })
 
-  observe({
-    map(c("title", "subtitle"), ~assign(.x, input[[.x]], envir = globalenv()))
-    map(c("title", "subtitle"), ~print(input[[.x]]))
-  })
-
-
-  # output$vizHgchmagic <- renderHighchart({
-  #   hgch_bar_Cat(sampleData("Cat"))
-  # })
-
-
-  output$vizGgmagic <- renderPlot({
-    toggleCssClass("vizHgchmagic", class = "non")
-    p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
-    i <- map(p, ~input[[.x]])
-    names(i) <- p
-    # if ()
-    w <- which(p %in% c("tooltip", "format", "marks"))
-    i <- i[-w]
-     # assign("p", inputs, envir = globalenv())
-     assign("conf", conf_filtrado$conf1, envir = globalenv())
-     assign("inputs", i, envir = globalenv())
-
-    if (input$library == "ggmagic") {
-      do.call("gg_bar_Cat", c(list(sampleData("Cat")), i))
-    }
-    # gg_bar_Cat(sampleData("Cat"), unlist(i)
-  })
-
-  output$vizHgchmagic <- renderHighchart({
-    toggleCssClass("vizGgmagic", class = "non")
-    p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
-    i <- map(p, ~input[[.x]])
-    names(i) <- p
-    # if ()
-    w <- which(p %in% c("tooltip", "format", "marks"))
-    i <- i[-w]
-    # assign("p", inputs, envir = globalenv())
-    assign("conf", conf_filtrado$conf1, envir = globalenv())
-    assign("inputs", i, envir = globalenv())
-
-    if (input$library == "hgchmagic") {
-      do.call("hgch_bar_Cat", c(list(sampleData("Cat")), i))
-    }
-    # gg_bar_Cat(sampleData("Cat"), unlist(i)
-  })
+ plot_hcmagic <- reactive({
+   if (input$library != "hgchmagic") return()
+   ctype <- input$typeC
+   gtype <- input$typeGrf
+   typeV <- paste0('hgch_', gtype, '_', ctype)
+   print(typeV)
+   viz <- do.call(typeV, c(list(dt0()), parametros()))
+ })
 
 
+ output$plotGg <- renderPlot({
+   print(plot_ggmagic())
+ })
 
-  blabla <- reactive({
-    ctype <- input$typeC
-    gtype <- input$typeGrf
-    iDlibrary <- input$library
-    print(library)
-    p <- parametros()[1:4]
+ output$plotHc <- renderHighchart({
+   print(plot_hcmagic())
+ })
 
-    df <- dt0()
-    # if (iDlibrary == 'hgchmagic') {
-    #   viz <- do.call(paste0('hgch_', gtype, '_', ctype), c(list(data = df), p))}
-    # if (iDlibrary ==  'ggmagic') {
-      viz <- do.call(paste0('gg_', gtype, '_', ctype), c(list(data = df), p))#}
-    viz
-    # viz <- paste0('hgch_', gtype, '_', ctype)
-  })
-
-  # output$hola <- renderHighchart({
-  #   print(blabla())
-  # })
-
-  # output$chaoBb <- renderPlot({
-  #   print(blabla())
-  # })
+ output$vizEnd <- renderUI({
+   idLib <- input$library
+   if (is.null(idLib)) return()
+   if (idLib == 'ggmagic') {
+     viz <- plotOutput('plotGg') }
+   if (idLib == 'hgchmagic') {
+     viz <- highchartOutput('plotHc')
+   }
+   viz
+ })
 
 
-  # output$vizAver <- renderUI({
-  #   library <- input$library
-  #   if (library == 'hgchmagic') {
-  #     viz <- highchartOutput('hola') }
-  #   if (library ==  'ggmagic') {
-  #     viz <- plotOutput('chaoBb')}
-  #   viz
-  # })
-  #output$vizHgchmagic <-  #renderHighchart({
-  #   print("HIGHCHAR")
-  vizTemp <- reactive({
-    dt0 <- sampleData('Cat')#dt0()
-    # View(dt0)
-      # ctype <- input$typeC
-      # gtype <- input$typeGrf
-      # viz <- paste0('hgch_', gtype, '_', ctype)
-      # w <- which(names(parametros()) == "tooltip")
-      # p <- parametros()[-w]
-      # print(p)
-      #h <- #do.call(viz, c(list(data = dt0),
-          #                p))
-      h <- hgch_area_Cat(dt0)
+ output$downOptions <- renderUI({
 
-      print(h)
-      h
-  #
-      # format <- c("", "")
-      # if (nzchar(input$format)) {
-      #   format <- strsplit(input$format, "&")[[1]]
-      # }
-      # ad0 <- list()
-      # if (ctype %in% c("CatNum", "CatCat", "CatCatNum")) {
-      #   if (grepl("Num", ctype)) {
-      #     ad0 <- list(agg = input$agg)
-      #   }
-      #
-      #   if (gtype %in% c("CatCat", "CatCatNum") ) {
-      #     ad0 <- c(ad0,list(legendPosition = input$legendPosition,
-      #                       legendTitle = input$legendTitle))
-      #   }
-      #   ad0 <- c(ad0, list(
-      #     order1 = input$order1,
-      #     order2 = input$order2,
-      #     typeGraph = input$typeGraph))
-      # } else {
-      #   ad0 <- list(order = input$order)
-      # }
-      #
-      # if (gtype %in% "pie") {
-      #   ad0 <- c(ad0, list(legendPosition = input$legendPosition,
-      #                      legendTitle = input$legendTitle))
-      # }
-      print("CATGGGG")
-      # p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
-      # p <- c("title", "subtitle")
-      # inp <- map(p, ~input[[.x]])
-      # names(inp) <- p
-      # w <- which(names(p) == "tooltip")
-      # assign("g", inp, envir = globalenv())
-      # print(inp)
-      # hgch_bar_Cat(dt0(), unlist(inp)[-w])
+   idLib <- input$library
+   if (is.null(idLib)) return()
+   if (idLib == 'ggmagic') {
+    tx <-  div(
+      p('Descarga tu gráfico en los siguientes formatos:'),
+        downloadButton('Gg_png', 'png', class = "buttonDown"),
+        downloadButton('Gg_jpeg', 'jpeg', class = "buttonDown"),
+        downloadButton('Gg_svg', 'svg', class = "buttonDown"),
+        downloadButton('Gg_pdf', 'pdf', class = "buttonDown")
+      ) }
+   if (idLib == 'hgchmagic') {
+    tx <- div(
+      p('Descarga tu gráfico en los siguientes formatos:'),
+        downloadButton('Hc_html', 'html', class = "buttonDown"),
+        downloadButton('Hc_png', 'png', class = "buttonDown"),
+        downloadButton('Hc_jpeg', 'jpeg', class = "buttonDown"),
+        downloadButton('Hc_pdf', 'pdf', class = "buttonDown")
+        )}
+   tx
 
-      # print(do.call(viz, c(list(data = dt0()), inp[-w])))
-      # do.call(viz, c(list(data = dt0(),
-      #                     title = input$title,
-      #                     subtitle = input$subtitle,
-      #                     caption = input$caption,
-      #                     horLabel = input$horLabel,
-      #                     verLabel = input$verLabel,
-      #                     horLine = input$horLine,
-      #                     horLineLabel = input$horLineLabel,
-      #                     verLine = input$verLine,
-      #                     verLineLabel = input$verLineLabel,
-      #                     labelWrap = input$labelWrap,
-      #                     colors = NULL,
-      #                     colorScale = input$colorScale,
-      #                     # agg = input$agg, esta flayando
-      #
-      #                     orientation = input$orientation,
-      #                     marks = strsplit(input$marks, "&")[[1]],
-      #                     nDigits = input$nDigits,
-      #                     dropNa = input$dropNa,
-      #                     # highlightValueColor = input$highlightValueColor, #hijo
-      #                     highlightValue = input$highlightValue,
-      #                     percentage = input$percentage,
-      #                     format = format,
-      #                     # order = input$order,
-      #                     # # sort = input$sort,# HIJO
-      #                     sliceN = input$sliceN,
-      #                     # tooltip = input$tooltip,
-      #                     export = input$export,
-      #                     theme = tma(background = '#FFFFFF')),
-      #                ad0))
+ })
 
-})
+ tempDir <- reactive({
+   last_ext <- input$last_btn
+   if (is.null(last_ext)) return()
+   dicTemp <- tempdir()
+   n <- sample(1:10, 1)
+   fileName <- random_name(n)
+   x <-  list(
+     'Dir' = dicTemp,
+     'viz_id' = fileName,
+     'ext' = paste0('.', gsub('.+_','' , last_ext))
+   )
+   x
+ })
+
+ observe({
+   map(c('Gg_png', 'Gg_jpeg', 'Gg_svg', 'Gg_pdf'),
+       function(z) {output[[z]] <- downloadHandler(
+         filename = function() {
+           paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
+         content = function(file) {
+          ggmagic::save_viz(file, plot_ggmagic(), tempDir()$ext)
+         })
+       })
+ })
 
 
+ observe({
+   map(c('Hc_html','Hc_png', 'Hc_jpeg', 'Hc_svg', 'Hc_pdf'),
+       function(z) {output[[z]] <- downloadHandler(
+         filename = function() {
+           paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
+         content = function(file) {
+           hgchmagic::save_viz(file, plot_hcmagic(), tempDir()$ext)
+         })
+       })
+ })
 
-  # output$vizGgmagic <- renderPlot({
-  #   dt0 <- dt0()
-  #   ctype <- input$typeC
-  #   gtype <- input$typeGrf
-  #   viz <- paste0('gg_', gtype, '_', ctype)
-  #
-  #   # p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
-  #   # # p <- c("title", "subtitle")
-  #   # inp <- map(p, ~input[[.x]])
-  #   # names(inp) <- p
-  #   # w <- which(names(p) == "tooltip")
-  #   # assign("g", inp, envir = globalenv())
-  #   # print(inp)
-  #   # # hgch_bar_Cat(dt0(), unlist(inp)[-w])
-  #   # print(do.call(viz, c(list(data = dt0()), inp[-w])))
-  #
-  #
-  #   format <- c("", "")
-  #   if (nzchar(input$format)) {
-  #     format <- strsplit(input$format, "&")[[1]]
-  #   }
-  #   ad0 <- list()
-  #   if (ctype %in% c("CatNum", "CatCat", "CatCatNum")) {
-  #     if (grepl("Num", ctype)) {
-  #       ad0 <- list(agg = input$agg)
-  #     }
-  #     if (gtype %in% c("CatCat", "CatCatNum") ) {
-  #       ad0 <- c(ad0,list(legendPosition = input$legendPosition,
-  #                         legendTitle = input$legendTitle))
-  #     }
-  #
-  #     ad0 <- c(ad0, list(
-  #       order1 = input$order1,
-  #       order2 = input$order2,
-  #       typeGraph = input$typeGraph))
-  #   }else {
-  #     ad0 <- list(order = input$order)
-  #   }
-  #
-  #   if (gtype %in% "pie") {
-  #     ad0 <- c(ad0, list(legendPosition = input$legendPosition,
-  #                        legendTitle = input$legendTitle))
-  #   }
-  #   do.call(viz, c(list(data = dt0,
-  #                       #
-  #                       # # do.call(viz, list(data = dt0[, 1]))
-  #                       title = input$title,
-  #                       subtitle = input$subtitle,
-  #                       caption = input$caption,
-  #                       horLabel = input$horLabel,
-  #                       verLabel = input$verLabel,
-  #                       horLine = input$horLine,
-  #                       horLineLabel = input$horLineLabel,
-  #                       verLine = input$verLine,
-  #                       verLineLabel = input$verLineLabel,
-  #                       colors = NULL,
-  #                       colorScale = input$colorScale,
-  #                       # agg = input$agg, esta flayando
-  #                       # labelWrap = input$labelWrap,
-  #                       labelRatio = input$labelRatio,
-  #                       orientation = input$orientation,
-  #                       marks = strsplit(input$marks, "&")[[1]],
-  #                       nDigits = input$nDigits,
-  #                       # dropNa = input$dropNa,
-  #
-  #                       # highlightValueColor = input$highlightValueColor, #hijo
-  #                       highlightValue = input$highlightValue,
-  #                       percentage = input$percentage,
-  #                       format = format,
-  #                       order = input$order,
-  #                       showText = input$showText,
-  #                       # # sort = input$sort,# HIJO
-  #                       sliceN = input$sliceN),
-  #                  ad0))
-  # })
 }
 shinyApp(ui, server)
 

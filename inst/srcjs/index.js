@@ -120,7 +120,7 @@ modalTrigger.addEventListener('click', function (event) {
 })
 
 modalWrapper.addEventListener('click', function (event) {
-  event.preventDefault();
+  if (event.target !== event.currentTarget) return
   this.classList.remove('opened')
   modal.classList.remove('opened')
 })
@@ -154,5 +154,7 @@ dsTabs.addEventListener('click', function (event) {
 });
 
 
-
+$(document).on('click', '.buttonDown', function () {
+        Shiny.onInputChange('last_btn',this.id);
+   });
 
