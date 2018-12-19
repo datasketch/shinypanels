@@ -4956,7 +4956,7 @@
                             {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",
@@ -5288,7 +5288,7 @@
                             {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",
@@ -5631,7 +5631,7 @@
                             {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",
@@ -5974,7 +5974,7 @@
                             {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",
@@ -6276,7 +6276,7 @@
                              {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",
@@ -7232,7 +7232,7 @@
                             {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",
@@ -7551,7 +7551,7 @@
                             {
                                 "name": "colorOpacity",
                                 "label": "Opacidad",
-                                "input_type": "numericInput",
+                                "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 0.7,
                                 "id_panel": "basico_colores",

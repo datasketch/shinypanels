@@ -156,5 +156,9 @@ dsTabs.addEventListener('click', function (event) {
 
 $(document).on('click', '.buttonDown', function () {
         Shiny.onInputChange('last_btn',this.id);
-   });
+});
 
+$( document ).ready(function() {
+  var titleInput = document.getElementById('title');
+  titleInput.focus();
+});
