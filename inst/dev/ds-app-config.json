@@ -6993,8 +6993,8 @@
                                 "html_id_position": "advanced-orden-id-seccion-1"
                             },
                             {
-                                "name": "labelWrap",
-                                "label": "Número de caracteres por linea <br/> Categorías del eje",
+                                "name": "labelWrapV1",
+                                "label": "Número de caracteres por linea <br/> Categorías de la leyenda",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -7002,6 +7002,17 @@
                                 "panel": "Avanzado",
                                 "label_panel": "Orden",
                                 "html_id_position": "advanced-orden-id-seccion-2"
+                            },
+                            {
+                                "name": "labelWrapV2",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 12,
+                                "id_panel": "avanzado_orden",
+                                "panel": "Avanzado",
+                                "label_panel": "Orden",
+                                "html_id_position": "advanced-orden-id-seccion-3"
                             },
                             {
                                 "name": "tooltip",
@@ -10145,8 +10156,8 @@
                                 "html_id_position": "advanced-orden-id-seccion-1"
                             },
                             {
-                                "name": "labelWrap",
-                                "label": "Número de caracteres por linea <br/> Categorías del eje",
+                                "name": "labelWrapV1",
+                                "label": "Número de caracteres por linea <br/> Categorías de la leyenda",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -10154,6 +10165,17 @@
                                 "panel": "Avanzado",
                                 "label_panel": "Orden",
                                 "html_id_position": "advanced-orden-id-seccion-2"
+                            },
+                            {
+                                "name": "labelWrapV2",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 12,
+                                "id_panel": "avanzado_orden",
+                                "panel": "Avanzado",
+                                "label_panel": "Orden",
+                                "html_id_position": "advanced-orden-id-seccion-3"
                             },
                             {
                                 "name": "tooltip",
