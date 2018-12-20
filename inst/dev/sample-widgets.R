@@ -347,11 +347,7 @@ server <- function(input, output, session) {
    }
    if (sum(w2) > 0) {
      i <- i[-w2]
-     r <- c(input$labelWrapV1, input$labelWrapV2)
-     if (input$library == "ggmagic") {
-       r <- c(input$labelWrapV2, input$labelWrapV1)
-     }
-     i$labelWrapV <- r
+     i$labelWrapV <- c(input$labelWrapV1, input$labelWrapV2)
    }
    i
  })
