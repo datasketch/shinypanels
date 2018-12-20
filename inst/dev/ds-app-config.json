@@ -1483,7 +1483,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -1764,7 +1764,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -2101,7 +2101,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -2423,7 +2423,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -2760,7 +2760,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -3082,7 +3082,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -6373,7 +6373,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -6676,7 +6676,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -7319,7 +7319,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -7648,7 +7648,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -7940,7 +7940,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -9448,17 +9448,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "graphType",
-                                "label": "Agrupación",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_tipo",
-                                "panel": "Básico",
-                                "label_panel": "Tipo de gráfico",
-                                "html_id_position": "basic-tipo-id-seccion-3"
-                            },
-                            {
                                 "name": "colors",
                                 "label": "Colores",
                                 "input_type": "colourInput",
@@ -9558,7 +9547,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -9761,17 +9750,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "graphType",
-                                "label": "Agrupación",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_tipo",
-                                "panel": "Básico",
-                                "label_panel": "Tipo de gráfico",
-                                "html_id_position": "basic-tipo-id-seccion-2"
-                            },
-                            {
                                 "name": "colors",
                                 "label": "Colores",
                                 "input_type": "colourInput",
@@ -9861,7 +9839,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -10067,17 +10045,6 @@
                                 "panel": "Básico",
                                 "label_panel": "Tipo de gráfico",
                                 "html_id_position": "basic-tipo-id-seccion-1"
-                            },
-                            {
-                                "name": "graphType",
-                                "label": "Agrupación",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_tipo",
-                                "panel": "Básico",
-                                "label_panel": "Tipo de gráfico",
-                                "html_id_position": "basic-tipo-id-seccion-3"
                             },
                             {
                                 "name": "colors",
@@ -10393,17 +10360,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "graphType",
-                                "label": "Agrupación",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_tipo",
-                                "panel": "Básico",
-                                "label_panel": "Tipo de gráfico",
-                                "html_id_position": "basic-tipo-id-seccion-2"
-                            },
-                            {
                                 "name": "colors",
                                 "label": "Colores",
                                 "input_type": "colourInput",
@@ -10493,7 +10449,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -10701,17 +10657,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "graphType",
-                                "label": "Agrupación",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_tipo",
-                                "panel": "Básico",
-                                "label_panel": "Tipo de gráfico",
-                                "html_id_position": "basic-tipo-id-seccion-2"
-                            },
-                            {
                                 "name": "colors",
                                 "label": "Colores",
                                 "input_type": "colourInput",
@@ -10811,7 +10756,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -11024,7 +10969,7 @@
                                 "label_panel": "Colores",
                                 "html_id_position": "basic-colores-id-seccion-1"
                             },
-                            {
+                            {2
                                 "name": "colorScale",
                                 "label": "Escala de color",
                                 "input_type": "radioButtons",
@@ -11103,7 +11048,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  categorías del eje",
+                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
