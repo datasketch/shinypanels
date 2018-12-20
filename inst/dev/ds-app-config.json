@@ -1483,7 +1483,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -1764,7 +1764,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -2101,7 +2101,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -2423,7 +2423,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -2760,7 +2760,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -3082,7 +3082,7 @@
                               },
                               {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -6373,7 +6373,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -6676,7 +6676,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -7319,7 +7319,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -7648,7 +7648,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -9547,7 +9547,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -9839,7 +9839,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -10449,7 +10449,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -10756,7 +10756,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
@@ -10969,7 +10969,7 @@
                                 "label_panel": "Colores",
                                 "html_id_position": "basic-colores-id-seccion-1"
                             },
-                            {2
+                            {
                                 "name": "colorScale",
                                 "label": "Escala de color",
                                 "input_type": "radioButtons",
@@ -11048,7 +11048,7 @@
                             },
                             {
                                 "name": "labelWrapV2",
-                                "label": "Número de caracteres por linea <br/>  Categorías del eje",
+                                "label": "Número de caracteres por linea <br/> Categorías del eje",
                                 "input_type": "sliderInput",
                                 "default_value_field": "value",
                                 "default_value": 12,
