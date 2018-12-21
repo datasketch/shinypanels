@@ -459,7 +459,7 @@ input[type="radio"]:checked:after {
 }
 
 
-.settings::-webkit-scrollbar
+.settings::-webkit-scrollbar {
   height: 3px;
   width: 3px;
 }
