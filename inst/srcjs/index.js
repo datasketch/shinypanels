@@ -162,3 +162,15 @@ $( document ).ready(function() {
   var titleInput = document.getElementById('title');
   titleInput.focus();
 });
+
+
+$(document).on('click', '.imgButton', function () {
+  Shiny.onInputChange('last_graph',this.id);
+  //revisar si tiene la clase active
+  if (this.classList.contains("active")) {
+    return
+  };
+  document.querySelector(".imgButton.active").classList.remove("active")
+  this.classList.add("active");
+
+});
