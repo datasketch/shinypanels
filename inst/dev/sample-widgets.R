@@ -67,6 +67,7 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                   #radioButtons("library", label = "Librería de visualización", choices = c("hgchmagic", "ggmagic"), inline = TRUE),
                   p("THIS IS VIZ PREVIEW"),
                   uiOutput('vizEnd'),
+                  uiOutput("butGraf"),
                   radioButtons('typeGrf', 'graficos', c("bar", "pie", "donut", "line", "area"), inline = TRUE),
                   radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum", "CatNumP"), inline = TRUE),
                   br()
@@ -94,7 +95,17 @@ server <- function(input, output, session) {
 
   # ctype
   ctype <- reactive({
+    # tienen que estar pegados i.e. CatCatNum
     input$typeC
+  })
+
+  # graph type
+  gtype <- reactive({
+    if (is.null(input$last_graph)) {
+      "bar"
+    } else {
+      input$last_graph
+    }
   })
 
   # filtrando conf
@@ -103,7 +114,9 @@ server <- function(input, output, session) {
   # radiobutton para escoger librería y filtrando archivo de cofiguración
   output$libraryDiv <- renderUI({
     # reactivo tipo viz
-    gtype <- input$typeGrf
+    gtype <- gtype()
+    print("gtype")
+    print(gtype)
     # reactivo ctypes
     ctype <- ctype()
     # cuáles librerías tienen funciones para gtype ctype
@@ -143,6 +156,34 @@ server <- function(input, output, session) {
     }
   })
 
+  # tipo de gráfica
+  output$butGraf <- renderUI({
+    ctype <- ctype()
+    grafs <- unlist(map(seq_along(conf), function(z) {
+      d0 <- NULL
+      d1 <- conf[[z]]$canonic_ctypes
+      d2 <- map(seq_along(d1), ~d1[[.x]]$canonic_ctype)
+      if (ctype %in% d2) {
+        d0 <- conf[[z]]$id_viztype
+      } else {
+        d0
+      }
+    }))
+
+    if (!is.null(grafs)) {
+      l <- map(grafs, function(z) {
+        tags$button(id = z,
+                    class = "imgButton",
+                    type = "button",
+                    tags$img(src = paste0('plotLogos/', z, '.png'), class =  'imgCont')
+        )})
+      l[[1]] <- HTML(gsub('"imgButton"', '"imgButton active"', l[[1]]))
+      l
+    }
+  })
+
+
+
   # para que renderice widgets en el tab avanzado
   output$advanced <- renderUI({})
   outputOptions(output, "advanced", suspendWhenHidden = FALSE)
@@ -151,9 +192,9 @@ server <- function(input, output, session) {
     library <- input$library
     if (!is.null(library)) {
       ctype <- ctype()
-      gtype <- input$typeGrf
+      gtype <- gtype()
 
-      #json
+      # json
       c0 <- map(seq_along(conf_filtrado$conf0), ~conf_filtrado$conf0[[.x]]$id_library) == input$library
       c1 <- conf_filtrado$conf0[[which(c0)]]$params
       conf_filtrado$conf1 <- c1
@@ -163,6 +204,33 @@ server <- function(input, output, session) {
       secciones <- map(seq_along(c1), ~c1[[.x]]$label_panel)
       secciones_basico <- map(which(basico), ~c1[[.x]]$label_panel)
       secciones_avanzado <- map(which(avanzado), ~c1[[.x]]$label_panel)
+
+
+      # tipo de gráfica
+      # output$butGraf <- renderUI({
+      #   grafs <- unlist(map(seq_along(conf), function(z) {
+      #     d0 <- NULL
+      #     d1 <- conf[[z]]$canonic_ctypes
+      #     d2 <- map(seq_along(d1), ~d1[[.x]]$canonic_ctype)
+      #     if (ctype %in% d2) {
+      #       d0 <- conf[[z]]$id_viztype
+      #     } else {
+      #       d0
+      #     }
+      #   }))
+      #
+      #   if (!is.null(grafs)) {
+      #     l <- map(grafs, function(z) {
+      #       tags$button(id = z,
+      #                   class = "imgButton",
+      #                   type = "button",
+      #                   tags$img(src = paste0('plotLogos/', z, '.png'), class =  'imgCont')
+      #       )})
+      #     l[[1]] <- HTML(gsub('"imgButton"', '"imgButton active"', l[[1]]))
+      #     l
+      #   }
+      # })
+
 
       output$basic <- renderUI({
         map(unique(secciones_basico), function(z) {
@@ -306,11 +374,11 @@ server <- function(input, output, session) {
                 c(l0, l1)
               })
           )
+          })
         })
-      })
 
-    }
-  })
+      }
+    })
 
   # guardando y modificando -cuando se necesita- inputs
   parametros <- reactive({
@@ -361,8 +429,8 @@ server <- function(input, output, session) {
  # gráfica de ggmagic
  plot_ggmagic <- reactive({
    if (input$library != "ggmagic") return()
-   ctype <- input$typeC
-   gtype <- input$typeGrf
+   ctype <- ctype()
+   gtype <- gtype()
    typeV <- paste0('gg_', gtype, '_', ctype)
    print(typeV)
    viz <- do.call(typeV, c(list(dt0()), parametros()))
@@ -371,8 +439,8 @@ server <- function(input, output, session) {
  # gráfica de hgchmagic
  plot_hcmagic <- reactive({
    if (input$library != "hgchmagic") return()
-   ctype <- input$typeC
-   gtype <- input$typeGrf
+   ctype <- ctype()
+   gtype <- gtype()
    typeV <- paste0('hgch_', gtype, '_', ctype)
    ###################eliminar
    assign("dt", dt0(), envir = globalenv())
@@ -455,6 +523,7 @@ server <- function(input, output, session) {
  })
 
 }
+
 shinyApp(ui, server)
 
 
