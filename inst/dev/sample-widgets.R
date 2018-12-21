@@ -53,7 +53,7 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                 ),
                 dataPreview(
                   h3("This is data preview"),
-                  # dsHot("dataTable", data = mtcars),
+                  dsHot("dataTable", data = diamonds),
                   verbatimTextOutput("debug_data")
                 ),
                 vizControls(label = "Personaliza tu vis",
@@ -65,41 +65,52 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                 #simular
                 vizPreview(
                   #radioButtons("library", label = "Librería de visualización", choices = c("hgchmagic", "ggmagic"), inline = TRUE),
-                  radioButtons('typeGrf', 'graficos', c("bar", "pie", "donut", "line", "area")),
-                  radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum", "CatNumP")),
                   p("THIS IS VIZ PREVIEW"),
                   uiOutput('vizEnd'),
+                  radioButtons('typeGrf', 'graficos', c("bar", "pie", "donut", "line", "area"), inline = TRUE),
+                  radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum", "CatNumP"), inline = TRUE),
                   br()
                 ),
                 dsModal("hola",
-                        uiOutput('downOptions')
-                        )
-)
+                        uiOutput('downOptions')))
 
 server <- function(input, output, session) {
 
-  output$debug <- renderPrint({
-    input$radios
+  output$debug_data <- renderPrint({
+    input$dataTable
   })
-  output$viz <- renderUI(
-    dataTableOutput("vizData")
-  )
+
+  # datos
+  # dt0 <- reactive({
+  #   if (is.null(input$dataTable$selected)) {
+  #     dt <- NULL
+  #   } else {
+  #     dt <- input$dataTable$data %>%
+  #       select(one_of(input$dataTable$selected$id))
+  #     names(dt) <- input$dataTable$selected$label
+  #   }
+  #   dt
+  # })
+
+  # ctype
+  ctype <- reactive({
+    input$typeC
+  })
 
   # filtrando conf
   conf_filtrado <- reactiveValues()
 
   # radiobutton para escoger librería y filtrando archivo de cofiguración
   output$libraryDiv <- renderUI({
-    #observe({
     # reactivo tipo viz
     gtype <- input$typeGrf
     # reactivo ctypes
-    ctype <- input$typeC
+    ctype <- ctype()
     # cuáles librerías tienen funciones para gtype ctype
     c0 <- map(seq_along(conf), ~conf[[.x]]$id_viztype) == gtype
     c1 <- map(seq_along(conf[[which(c0)]]$canonic_ctypes), ~conf[[which(c0)]]$canonic_ctypes[[.x]]$canonic_ctype) == ctype
     lib_values <- map_chr(seq_along(conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library), ~conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library[[.x]]$id_library)
-    names(lib_values) <- map_chr(seq_along(conf[[which(c0)]]$canonic_ctypes[[which(c1)]]), ~conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library[[.x]]$label_library) ### NOMBRE:¿?¿?¿?
+    names(lib_values) <- map_chr(seq_along(conf[[which(c0)]]$canonic_ctypes[[which(c1)]]), ~conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library[[.x]]$label_library)
     conf_filtrado$conf0 <- conf[[which(c0)]]$canonic_ctypes[[which(c1)]]$library
     radioButtons("library", label = "Librería de visualización", choices = lib_values, selected = input$library, inline = TRUE)
   })
@@ -131,69 +142,57 @@ server <- function(input, output, session) {
       d
     }
   })
+
   # para que renderice widgets en el tab avanzado
   output$advanced <- renderUI({})
   outputOptions(output, "advanced", suspendWhenHidden = FALSE)
-
+  # renderizando controles en los dos tabs
   observe({
     library <- input$library
     if (!is.null(library)) {
-      ctype <- input$typeC
+      ctype <- ctype()
       gtype <- input$typeGrf
 
       #json
       c0 <- map(seq_along(conf_filtrado$conf0), ~conf_filtrado$conf0[[.x]]$id_library) == input$library
       c1 <- conf_filtrado$conf0[[which(c0)]]$params
       conf_filtrado$conf1 <- c1
-      assign("c1", c1, envir = globalenv())
+      assign("c1", c1, envir = globalenv()) ############333 eleimnoiar
       basico <- map(seq_along(c1), ~c1[[.x]]$panel) == "Básico"
       avanzado <- map(seq_along(c1), ~c1[[.x]]$panel) == "Avanzado"
-      # cb <- c1[basico]
-      # ca <- c1[avanzado]
       secciones <- map(seq_along(c1), ~c1[[.x]]$label_panel)
       secciones_basico <- map(which(basico), ~c1[[.x]]$label_panel)
       secciones_avanzado <- map(which(avanzado), ~c1[[.x]]$label_panel)
-      # childs_basico <- map_lgl(which(basico), ~!is.null(c1[[.x]]$child_params))
-      # childs_avanzado <- map_lgl(which(avanzado), ~!is.null(c1[[.x]]$child_params))
 
       output$basic <- renderUI({
         map(unique(secciones_basico), function(z) {
-          print(z)
-          # n0 <- which(secciones_basico == z)
           div(id = paste0("basico-", z),
               h4(z),
               map(seq_along(c1), function(s) {
-                print(s)
                 l0 <- list()
                 l1 <- list()
                 if (c1[[s]]$panel == "Básico" & c1[[s]]$label_panel == z) {
                   # v0 <- NULL
-                  v0 <- input[[c1[[s]]$name]]
-                  ###########3 QUITAR CUANDO SE ARREGLE CATCATNUM GGMAGIC
-                  cl <- 1
-                  if (#library == "ggmagic" &
-                      ctype %in% c("CatCat", "CatCatNum", "CatNumP")) {
-                    cl <- 2
-                  }
-                  ######################
+                  v0 <- isolate(input[[c1[[s]]$name]])
                   if (is.null(v0)) {
                     v0 <- c1[[s]]$default_value
                     if (c1[[s]]$name %in% "sliceN") {
-                      v0 <- length(unique(dt0()[[cl]]))
+                      v0 <- length(unique(dt0()[[1]]))
                     }
                   }
                   v0 <- list(v0)
                   names(v0) <- c1[[s]]$default_value_field
                   s0 <- list()
                   if (c1[[s]]$name %in% "sliceN") {
-                    s0 <- list("max" = length(unique(dt0()[[cl]])))
+                    s0 <- list("max" = length(unique(dt0()[[1]])))
                   }
 
-                  l0 <- list(do.call(c1[[s]]$input_type, c(list("inputId" = c1[[s]]$name,
-                                                                "label" = HTML(c1[[s]]$label)),
-                                                           v0,
-                                                           s0,
-                                                           initial_values_df$choices[[which(initial_values_df$name == c1[[s]]$name)]])))
+                  l0 <- list(do.call(c1[[s]]$input_type,
+                                     c(list("inputId" = c1[[s]]$name,
+                                            "label" = HTML(c1[[s]]$label)),
+                                       v0,
+                                       s0,
+                                       initial_values_df$choices[[which(initial_values_df$name == c1[[s]]$name)]])))
 
                 }
                 if (!is.null(c1[[s]]$child_params)) {
@@ -224,10 +223,11 @@ server <- function(input, output, session) {
                       }
                       t0 <- list(t0)
                       names(t0) <- c2$default_value_field
-                      l1 <- list(do.call(c2$input_type, c(list("inputId" = c2$name,
-                                                               "label" = HTML(c2$label)),
-                                                          t0,
-                                                          initial_values_df$choices[[which(initial_values_df$name == c2$name)]])))
+                      l1 <- list(do.call(c2$input_type,
+                                         c(list("inputId" = c2$name,
+                                                "label" = HTML(c2$label)),
+                                           t0,
+                                           initial_values_df$choices[[which(initial_values_df$name == c2$name)]])))
                     }
                   }
                 }
@@ -239,7 +239,6 @@ server <- function(input, output, session) {
 
       output$advanced <- renderUI({
         map(unique(secciones_avanzado), function(z) {
-          # n0 <- which(secciones_basico == z)
           div(id = paste0("avanzado-", z),
               h4(z),
               map(seq_along(c1), function(s) {
@@ -247,13 +246,7 @@ server <- function(input, output, session) {
                 l1 <- list()
                 if (c1[[s]]$panel == "Avanzado" & c1[[s]]$label_panel == z) {
                   # v0 <- NULL
-                  v0 <- input[[c1[[s]]$name]]
-                  ###########3 QUITAR CUANDO SE ARREGLE CATCATNUM GGMAGIC
-                  cl <- 1
-                  if (library == "ggmagic" & ctype %in% c("CatCat", "CatCatNum")) {
-                    cl <- 2
-                  }
-                  ######################
+                  v0 <- isolate(input[[c1[[s]]$name]])
                   if (is.null(v0)) {
                     v0 <- c1[[s]]$default_value
                   }
@@ -268,12 +261,13 @@ server <- function(input, output, session) {
                   if (c1[[s]]$name %in% c("order", "order1", "order2")) {
                     o0 <- list("choices" = sort(as.character(unique(dt0()[[1]])), na.last = TRUE))
                   }
-                  l0 <- list(do.call(c1[[s]]$input_type, c(list("inputId" = c1[[s]]$name,
-                                                                "label" = HTML(c1[[s]]$label)),
-                                                           v0,
-                                                           h0,
-                                                           o0,
-                                                           initial_values_df$choices[[which(initial_values_df$name == c1[[s]]$name)]])))
+                  l0 <- list(do.call(c1[[s]]$input_type,
+                                     c(list("inputId" = c1[[s]]$name,
+                                            "label" = HTML(c1[[s]]$label)),
+                                       v0,
+                                       h0,
+                                       o0,
+                                       initial_values_df$choices[[which(initial_values_df$name == c1[[s]]$name)]])))
 
                 }
                 if (!is.null(c1[[s]]$child_params)) {
@@ -301,10 +295,11 @@ server <- function(input, output, session) {
                       }
                       t0 <- list(t0)
                       names(t0) <- c2$default_value_field
-                      l1 <- list(do.call(c2$input_type, c(list("inputId" = c2$name,
-                                                               "label" = HTML(c2$label)),
-                                                          t0,
-                                                          initial_values_df$choices[[which(initial_values_df$name == c2$name)]])))
+                      l1 <- list(do.call(c2$input_type,
+                                         c(list("inputId" = c2$name,
+                                                "label" = HTML(c2$label)),
+                                           t0,
+                                           initial_values_df$choices[[which(initial_values_df$name == c2$name)]])))
                     }
                   }
                 }
@@ -317,69 +312,41 @@ server <- function(input, output, session) {
     }
   })
 
- parametros <- reactive({
-   p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
-   i <- map(p, ~input[[.x]])
-   names(i) <- p
-   # w <- which(p %in% c("tooltip", "format", "marks"))
-   w0 <- which(p %in% "dropNaV")
-   w1 <- which(p %in% "format")
-   w2 <- which(p %in% c("labelWrapV1", "labelWrapV2"))
-   w3 <- which(p %in% "marks")
-   w4 <- which(p %in% "tooltip")
-   if (sum(w0) > 0) {
-     r <- c(TRUE, TRUE)
-     if (length(input$dropNaV) < 2) {
-       r[setdiff(1:2, as.numeric(input$dropNaV))] <- FALSE
-     }
-     i[[w0]] <- r
-   }
-   if (sum(w1) > 0) {
-     r0 <- strsplit(input$format, "&")[[1]]
-     r1 <- replace_na(c(r0[1], r0[2]), "")
-     i[[w1]] <- r1
-   }
-   if (sum(w3) > 0) {
-     i[[w3]] <- strsplit(input$marks, "&")[[1]]
-   }
-   if (sum(w4) > 0) {
-     i[[w4]] <- NULL
-   }
-   if (sum(w2) > 0) {
-     i <- i[-w2]
-     i$labelWrapV <- c(input$labelWrapV1, input$labelWrapV2)
-   }
-   i
- })
-
- plot_ggmagic <- reactive({
-   if (input$library != "ggmagic") return()
-   ctype <- input$typeC
-   gtype <- input$typeGrf
-   typeV <- paste0('gg_', gtype, '_', ctype)
-   print(typeV)
-   viz <- do.call(typeV, c(list(dt0()), parametros()))
- })
-
- plot_hcmagic <- reactive({
-   if (input$library != "hgchmagic") return()
-   ctype <- input$typeC
-   gtype <- input$typeGrf
-   typeV <- paste0('hgch_', gtype, '_', ctype)
-   assign("dt", dt0(), envir = globalenv())
-   assign("par", parametros(), envir = globalenv())
-   viz <- do.call(typeV, c(list(dt0()), parametros()))
- })
-
-
- output$plotGg <- renderPlot({
-   print(plot_ggmagic())
- })
-
- output$plotHc <- renderHighchart({
-   print(plot_hcmagic())
- })
-
+  # guardando y modificando -cuando se necesita- inputs
+  parametros <- reactive({
+    p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
+    i <- map(p, ~input[[.x]])
+    names(i) <- p
+    w0 <- which(p %in% "dropNaV")
+    w1 <- which(p %in% "format")
+    w2 <- which(p %in% c("labelWrapV1", "labelWrapV2"))
+    w3 <- which(p %in% "marks")
+    w4 <- which(p %in% "tooltip")
+    if (sum(w0) > 0) {
+      r <- c(TRUE, TRUE)
+      if (length(input$dropNaV) < 2) {
+        r[setdiff(1:2, as.numeric(input$dropNaV))] <- FALSE
+      }
+      i[[w0]] <- r
+    }
+    if (sum(w1) > 0) {
+      r0 <- strsplit(input$format, "&")[[1]]
+      r1 <- replace_na(c(r0[1], r0[2]), "")
+      i[[w1]] <- r1
+    }
+    if (sum(w3) > 0) {
+      i[[w3]] <- strsplit(input$marks, "&")[[1]]
+    }
+    if (sum(w4) > 0) {
+      i[[w4]] <- NULL
+    }
+    if (sum(w2) > 0) {
+      i <- i[-w2]
+      i$labelWrapV <- c(input$labelWrapV1, input$labelWrapV2)
+    }
+    i
+  })
+ # tipo de output dependiendo la librería
  output$vizEnd <- renderUI({
    idLib <- input$library
    if (is.null(idLib)) return()
@@ -391,9 +358,42 @@ server <- function(input, output, session) {
    viz
  })
 
+ # gráfica de ggmagic
+ plot_ggmagic <- reactive({
+   if (input$library != "ggmagic") return()
+   ctype <- input$typeC
+   gtype <- input$typeGrf
+   typeV <- paste0('gg_', gtype, '_', ctype)
+   print(typeV)
+   viz <- do.call(typeV, c(list(dt0()), parametros()))
+ })
 
+ # gráfica de hgchmagic
+ plot_hcmagic <- reactive({
+   if (input$library != "hgchmagic") return()
+   ctype <- input$typeC
+   gtype <- input$typeGrf
+   typeV <- paste0('hgch_', gtype, '_', ctype)
+   ###################eliminar
+   assign("dt", dt0(), envir = globalenv())
+   assign("par", parametros(), envir = globalenv())
+   viz <- do.call(typeV, c(list(dt0()), parametros()))
+ })
+
+ # renderizando ggplot
+ output$plotGg <- renderPlot({
+   print(plot_ggmagic())
+ })
+
+ # renderizando hgcharts
+ output$plotHc <- renderHighchart({
+   print(plot_hcmagic())
+ })
+
+
+
+ # descargas
  output$downOptions <- renderUI({
-
    idLib <- input$library
    if (is.null(idLib)) return()
    if (idLib == 'ggmagic') {
@@ -416,6 +416,7 @@ server <- function(input, output, session) {
 
  })
 
+
  tempDir <- reactive({
    last_ext <- input$last_btn
    if (is.null(last_ext)) return()
@@ -436,7 +437,7 @@ server <- function(input, output, session) {
          filename = function() {
            paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
          content = function(file) {
-          ggmagic::save_viz(file, plot_ggmagic(), tempDir()$ext)
+           ggmagic::save_viz(file, plot_ggmagic(), tempDir()$ext)
          })
        })
  })
