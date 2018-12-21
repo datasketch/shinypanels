@@ -437,7 +437,9 @@ input[type="radio"]:checked:after {
 }
 */
 .settings fieldset {
+  padding-top: 0;
   border: 1px solid var(--aqua);
+  min-width: 0;
 }
 
 .settings legend {
@@ -457,7 +459,7 @@ input[type="radio"]:checked:after {
 }
 
 
-.settings::-webkit-scrollbar {
+.settings::-webkit-scrollbar
   height: 3px;
   width: 3px;
 }
@@ -538,7 +540,11 @@ input[type="radio"]:checked:after {
  margin: 3px 3px 3px 3px;
 }
 
-.active {
+.imgButton.active {
  border: 1px solid #A6CEDE;
 }
 
+#basic, #advanced {
+ width: 100%;
+ max-width: 100%;
+}
