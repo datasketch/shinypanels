@@ -93,10 +93,28 @@ server <- function(input, output, session) {
   #   dt
   # })
 
+  # data columns after ctypes
+  dataCols <- reactiveValues()
+
   # ctype
   ctype <- reactive({
     # tienen que estar pegados i.e. CatCatNum
     input$typeC
+    if (is.null(input$dataTable$selected)) {
+      ct <- NULL
+    } else {
+      ct0 <- input$dataTable$selected$ctype
+      names(ct0) <- input$dataTable$selected$label
+      # posibilidades de ctypes según el tipo de viz escogido
+      v0 <- map(seq_along(conf), ~conf[[.x]]$id_viztype) == gtype()
+      v1 <- map_chr(seq_along(conf[[which(v0)]]$canonic_ctypes), ~conf[[which(v0)]]$canonic_ctypes[[.x]]$canonic_ctype)
+      b0 <- belongingCtypesCombinations(ct0, v1)
+      if (!is.null(b0)) {
+        ct <- b0[1]
+        dataCols$cols <- strsplit(names(ct), "\\|")[[1]]
+      }
+    }
+    ct
   })
 
   # graph type
