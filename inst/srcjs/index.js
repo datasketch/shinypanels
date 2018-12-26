@@ -170,7 +170,7 @@ $(document).on('click', '.imgButton', function () {
   if (this.classList.contains("active")) {
     return
   };
-  document.querySelector(".imgButton.active").classList.remove("active")
+   document.querySelector(".imgButton.active").classList.remove("active")
   this.classList.add("active");
 
 });
