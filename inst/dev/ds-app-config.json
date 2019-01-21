@@ -43,6 +43,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -171,28 +182,7 @@
                                 "label_panel": "Orden",
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
-                            {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
+                          
                             {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
@@ -246,6 +236,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-color-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Básico",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-color-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -356,6 +368,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -497,28 +520,7 @@
                                 "label_panel": "Orden",
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
-                            {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
+                         
                             {
                                 "name": "colorText",
                                 "label": "Color de texto",
@@ -528,7 +530,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -551,6 +553,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Básico",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Básico",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -655,6 +679,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -796,28 +831,7 @@
                                 "label_panel": "Orden",
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
-                            {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
+                           
                             {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
@@ -871,6 +885,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -981,6 +1017,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -1119,28 +1166,7 @@
                                 "label_panel": "Orden",
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
-                            {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
+                         
                             {
                                 "name": "colorText",
                                 "label": "Color de texto",
@@ -1150,7 +1176,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -1173,6 +1199,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -1274,6 +1322,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -1372,28 +1431,7 @@
                                 "label_panel": "Tipo de gráfico",
                                 "html_id_position": "basic-tipo-id-seccion-3"
                             },
-                            {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
+                           
                             {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
@@ -1447,6 +1485,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -1552,6 +1612,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -1675,28 +1746,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -1705,7 +1754,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -1728,6 +1777,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -1851,6 +1922,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -1991,28 +2073,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -2065,6 +2125,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -2170,6 +2252,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -2334,28 +2427,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -2364,7 +2435,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -2387,6 +2458,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -2510,6 +2603,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -2650,28 +2754,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -2724,6 +2806,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -2829,6 +2933,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -2993,28 +3108,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -3023,7 +3116,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -3046,6 +3139,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -3174,6 +3289,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -3245,10 +3371,10 @@
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "colorScale",
@@ -3256,10 +3382,10 @@
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -3332,6 +3458,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "showText",
@@ -3422,8 +3559,8 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
+                                "name": "colorText",
+                                "label": "Color de texto",
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
@@ -3433,26 +3570,26 @@
                                 "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Básico",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
                                 "name": "colorScale",
                                 "label": "Escala de color",
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
+                                "id_panel": "avanzado_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
-                                "name": "colorText",
-                                "label": "Color de texto",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -3554,6 +3691,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -3647,10 +3795,10 @@
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "colorScale",
@@ -3658,10 +3806,10 @@
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -3745,6 +3893,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "showText",
@@ -3846,8 +4005,8 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
+                                "name": "colorText",
+                                "label": "Color de texto",
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
@@ -3857,26 +4016,26 @@
                                 "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
                                 "name": "colorScale",
                                 "label": "Escala de color",
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
-                                "name": "colorText",
-                                "label": "Color de texto",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -3983,6 +4142,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -4054,10 +4224,10 @@
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "colorScale",
@@ -4065,10 +4235,10 @@
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -4141,6 +4311,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "showText",
@@ -4231,8 +4412,8 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
+                                "name": "colorText",
+                                "label": "Color de texto",
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
@@ -4242,26 +4423,26 @@
                                 "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
                                 "name": "colorScale",
                                 "label": "Escala de color",
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
-                                "name": "colorText",
-                                "label": "Color de texto",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -4363,6 +4544,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -4456,10 +4648,10 @@
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "colorScale",
@@ -4467,10 +4659,10 @@
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -4554,6 +4746,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "showText",
@@ -4655,8 +4858,8 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
+                                "name": "colorText",
+                                "label": "Color de texto",
                                 "input_type": "colourInput",
                                 "default_value_field": "value",
                                 "default_value": null,
@@ -4666,26 +4869,26 @@
                                 "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
                                 "name": "colorScale",
                                 "label": "Escala de color",
                                 "input_type": "radioButtons",
                                 "default_value_field": "selected",
                                 "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
-                                "name": "colorText",
-                                "label": "Color de texto",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -4790,6 +4993,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -4943,28 +5157,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -5017,6 +5209,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -5100,6 +5314,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -5275,28 +5500,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -5305,7 +5508,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basico-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -5328,6 +5531,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -5456,6 +5681,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -5618,28 +5854,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -5692,6 +5906,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -5775,6 +6011,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -5961,28 +6208,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -5991,7 +6216,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -6014,6 +6239,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order",
@@ -6142,6 +6389,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -6263,28 +6521,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                             {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -6337,6 +6573,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                             {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -6442,6 +6700,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -6587,28 +6856,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-2"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -6617,7 +6864,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -6640,6 +6887,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -6761,6 +7030,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -6895,28 +7175,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -6969,6 +7227,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -7074,6 +7354,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -7230,39 +7521,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-2"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            { 
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -7271,7 +7529,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-4"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -7294,6 +7552,39 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
+                            },
+                            { 
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-3"
                             },
                             {
                                 "name": "order1",
@@ -7415,6 +7706,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -7549,28 +7851,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-2"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorOpacity",
-                                "label": "Opacidad",
-                                "input_type": "sliderInput",
-                                "default_value_field": "value",
-                                "default_value": 0.7,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -7623,6 +7903,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorOpacity",
+                                "label": "Opacidad",
+                                "input_type": "sliderInput",
+                                "default_value_field": "value",
+                                "default_value": 0.7,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -7728,6 +8030,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -7862,28 +8186,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -7892,7 +8194,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -7915,6 +8217,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -8043,6 +8367,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -8194,17 +8529,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -8257,6 +8581,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "order",
@@ -8340,6 +8675,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -8515,17 +8861,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -8534,7 +8869,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -8557,6 +8892,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "order",
@@ -8685,6 +9031,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -8847,17 +9204,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -8910,6 +9256,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "order",
@@ -8993,6 +9350,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -9179,17 +9547,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -9198,7 +9555,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -9221,6 +9578,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "order",
@@ -9349,6 +9717,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -9459,17 +9838,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -9522,6 +9890,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "order1",
@@ -9627,6 +10006,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -9761,28 +10151,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -9791,7 +10159,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -9814,6 +10182,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -9937,6 +10327,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -10058,28 +10459,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -10132,6 +10511,28 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
@@ -10237,6 +10638,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -10382,28 +10794,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            { 
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -10412,7 +10802,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-4"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -10435,6 +10825,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            { 
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-3"
                             },
                             {
                                 "name": "order1",
@@ -10558,6 +10970,17 @@
                                 "html_id_position": "basic-title-id-seccion-3"
                             },
                             {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
+                            },
+                            {
                                 "name": "horLabel",
                                 "label": "Nombre eje horizontal",
                                 "input_type": "textInput",
@@ -10679,17 +11102,6 @@
                                 "html_id_position": "basic-tipo-id-seccion-1"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
                                 "name": "horLine",
                                 "label": "Línea horizontal",
                                 "input_type": "numericInput",
@@ -10742,6 +11154,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
                             },
                             {
                                 "name": "order1",
@@ -10847,6 +11270,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-3"
+                            },
+                            {
+                                "name": "theme",
+                                "label": "Seleccionar tema",
+                                "input_type": "selectInput",
+                                "default_value_field": "selected",
+                                "default_value": "datasketch",
+                                "id_panel": "basico_temas",
+                                "panel": "Básico",
+                                "label_panel": "Tema",
+                                "html_id_position": "basic-theme-id-seccion-1"
                             },
                             {
                                 "name": "horLabel",
@@ -10981,28 +11415,6 @@
                                 "html_id_position": "basic-orden-id-seccion-3"
                             },
                             {
-                                "name": "colors",
-                                "label": "Colores",
-                                "input_type": "colourInput",
-                                "default_value_field": "value",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-1"
-                            },
-                            {
-                                "name": "colorScale",
-                                "label": "Escala de color",
-                                "input_type": "radioButtons",
-                                "default_value_field": "selected",
-                                "default_value": null,
-                                "id_panel": "basico_colores",
-                                "panel": "Básico",
-                                "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-2"
-                            },
-                            {
                                 "name": "colorText",
                                 "label": "Color de texto",
                                 "input_type": "colourInput",
@@ -11011,7 +11423,7 @@
                                 "id_panel": "basico_colores",
                                 "panel": "Básico",
                                 "label_panel": "Colores",
-                                "html_id_position": "basic-colores-id-seccion-3"
+                                "html_id_position": "basic-colores-id-seccion-1"
                             },
                             {
                                 "name": "horLine",
@@ -11034,6 +11446,28 @@
                                 "panel": "Básico",
                                 "label_panel": "Líneas",
                                 "html_id_position": "basic-lineas-id-seccion-3"
+                            },
+                            {
+                                "name": "colors",
+                                "label": "Colores",
+                                "input_type": "colourInput",
+                                "default_value_field": "value",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-1"
+                            },
+                            {
+                                "name": "colorScale",
+                                "label": "Escala de color",
+                                "input_type": "radioButtons",
+                                "default_value_field": "selected",
+                                "default_value": null,
+                                "id_panel": "avanzado_colores",
+                                "panel": "Avanzado",
+                                "label_panel": "Colores",
+                                "html_id_position": "advanced-colores-id-seccion-2"
                             },
                             {
                                 "name": "order1",
