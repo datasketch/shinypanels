@@ -63,7 +63,6 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                   verbatimTextOutput('aver'),
                   uiOutput('vizEnd'),
                   uiOutput("butGraf"),
-                  radioButtons('typeGrf', 'graficos', c("bar", "pie", "donut", "line", "area"), inline = TRUE),
                   radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum", "CatNumP"), inline = TRUE),
                   br()
                 ),
