@@ -14,7 +14,7 @@ random_name <- function(n = 10) {
   paste0(sample(c(LETTERS, letters, 0:9), n, TRUE), collapse = "")
 }
 conf <- fromJSON("ds-app-config.json", simplifyDataFrame = FALSE)
-initial_values_df <- data.frame("name" = c("title", "subtitle", "caption", "horLabel", "verLabel", "tooltip", "legendTitle", "horLineLabel", "verLineLabel",
+initial_values_df <- data.frame("name" = c("title", "subtitle", "caption", "horLabel", "verLabel", "theme","tooltip", "legendTitle", "horLineLabel", "verLineLabel",
                                            "horLine", "verLine",
                                            "colors", "colorText", "highlightValueColor",
                                            "colorScale", "orientation",
@@ -27,7 +27,7 @@ initial_values_df <- data.frame("name" = c("title", "subtitle", "caption", "horL
                                            "labelRatio", "labelWrap", "labelWrapV1", "labelWrapV2", "sliceN", "colorOpacity",
                                            "order", "order1", "order2",
                                            "sort"),
-                                "choices" = I(list(list(NULL), list(NULL), list(NULL), list(NULL), list(NULL), list(NULL), list(NULL), list(NULL), list(NULL),
+                                "choices" = I(list(list(NULL), list(NULL), list(NULL), list(NULL), list(NULL),  list("choices" = c("Datasketch" = "datasketch", "nombre1" = "nomb1", "nombre2" = "nomb2")), list(NULL), list(NULL), list(NULL), list(NULL),
                                                    list("min" = 0, "max" = Inf), list("min" = 0, "max" = Inf),
                                                    list(NULL), list(NULL), list(NULL),
                                                    list("choices" = c("Discreta" = "discrete", "Continua" = "continuous", "Ninguna" = "no")), list("choices" = c("Vertical" = "ver", "Horizontal" = "hor"), inline = TRUE),
@@ -44,28 +44,23 @@ initial_values_df <- data.frame("name" = c("title", "subtitle", "caption", "horL
 
 
 
-
-
 ui <- dsAppPage(skin = "magenta", styles = styles,
                 dataControls(label = "Edit data",
-                             verbatimTextOutput("debug"),
                              br()
                 ),
                 dataPreview(
                   h3("This is data preview"),
-                  dsHot("dataTable", data = diamonds),
-                  verbatimTextOutput("debug_data")
-                ),
+                  dsHot("dataTable", data = mtcars)),
                 vizControls(label = "Personaliza tu vis",
                             basic = list(uiOutput("basic")),
                             advanced = list(uiOutput("advanced")),
                             uiOutput("libraryDiv")
 
                 ),
-                #simular
                 vizPreview(
                   #radioButtons("library", label = "Librería de visualización", choices = c("hgchmagic", "ggmagic"), inline = TRUE),
                   p("THIS IS VIZ PREVIEW"),
+                  verbatimTextOutput('aver'),
                   uiOutput('vizEnd'),
                   uiOutput("butGraf"),
                   radioButtons('typeGrf', 'graficos', c("bar", "pie", "donut", "line", "area"), inline = TRUE),
@@ -73,49 +68,12 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                   br()
                 ),
                 dsModal("hola",
-                        uiOutput('downOptions')))
+                        uiOutput('downOptions'))
+                )
 
 server <- function(input, output, session) {
-
-  output$debug_data <- renderPrint({
-    input$dataTable
-  })
-
-  # datos
-  # dt0 <- reactive({
-  #   if (is.null(input$dataTable$selected)) {
-  #     dt <- NULL
-  #   } else {
-  #     dt <- input$dataTable$data %>%
-  #       select(one_of(input$dataTable$selected$id))
-  #     names(dt) <- input$dataTable$selected$label
-  #   }
-  #   dt
-  # })
-
   # data columns after ctypes
   dataCols <- reactiveValues()
-
-  # ctype
-  ctype <- reactive({
-    # tienen que estar pegados i.e. CatCatNum
-    input$typeC
-    if (is.null(input$dataTable$selected)) {
-      ct <- NULL
-    } else {
-      ct0 <- input$dataTable$selected$ctype
-      names(ct0) <- input$dataTable$selected$label
-      # posibilidades de ctypes según el tipo de viz escogido
-      v0 <- map(seq_along(conf), ~conf[[.x]]$id_viztype) == gtype()
-      v1 <- map_chr(seq_along(conf[[which(v0)]]$canonic_ctypes), ~conf[[which(v0)]]$canonic_ctypes[[.x]]$canonic_ctype)
-      b0 <- belongingCtypesCombinations(ct0, v1)
-      if (!is.null(b0)) {
-        ct <- b0[1]
-        dataCols$cols <- strsplit(names(ct), "\\|")[[1]]
-      }
-    }
-    ct
-  })
 
   # graph type
   gtype <- reactive({
@@ -126,6 +84,27 @@ server <- function(input, output, session) {
     }
   })
 
+  # ctype
+  ctype <- reactive({
+    # if (is.null(input$dataTable$selected)) {
+    #   ct <- NULL
+    # } else {
+      ct <- input$typeC
+      # ct0 <- input$dataTable$selected$ctype
+      # names(ct0) <- input$dataTable$selected$label
+      # # posibilidades de ctypes según el tipo de viz escogido
+      # v0 <- map(seq_along(conf), ~conf[[.x]]$id_viztype) == gtype()
+      # v1 <- map_chr(seq_along(conf[[which(v0)]]$canonic_ctypes), ~conf[[which(v0)]]$canonic_ctypes[[.x]]$canonic_ctype)
+      # b0 <- belongingCtypesCombinations(ct0, v1)
+      # if (!is.null(b0)) {
+      #   ct <- b0[1]
+      #   dataCols$cols <- strsplit(names(ct), "\\|")[[1]]
+      # }
+    #}
+    ct
+  })
+
+
   # filtrando conf
   conf_filtrado <- reactiveValues()
 
@@ -133,10 +112,8 @@ server <- function(input, output, session) {
   output$libraryDiv <- renderUI({
     # reactivo tipo viz
     gtype <- gtype()
-    print("gtype")
-    print(gtype)
     # reactivo ctypes
-    ctype <- ctype()
+    ctype <- 'Cat'#ctype()
     # cuáles librerías tienen funciones para gtype ctype
     c0 <- map(seq_along(conf), ~conf[[.x]]$id_viztype) == gtype
     c1 <- map(seq_along(conf[[which(c0)]]$canonic_ctypes), ~conf[[which(c0)]]$canonic_ctypes[[.x]]$canonic_ctype) == ctype
@@ -174,6 +151,7 @@ server <- function(input, output, session) {
     }
   })
 
+
   # tipo de gráfica
   output$butGraf <- renderUI({
     ctype <- ctype()
@@ -200,12 +178,11 @@ server <- function(input, output, session) {
     }
   })
 
-
-
   # para que renderice widgets en el tab avanzado
   output$advanced <- renderUI({})
   outputOptions(output, "advanced", suspendWhenHidden = FALSE)
-  # renderizando controles en los dos tabs
+
+
   observe({
     library <- input$library
     if (!is.null(library)) {
@@ -223,33 +200,6 @@ server <- function(input, output, session) {
       secciones_basico <- map(which(basico), ~c1[[.x]]$label_panel)
       secciones_avanzado <- map(which(avanzado), ~c1[[.x]]$label_panel)
 
-
-      # tipo de gráfica
-      # output$butGraf <- renderUI({
-      #   grafs <- unlist(map(seq_along(conf), function(z) {
-      #     d0 <- NULL
-      #     d1 <- conf[[z]]$canonic_ctypes
-      #     d2 <- map(seq_along(d1), ~d1[[.x]]$canonic_ctype)
-      #     if (ctype %in% d2) {
-      #       d0 <- conf[[z]]$id_viztype
-      #     } else {
-      #       d0
-      #     }
-      #   }))
-      #
-      #   if (!is.null(grafs)) {
-      #     l <- map(grafs, function(z) {
-      #       tags$button(id = z,
-      #                   class = "imgButton",
-      #                   type = "button",
-      #                   tags$img(src = paste0('plotLogos/', z, '.png'), class =  'imgCont')
-      #       )})
-      #     l[[1]] <- HTML(gsub('"imgButton"', '"imgButton active"', l[[1]]))
-      #     l
-      #   }
-      # })
-
-
       output$basic <- renderUI({
         map(unique(secciones_basico), function(z) {
           div(id = paste0("basico-", z),
@@ -257,8 +207,8 @@ server <- function(input, output, session) {
               map(seq_along(c1), function(s) {
                 l0 <- list()
                 l1 <- list()
-                if (c1[[s]]$panel == "Básico" & c1[[s]]$label_panel == z) {
-                  # v0 <- NULL
+                if (c1[[s]]$panel == 'Básico' && c1[[s]]$label_panel == z) {
+                 # l0 <- isolate(input[[c1[[s]]$name]])#c1[[s]]
                   v0 <- isolate(input[[c1[[s]]$name]])
                   if (is.null(v0)) {
                     v0 <- c1[[s]]$default_value
@@ -280,11 +230,12 @@ server <- function(input, output, session) {
                                        s0,
                                        initial_values_df$choices[[which(initial_values_df$name == c1[[s]]$name)]])))
 
+                } else {
+                  return()
                 }
                 if (!is.null(c1[[s]]$child_params)) {
                   w0 <- map(seq_along(c1[[s]]$child_params), ~c1[[s]]$child_params[[.x]]$selected_value)
                   if (length(w0) > 1) {
-                    # w1 <- NULL
                     w1 <- input[[c1[[s]]$name]]
                     if (is.null(w1)) {
                       w1 <- c1[[s]]$default_value
@@ -292,7 +243,6 @@ server <- function(input, output, session) {
                     w2 <- which(map(seq_along(c1[[s]]$child_params), ~c1[[s]]$child_params[[.x]]$selected_value) == w1)
                     c2 <- c1[[s]]$child_params[[w2]]$params
                   } else {
-                    # w1 <- NULL
                     w1 <- input[[c1[[s]]$name]]
                     c2 <- list()
                     if (sum(nchar(w1), na.rm = TRUE)) {
@@ -302,7 +252,6 @@ server <- function(input, output, session) {
                   }
                   if (!is.null(c2$panel)) {
                     if (c2$panel == "Básico" & c2$label_panel == z) {
-                      # t0 <- NULL
                       t0 <- input[[c2$name]]
                       if (is.null(t0)) {
                         t0 <- c2$default_value
@@ -317,10 +266,12 @@ server <- function(input, output, session) {
                     }
                   }
                 }
+
                 c(l0, l1)
+
               })
           )
-        })
+      })
       })
 
       output$advanced <- renderUI({
@@ -392,15 +343,21 @@ server <- function(input, output, session) {
                 c(l0, l1)
               })
           )
-          })
         })
+      })
+
+
 
       }
-    })
+      })
 
-  # guardando y modificando -cuando se necesita- inputs
+  # output$aver <- renderPrint({
+  #   dt0()
+  # })
+
   parametros <- reactive({
     p <- map(seq_along(conf_filtrado$conf1), ~conf_filtrado$conf1[[.x]]$name)
+
     i <- map(p, ~input[[.x]])
     names(i) <- p
     w0 <- which(p %in% "dropNaV")
@@ -408,6 +365,8 @@ server <- function(input, output, session) {
     w2 <- which(p %in% c("labelWrapV1", "labelWrapV2"))
     w3 <- which(p %in% "marks")
     w4 <- which(p %in% "tooltip")
+    w5 <- which(p %in% "theme")
+
     if (sum(w0) > 0) {
       r <- c(TRUE, TRUE)
       if (length(input$dropNaV) < 2) {
@@ -426,124 +385,122 @@ server <- function(input, output, session) {
     if (sum(w4) > 0) {
       i[[w4]] <- NULL
     }
+    if (sum(w5) > 0) {
+      i[[w5]] <- NULL
+    }
     if (sum(w2) > 0) {
       i <- i[-w2]
       i$labelWrapV <- c(input$labelWrapV1, input$labelWrapV2)
     }
     i
   })
- # tipo de output dependiendo la librería
- output$vizEnd <- renderUI({
-   idLib <- input$library
-   if (is.null(idLib)) return()
-   if (idLib == 'ggmagic') {
-     viz <- plotOutput('plotGg') }
-   if (idLib == 'hgchmagic') {
-     viz <- highchartOutput('plotHc')
-   }
-   viz
- })
+  # tipo de output dependiendo la librería
+  output$vizEnd <- renderUI({
+    idLib <- input$library
+    if (is.null(idLib)) return()
+    if (idLib == 'ggmagic') {
+      viz <- plotOutput('plotGg') }
+    if (idLib == 'hgchmagic') {
+      viz <- highchartOutput('plotHc')
+    }
+    viz
+  })
 
- # gráfica de ggmagic
- plot_ggmagic <- reactive({
-   if (input$library != "ggmagic") return()
-   ctype <- ctype()
-   gtype <- gtype()
-   typeV <- paste0('gg_', gtype, '_', ctype)
-   print(typeV)
-   viz <- do.call(typeV, c(list(dt0()), parametros()))
- })
+  # gráfica de ggmagic
+  plot_ggmagic <- reactive({
+    if (input$library != "ggmagic") return()
+    ctype <- ctype()
+    gtype <- gtype()
+    typeV <- paste0('gg_', gtype, '_', ctype)
+    print(typeV)
+    viz <- do.call(typeV, c(list(dt0()), parametros()))
+  })
 
- # gráfica de hgchmagic
- plot_hcmagic <- reactive({
-   if (input$library != "hgchmagic") return()
-   ctype <- ctype()
-   gtype <- gtype()
-   typeV <- paste0('hgch_', gtype, '_', ctype)
-   ###################eliminar
-   assign("dt", dt0(), envir = globalenv())
-   assign("par", parametros(), envir = globalenv())
-   viz <- do.call(typeV, c(list(dt0()), parametros()))
- })
+  # gráfica de hgchmagic
+  plot_hcmagic <- reactive({
+    if (input$library != "hgchmagic") return()
+    ctype <- ctype()
+    gtype <- gtype()
+    typeV <- paste0('hgch_', gtype, '_', ctype)
+    ###################eliminar
+    assign("dt", dt0(), envir = globalenv())
+    assign("par", parametros(), envir = globalenv())
+    viz <- do.call(typeV, c(list(dt0()), parametros()))
+  })
 
- # renderizando ggplot
- output$plotGg <- renderPlot({
-   print(plot_ggmagic())
- })
+  # renderizando ggplot
+  output$plotGg <- renderPlot({
+    print(plot_ggmagic())
+  })
 
- # renderizando hgcharts
- output$plotHc <- renderHighchart({
-   print(plot_hcmagic())
- })
+  # renderizando hgcharts
+  output$plotHc <- renderHighchart({
+    print(plot_hcmagic())
+  })
 
 
 
- # descargas
- output$downOptions <- renderUI({
-   idLib <- input$library
-   if (is.null(idLib)) return()
-   if (idLib == 'ggmagic') {
-    tx <-  div(
-      p('Descarga tu gráfico en los siguientes formatos:'),
+  # descargas
+  output$downOptions <- renderUI({
+    idLib <- input$library
+    if (is.null(idLib)) return()
+    if (idLib == 'ggmagic') {
+      tx <-  div(
+        p('Descarga tu gráfico en los siguientes formatos:'),
         downloadButton('Gg_png', 'png', class = "buttonDown"),
         downloadButton('Gg_jpeg', 'jpeg', class = "buttonDown"),
         downloadButton('Gg_svg', 'svg', class = "buttonDown"),
         downloadButton('Gg_pdf', 'pdf', class = "buttonDown")
       ) }
-   if (idLib == 'hgchmagic') {
-    tx <- div(
-      p('Descarga tu gráfico en los siguientes formatos:'),
+    if (idLib == 'hgchmagic') {
+      tx <- div(
+        p('Descarga tu gráfico en los siguientes formatos:'),
         downloadButton('Hc_html', 'html', class = "buttonDown"),
         downloadButton('Hc_png', 'png', class = "buttonDown"),
         downloadButton('Hc_jpeg', 'jpeg', class = "buttonDown"),
         downloadButton('Hc_pdf', 'pdf', class = "buttonDown")
-        )}
-   tx
+      )}
+    tx
 
- })
-
-
- tempDir <- reactive({
-   last_ext <- input$last_btn
-   if (is.null(last_ext)) return()
-   dicTemp <- tempdir()
-   n <- sample(1:10, 1)
-   fileName <- random_name(n)
-   x <-  list(
-     'Dir' = dicTemp,
-     'viz_id' = fileName,
-     'ext' = paste0('.', gsub('.+_','' , last_ext))
-   )
-   x
- })
-
- observe({
-   map(c('Gg_png', 'Gg_jpeg', 'Gg_svg', 'Gg_pdf'),
-       function(z) {output[[z]] <- downloadHandler(
-         filename = function() {
-           paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
-         content = function(file) {
-           ggmagic::save_viz(file, plot_ggmagic(), tempDir()$ext)
-         })
-       })
- })
+  })
 
 
- observe({
-   map(c('Hc_html','Hc_png', 'Hc_jpeg', 'Hc_svg', 'Hc_pdf'),
-       function(z) {output[[z]] <- downloadHandler(
-         filename = function() {
-           paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
-         content = function(file) {
-           hgchmagic::save_viz(file, plot_hcmagic(), tempDir()$ext)
-         })
-       })
- })
+  tempDir <- reactive({
+    last_ext <- input$last_btn
+    if (is.null(last_ext)) return()
+    dicTemp <- tempdir()
+    n <- sample(1:10, 1)
+    fileName <- random_name(n)
+    x <-  list(
+      'Dir' = dicTemp,
+      'viz_id' = fileName,
+      'ext' = paste0('.', gsub('.+_','' , last_ext))
+    )
+    x
+  })
 
+  observe({
+    map(c('Gg_png', 'Gg_jpeg', 'Gg_svg', 'Gg_pdf'),
+        function(z) {output[[z]] <- downloadHandler(
+          filename = function() {
+            paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
+          content = function(file) {
+            ggmagic::save_viz(file, plot_ggmagic(), tempDir()$ext)
+          })
+        })
+  })
+
+
+  observe({
+    map(c('Hc_html','Hc_png', 'Hc_jpeg', 'Hc_svg', 'Hc_pdf'),
+        function(z) {output[[z]] <- downloadHandler(
+          filename = function() {
+            paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
+          content = function(file) {
+            hgchmagic::save_viz(file, plot_hcmagic(), tempDir()$ext)
+          })
+        })
+  })
 }
 
 shinyApp(ui, server)
-
-
-
-

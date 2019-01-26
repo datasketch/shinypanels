@@ -266,7 +266,7 @@
                                 "default_value_field": "selected",
                                 "default_value": null,
                                 "id_panel": "avanzado_colores",
-                                "panel": "Básico",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
                                 "html_id_position": "advanced-color-id-seccion-2"
                             },
@@ -572,7 +572,7 @@
                                 "default_value_field": "value",
                                 "default_value": null,
                                 "id_panel": "avanzado_colores",
-                                "panel": "Básico",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
                                 "html_id_position": "advanced-colores-id-seccion-1"
                             },
@@ -583,7 +583,7 @@
                                 "default_value_field": "selected",
                                 "default_value": null,
                                 "id_panel": "avanzado_colores",
-                                "panel": "Básico",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
                                 "html_id_position": "advanced-colores-id-seccion-2"
                             },
@@ -3631,7 +3631,7 @@
                                 "default_value_field": "value",
                                 "default_value": null,
                                 "id_panel": "avanzado_colores",
-                                "panel": "Básico",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
                                 "html_id_position": "advanced-colores-id-seccion-1"
                             },
@@ -3642,7 +3642,7 @@
                                 "default_value_field": "selected",
                                 "default_value": null,
                                 "id_panel": "avanzado_colores",
-                                "panel": "Básico",
+                                "panel": "Avanzado",
                                 "label_panel": "Colores",
                                 "html_id_position": "advanced-colores-id-seccion-2"
                             },
