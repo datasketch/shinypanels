@@ -76,6 +76,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -712,6 +723,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
@@ -1355,6 +1377,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -1953,6 +1986,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
@@ -2634,6 +2678,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
@@ -5028,6 +5083,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -5714,6 +5780,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -6422,6 +6499,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -7063,6 +7151,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
@@ -7741,6 +7840,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -8398,6 +8508,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
@@ -9064,6 +9185,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -9750,6 +9882,17 @@
                                 "html_id_position": "basic-title-id-seccion-5"
                             },
                             {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
+                            },
+                            {
                                 "name": "marks",
                                 "label": "Separadores de miles y decimales",
                                 "input_type": "selectInput",
@@ -10358,6 +10501,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
@@ -11001,6 +11155,17 @@
                                 "panel": "Básico",
                                 "label_panel": "Títulos",
                                 "html_id_position": "basic-title-id-seccion-5"
+                            },
+                            {
+                                "name": "showText",
+                                "label": "Mostrar valor",
+                                "input_type": "checkboxInput",
+                                "default_value_field": "value",
+                                "default_value": true,
+                                "id_panel": "basico_orden",
+                                "panel": "Básico",
+                                "label_panel": "Orden",
+                                "html_id_position": "basic-title-id-seccion-6"
                             },
                             {
                                 "name": "marks",
