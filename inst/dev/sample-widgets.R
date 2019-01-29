@@ -60,7 +60,7 @@ ui <- dsAppPage(skin = "magenta", styles = styles,
                 vizPreview(
                   #radioButtons("library", label = "Librería de visualización", choices = c("hgchmagic", "ggmagic"), inline = TRUE),
                   p("THIS IS VIZ PREVIEW"),
-                  verbatimTextOutput('aver'),
+                  #verbatimTextOutput('aver'),
                   uiOutput('vizEnd'),
                   uiOutput("butGraf"),
                   radioButtons('typeC', 'columnas', c("Cat", "CatNum", "CatCat", "CatCatNum", "CatNumP"), inline = TRUE),
@@ -484,7 +484,7 @@ server <- function(input, output, session) {
           filename = function() {
             paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
           content = function(file) {
-            ggmagic::save_viz(file, plot_ggmagic(), tempDir()$ext)
+            ggmagic::save_ggmagic(plot_ggmagic(), file, tempDir()$ext)
           })
         })
   })
@@ -496,7 +496,7 @@ server <- function(input, output, session) {
           filename = function() {
             paste0(tempDir()$Dir, tempDir()$viz_id, tempDir()$ext )},
           content = function(file) {
-            hgchmagic::save_viz(file, plot_hcmagic(), tempDir()$ext)
+            hgchmagic::save_hgchmagic(plot_hcmagic(), file, tempDir()$ext)
           })
         })
   })
