@@ -64,16 +64,3 @@ dsHot <- function(inputId, data = NULL, dic = NULL,
   )
 }
 
-try({ removeInputHandler("dsHotBinding") })
-
-shiny::registerInputHandler("dsHotBinding", function(x, ...) {
-  if (is.null(x))
-    NULL
-  else{
-    x <- jsonlite::fromJSON(x)
-    list(data = x$data,
-         dic = x$dic,
-         selected = x$selected
-    )
-  }
-}, force = TRUE)
