@@ -520,7 +520,7 @@ input[type="radio"]:checked:after {
   display: block;
 }
 
-
+/*
 .imgCont {
  width: 70px;
  height: 70px;
@@ -543,6 +543,8 @@ input[type="radio"]:checked:after {
 .imgButton.active {
  border: 1px solid #A6CEDE;
 }
+
+*/
 
 #basic, #advanced {
  width: 100%;

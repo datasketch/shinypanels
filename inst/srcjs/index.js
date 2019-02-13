@@ -164,7 +164,7 @@ $( document ).ready(function() {
 });
 
 
-$(document).on('click', '.imgButton', function () {
+/*$(document).on('click', '.imgButton', function () {
   Shiny.onInputChange('last_graph',this.id);
   //revisar si tiene la clase active
   if (this.classList.contains("active")) {
@@ -173,4 +173,4 @@ $(document).on('click', '.imgButton', function () {
    document.querySelector(".imgButton.active").classList.remove("active")
   this.classList.add("active");
 
-});
+});*/
