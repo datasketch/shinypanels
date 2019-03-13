@@ -24,70 +24,73 @@ dsAppPage <- function(dataControls, dataPreview,
   debugJS <- tags$script(ifelse(debug,"var debug = true;","var debug = false;"))
 
   page <- tagList(
-    div(class="app-container",
-        div(class="panel panel--small", id="data-edit",
 
-            div(class="panel-head",
-				    div(class="panel-title", "Editar datos")
-            ),
-            div(class="panel-body box-shadow",
-         HTML(paste0( '
-            <div class="panel-collapse">
-            <svg class="panel-collapse__close" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-            <line x1="0" y1="0" x2="10" y2="10" stroke="#bdcad1" stroke-width="2" />
-            <line x1="10" y1="0" x2="0" y2="10" stroke="#bdcad1" stroke-width="2" />
-            </svg>
-            </div>
-            '
-        )),
-        div( class="panel-title panel-title--rotated",
-             "Editar datos"),
-        #control de datos
-        dataControls,
-        #todo lo que va en el panel de DATOS
-        dataPreview
-        )
-        ),
-        div(class="panel panel--small", id="viz-edit",
-            div(class="panel-head",
-                div(class="panel-title", "Editar visualización")),
-            div(class="panel-body box-shadow",
-                HTML(paste0('
-				<div class="panel-collapse">
-					<svg class="panel-collapse__close" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-						<line x1="0" y1="0" x2="10" y2="10" stroke="#bdcad1" stroke-width="2" />
-						<line x1="10" y1="0" x2="0" y2="10" stroke="#bdcad1" stroke-width="2" />
-					</svg>
-				</div>'
-                )),
-              div(class="panel-title panel-title--rotated",
-                  "Editar visualización"),
-             #Argumentos que editan el gráfico
-              vizControls
-            )
-        ),
-              div(class="panel panel--big",id="preview",
-               div(class="panel-head",
-              div(class="panel-title", "Vista previa"),
-              tags$a(href="", id="edit-publish", class="btn modal-trigger", "Publicar")
-              ),
-              div(class="panel-body box-shadow mb-1",
-                # Panel de visualización
-                  vizPreview
-              ),
-              div(class="preview-types",
-              div(class="panel-title",
-                "Tipos de visualización"),
-              div(class="viz-types box-shadow",
-                #Panel de tipos de gráficos
-                vizIcons
-              )
-              )
-        ),
-        div(
-          extra
-        )
-    ),
+      div(class="app-container",
+      div(class="panel is-collapsable box-shadow top-malibu is-collapsed has-settings", id="data-edit",
+      HTML(paste0('
+      <div class="panel-head">
+      <div class="panel-title text-malibu">Editar datos</div>
+      <svg class="icon-close icon-close--malibu" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+      <line x1="0" y1="0" x2="10" y2="10" />
+      <line x1="10" y1="0" x2="0" y2="10" />
+      </svg>
+      </div>'
+      )),
+      div(class="panel-body",
+      div(class="panel-content",
+          dataControls
+      )
+      )
+      ),
+      div(class="panel is-collapsable box-shadow top-malibu panel--expanded", id="data-edit",
+      HTML(paste0('
+      <div class="panel-head">
+      <div class="panel-title text-malibu">Ver datos</div>
+      <svg class="icon-close icon-close--malibu" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+      <line x1="0" y1="0" x2="10" y2="10" />
+      <line x1="10" y1="0" x2="0" y2="10" />
+      </svg>
+      </div>')),
+      div(class="panel-body",
+      div(class="panel-content",
+          dataPreview
+      )
+      )
+      ),
+      div(class="panel is-collapsable box-shadow top-chardonnay is-collapsed has-settings", id="data-edit",
+      HTML(paste0('
+      <div class="panel-head">
+      <div class="panel-title text-chardonnay">Editar visualización</div>
+      <svg class="icon-close icon-close--chardonnay" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+      <line x1="0" y1="0" x2="10" y2="10" />
+      <line x1="10" y1="0" x2="0" y2="10" />
+      </svg>
+      </div>'
+       )),
+      div(class="panel-body",
+      div(class="panel-content",
+          vizControls
+      )
+      )
+      ),
+      div(class="panel is-not-collapsable top-chardonnay", id="data-edit",
+      div(class="panel-head",
+      div(class="panel-title text-chardonnay", "Vista previa"),
+      tags$a(href="", class="btn", "Publicar")
+      ),
+      div(class="panel-body box-shadow",
+      div(class="panel-content",
+          vizPreview
+      )
+      ),
+      div(class="panel-footer box-shadow",
+      div(class="panel-title", "Tipos de visualización"),
+      div(class="viz-types",
+          vizIcons
+      )
+      )
+      )
+      ),
     debugJS,
     indexJS,
     stepsCSS(styles)
