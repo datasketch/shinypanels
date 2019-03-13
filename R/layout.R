@@ -1,7 +1,7 @@
 
 #' @export
 dsAppPage <- function(dataControls, dataPreview,
-                      vizControls, vizPreview, ...,
+                      vizControls, vizPreview, vizIcons, ...,
                       skin = "magenta", styles = "", debug = FALSE){
   deps <- list(
     htmlDependency("font-awesome", "4.1.0",
@@ -22,38 +22,67 @@ dsAppPage <- function(dataControls, dataPreview,
   jsfile <- system.file("srcjs", "index.js", package = "dsAppLayout")
   indexJS <- tags$script(HTML(paste0(readLines(jsfile),collapse="\n")))
   debugJS <- tags$script(ifelse(debug,"var debug = true;","var debug = false;"))
+
   page <- tagList(
-    div(class="layout",
-        # NAV
-        div(class="layout__nav",
-            div(class="section__nav data__nav",
-                a(class = "section__nav-action",href= "", id="edit-data",
-                  "Edit Data"
-                )
+    div(class="app-container",
+        div(class="panel panel--small", id="data-edit",
+
+            div(class="panel-head",
+				    div(class="panel-title", "Editar datos")
             ),
-            div(class="section__nav viz__nav",
-                a(class = "section__nav-action",href= "", id="edit-graphic",
-                  "Edit visualization"
-                ),
-                a(class = "section__nav-action modal-trigger",href= "", id="edit-publish",
-                  "Publish")
+            div(class="panel-body box-shadow",
+         HTML(paste0( '
+            <div class="panel-collapse">
+            <svg class="panel-collapse__close" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+            <line x1="0" y1="0" x2="10" y2="10" stroke="#bdcad1" stroke-width="2" />
+            <line x1="10" y1="0" x2="0" y2="10" stroke="#bdcad1" stroke-width="2" />
+            </svg>
+            </div>
+            '
+        )),
+        div( class="panel-title panel-title--rotated",
+             "Editar datos"),
+        #control de datos
+        dataControls,
+        #todo lo que va en el panel de DATOS
+        dataPreview
+        )
+        ),
+        div(class="panel panel--small", id="viz-edit",
+            div(class="panel-head",
+                div(class="panel-title", "Editar visualización")),
+            div(class="panel-body box-shadow",
+                HTML(paste0('
+				<div class="panel-collapse">
+					<svg class="panel-collapse__close" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+						<line x1="0" y1="0" x2="10" y2="10" stroke="#bdcad1" stroke-width="2" />
+						<line x1="10" y1="0" x2="0" y2="10" stroke="#bdcad1" stroke-width="2" />
+					</svg>
+				</div>'
+                )),
+              div(class="panel-title panel-title--rotated",
+                  "Editar visualización"),
+             #Argumentos que editan el gráfico
+              vizControls
             )
         ),
-        # BODY
-        div(class="layout__body",
-            div(class="section__content data",
-                dataControls,
-                div(class="data__preview",
-                    dataPreview
-                )
-            ),
-            div(class="drag js-drag"),
-            div(class="section__content viz",
-                vizControls,
-                div(class="viz__result",
-                    vizPreview
-                )
-            )
+              div(class="panel panel--big",id="preview",
+               div(class="panel-head",
+              div(class="panel-title", "Vista previa"),
+              tags$a(href="", id="edit-publish", class="btn modal-trigger", "Publicar")
+              ),
+              div(class="panel-body box-shadow mb-1",
+                # Panel de visualización
+                  vizPreview
+              ),
+              div(class="preview-types",
+              div(class="panel-title",
+                "Tipos de visualización"),
+              div(class="viz-types box-shadow",
+                #Panel de tipos de gráficos
+                vizIcons
+              )
+              )
         ),
         div(
           extra
@@ -101,14 +130,14 @@ vizControls <- function(...,
                      shiny::tags$fieldset(
                        shiny::tags$legend(label),
                        tags$ul(class = "ds__tabs",
-                          tags$li(class = "ds__tab active", `data-tab`="options__general","General"),
-                          tags$li(class = "ds__tab", `data-tab`="options__advanced","Avanzado")
-                          ),
+                               tags$li(class = "ds__tab active", `data-tab`="options__general","General"),
+                               tags$li(class = "ds__tab", `data-tab`="options__advanced","Avanzado")
+                       ),
                        div(id="options__general", class="ds__tab-content-pane active",
                            div(class="flex", style="border-bottom: 1px solid var(--disco); padding: 5px 0; margin: 0 0 10px;",
-                                basic
-                               )
-                           ),
+                               basic
+                           )
+                       ),
                        div(id="options__advanced", class="ds__tab-content-pane",
                            div(class="flex", style="border-bottom: 1px solid var(--disco); padding: 5px 0; margin: 0 0 10px;",
                                advanced
