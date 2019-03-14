@@ -13,6 +13,7 @@ body {
 	height: 100%;
 	margin: 0;
 	width: 100%;
+	color: #8097A4;
 }
 
 .app-container {
@@ -39,7 +40,8 @@ body {
 }
 
 .panel.panel--expanded {
-	width: 45.5%;
+	/*width: 45.5%;*/
+	width: 30%;
 }
 
 .panel.is-not-collapsable {
@@ -55,7 +57,7 @@ body {
 	padding: 0 15px;
 }
 
-.panel-title {
+.panel-title{
 	color: #bdcad1;
 	font-size: 13px;
 	font-weight: 700;
@@ -167,3 +169,85 @@ body {
 	stroke: #feca84;
 }
 /* ================= */
+
+/* Estilos de salidas de shiny */
+/* Radio Botones */
+
+
+.shiny-options-group{
+  display: flex;
+  /*justify-content: space-between;*/
+  margin-top: 7px !important;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  background-color: #8097A4;
+  border-radius: 50%;
+  border: 5px solid #8097A4; /*#B70F7F;*/
+  cursor: pointer;
+  margin: 0px;
+  outline: none;
+  padding: 5px;
+  position: relative;
+  transition: all 0.25s;
+}
+
+input[type="radio"]:active,
+input[type="radio"]:checked:active,
+input[type="radio"]:checked {
+  background-color: transparent;
+}
+
+
+.radio label, .radio-inline{
+  align-items: center;
+  display: inline-flex;
+}
+
+
+input[type="radio"] + span{
+ padding: 10px;
+ margin-right: 15px;
+}
+
+input[type="radio"]:checked + span{
+ font-weight: 700;
+}
+
+
+input[type="radio"]:hover{
+  background: #eef3f5;
+  border-color: #eef3f5;
+}
+
+h4 {
+  color: #B70F7F;
+  font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.7px;
+	text-transform: uppercase;
+	opacity: 1;
+}
+
+.control-label {
+  display: inline-block;
+}
+
+
+/* Selectores */
+
+.form-group {
+  display: grid;
+  margin-bottom: 7px;
+}
+
+/*.selectize-control.single .selectize-input{
+  background: #E2EAED;
+}*/
+
+
+label {
+  margin-bottom: 13px;
+}
+
