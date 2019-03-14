@@ -75,3 +75,10 @@ function panelHandler (event) {
 		remainingPanel && remainingPanel.classList.add(EXPANDED_CLASS);
 	}
 }
+
+
+
+
+setInterval(function() {
+  $('#data-edit').loading('toggle');
+}, 2000);
