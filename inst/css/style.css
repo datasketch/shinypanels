@@ -40,8 +40,8 @@ body {
 }
 
 .panel.panel--expanded {
-	/*width: 45.5%;*/
-	width: 30%;
+	width: 45.5%;
+	/*width: 30%;*/
 }
 
 .panel.is-not-collapsable {
@@ -69,6 +69,10 @@ body {
 .panel-body {
 	padding: 0 15px 15px;
 	overflow-y: auto;
+}
+
+.panel .panel-body .panel-content {
+	transform: scale(1);
 }
 
 .panel-footer {
@@ -108,10 +112,12 @@ body {
 
 .panel.is-collapsed .panel-body {
 	padding: 0;
+	overflow: hidden;
 }
 
 .panel.is-collapsed .panel-body .panel-content {
-	display: none;
+	/*display: none;*/
+	transform: scale(0);
 }
 
 /* ==== Helpers ==== */
@@ -239,7 +245,7 @@ h4 {
 
 .form-group {
   display: grid;
-  margin-bottom: 7px;
+  margin-bottom: 13px;
 }
 
 /*.selectize-control.single .selectize-input{
@@ -248,6 +254,14 @@ h4 {
 
 
 label {
-  margin-bottom: 13px;
+  margin-bottom: 9px;
+}
+
+
+.form-control{
+  background: #E2EAED;
+  border: 0px;
+  border-radius: 0px;
+  padding: 5px;
 }
 

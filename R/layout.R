@@ -57,8 +57,9 @@ dsAppPage <- function(dataControls, dataPreview,
                 )
             )
         ),
-        div(class="panel is-collapsable box-shadow top-malibu panel--expanded", id="viz-edit",
-            #div(class="panel is-collapsable box-shadow top-chardonnay is-collapsed has-settings", id="data-edit",
+        #div(class="panel is-collapsable box-shadow top-malibu panel--expanded", id="viz-edit",
+        #div(class="panel is-collapsable box-shadow top-chardonnay has-settings", id="viz-edit",
+        div(class="panel is-collapsable box-shadow top-chardonnay is-collapsed has-settings", id="viz-edit",
             HTML(paste0('
       <div class="panel-head">
       <div class="panel-title text-chardonnay">Editar visualización</div>

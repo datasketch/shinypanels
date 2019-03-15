@@ -6,7 +6,7 @@ ui <- dsAppPage(dataControls = "ja",
                 dataPreview = "hola",
                 vizControls = uiOutput("bla"),
                 vizPreview = highchartOutput("viz"),
-                vizIcons = verbatimTextOutput("test"))
+                vizIcons = "iconos")#verbatimTextOutput("test"))
 
 server <- function(input, output, session) {
 
@@ -15,6 +15,7 @@ server <- function(input, output, session) {
   })
 
   output$bla <- renderUI({
+    #textInput("hola", "sda", "valr")
     selectizeInput("asd", "David es un gil", c("Si", "obvio", "Sin duda"))
   })
 
