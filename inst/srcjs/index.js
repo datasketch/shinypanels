@@ -5,6 +5,7 @@ var panels = Array.prototype.map.call(document.querySelectorAll('.is-collapsable
 	panel.addEventListener('click', panelHandler);
 	return panel;
 });
+var preview = document.querySelector('.is-not-collapsable');
 
 function countPanelsCollapsed () {
 	var collapsed = panels.filter(function (panel) {
@@ -74,4 +75,48 @@ function panelHandler (event) {
 		// Add expanded class to the element if there is still one panel opened
 		remainingPanel && remainingPanel.classList.add(EXPANDED_CLASS);
 	}
+	var panelsToCollapse = countPanelsCollapsed();
+	switch (panelsToCollapse) {
+		case 1:
+			preview.classList.add('shrinked');
+			preview.classList.remove('expanded');
+			break;
+		case 2:
+			preview.classList.remove('shrinked');
+			preview.classList.remove('expanded');
+			break;
+		case 3:
+			preview.classList.add('expanded');
+			preview.classList.remove('shrinked');
+			break;
+		default:
+			preview.classList.remove('expanded');
+			preview.classList.remove('shrinked');
+			break;
+	}
 }
+
+
+var clickAvanzados = document.querySelector(".titulo-avanzados");
+var contentAvanzados  = document.querySelector(".contenido-avanzados");
+
+
+clickAvanzados.addEventListener("click", function() {
+	clickAvanzados.classList.toggle( 'title-active' );
+	clickAvanzados.childNodes[1].classList.toggle( 'show-active' );
+	contentAvanzados.classList.toggle('content-avanzados');
+  });
+
+
+
+function resizeContent() {
+    var wh = $(window).height();
+    var content = $("#plotHc");
+    var h = wh - content.offset().top;
+    content.height(h);
+}
+
+$(document).ready(function() {
+    resizeContent();
+    $(window).bind('resize', resizeContent);
+})

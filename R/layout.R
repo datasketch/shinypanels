@@ -87,9 +87,7 @@ dsAppPage <- function(dataControls, dataPreview,
             ),
             div(class="panel-footer box-shadow",
                 div(class="panel-title", "Tipos de visualización"),
-                div(class="viz-types",
                     vizIcons
-                )
             )
         )
     ),
@@ -124,30 +122,29 @@ dsAppPage <- function(dataControls, dataPreview,
 #'   )
 #' }
 
-#' #' @export
-#' vizControls <- function(...,
-#'                         basic = NULL,
-#'                         advanced = NULL,
-#'                         label = NULL, on = NULL){
-#'   x <- list(...)
-#'   tagList(
-#'     tags$ul(class = "ds__tabs",
-#'             tags$li(class = "ds__tab active", `data-tab`="options__general","General"),
-#'             tags$li(class = "ds__tab", `data-tab`="options__advanced","Avanzado")
-#'     ),
-#'     div(id="options__general", class="ds__tab-content-pane active",
-#'         div(class="flex", style="border-bottom: 1px solid var(--disco); padding: 5px 0; margin: 0 0 10px;",
-#'             basic
-#'         )
-#'     ),
-#'     div(id="options__advanced", class="ds__tab-content-pane",
-#'         div(class="flex", style="border-bottom: 1px solid var(--disco); padding: 5px 0; margin: 0 0 10px;",
-#'             advanced
-#'         )
-#'     ),
-#'     x
-#'   )
-#' }
+#' @export
+vizControls <- function(...,
+                        basic = NULL,
+                        advanced = NULL,
+                        label = NULL, on = NULL){
+
+  tagList(
+    div(class = "basicos",
+        basic),
+    div(class = "avanzados",
+        HTML(paste0('
+      <div class="titulo-avanzados">
+      Opciones avanzadas
+    <svg class = "icon-avanzados" height="15" width="20">
+      <polyline points="3 5 8 12 12 5" />
+      </svg>
+      </div>')),
+      div(class="contenido-avanzados",
+          advanced
+      )
+    )
+  )
+}
 
 #' #' @export
 #' vizPreview <- function(..., on = NULL){

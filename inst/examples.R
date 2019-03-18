@@ -6,7 +6,7 @@ ui <- dsAppPage(dataControls = "ja",
                 dataPreview = "hola",
                 vizControls = uiOutput("bla"),
                 vizPreview = highchartOutput("viz"),
-                vizIcons = "iconos")#verbatimTextOutput("test"))
+                vizIcons = uiOutput("test"))
 
 server <- function(input, output, session) {
 
@@ -16,11 +16,14 @@ server <- function(input, output, session) {
 
   output$bla <- renderUI({
     #textInput("hola", "sda", "valr")
-    selectizeInput("asd", "David es un gil", c("Si", "obvio", "Sin duda"))
+    sliderInput("hasd", "test", 0, 100, 30)
+    #selectizeInput("asd", "David es un gil", c("Si", "obvio", "Sin duda"))
   })
 
-  output$test <- renderPrint({
-    "test icon viz"
+  output$test <- renderUI({
+     dsAppWidgets::buttonImage(id = c('perro', 'gato', 'jirafa', 'elefante', 'coco'),
+                               labels = c('perro', 'gato', 'jirafa', 'elefante', 'coco'),
+                               values = c('perro', 'gato', 'jirafa', 'elefante', 'coco'))
   })
 
 }

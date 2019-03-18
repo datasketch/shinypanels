@@ -6,6 +6,7 @@
 	box-sizing: inherit;
 }
 
+
 html,
 body {
 	box-sizing: border-box;
@@ -13,7 +14,6 @@ body {
 	height: 100%;
 	margin: 0;
 	width: 100%;
-	color: #8097A4;
 }
 
 .app-container {
@@ -41,13 +41,20 @@ body {
 
 .panel.panel--expanded {
 	width: 45.5%;
-	/*width: 30%;*/
 }
 
 .panel.is-not-collapsable {
-	flex-grow: 1;
+	width: 46.5%;
 	grid-template-rows: 20px 1fr auto;
 	padding-bottom: 0;
+}
+
+.panel.is-not-collapsable.shrinked {
+	width: 31.5%;
+}
+
+.panel.is-not-collapsable.expanded {
+	width: 89.5%;
 }
 
 .panel-head {
@@ -57,7 +64,7 @@ body {
 	padding: 0 15px;
 }
 
-.panel-title{
+.panel-title {
 	color: #bdcad1;
 	font-size: 13px;
 	font-weight: 700;
@@ -79,14 +86,8 @@ body {
 	padding: 0 15px;
 }
 
-.viz-types {
-	background-color: #ffffff;
-	display: grid;
-	grid-gap: 20px;
-	grid-template-rows: repeat(auto-fill, 36px);
-	padding: 15px 0;
-}
 
+/* ==== Panel is collapsed ==== */
 /* ==== Panel is collapsed ==== */
 .panel.is-collapsed {
 	grid-template-rows: auto 1fr;
@@ -116,9 +117,9 @@ body {
 }
 
 .panel.is-collapsed .panel-body .panel-content {
-	/*display: none;*/
 	transform: scale(0);
 }
+
 
 /* ==== Helpers ==== */
 .box-shadow {
@@ -174,15 +175,91 @@ body {
 .icon-close--chardonnay line {
 	stroke: #feca84;
 }
+
+
+/* Estilos  */
+
+.panel-body::-webkit-scrollbar
+{
+  width: 7px;
+}
+
+.panel-body::-webkit-scrollbar-track
+{
+  background: #e2eaed;
+}
+
+.panel-body::-webkit-scrollbar-thumb
+{
+  background: #b70f7f;
+}
+
+.panel-body::-webkit-scrollbar:focus {
+    overflow: scroll;
+    display:block;
+    background: #b70f7f;
+}
+
+
 /* ================= */
+
+
+.titulo-avanzados {
+	color: #b70f7f;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.7px;
+	text-transform: uppercase;
+	align-items: center;
+	display: flex;
+	cursor: pointer;
+}
+
+.icon-avanzados {
+	fill:white;
+	stroke:#b70f7f;
+	stroke-width:2;
+	transform: rotate(180deg);
+	padding: 0px 0px;
+  margin-top: 3px;
+}
+
+
+.icon-avanzados.show-active{
+	transform: rotate(0deg);
+	margin-top: 0px;
+	padding: 0px 5px;
+	stroke:#bdcad1;
+}
+
+.title-active {
+ color: #bdcad1;
+}
+
+
+.content-avanzados {
+	display: none;
+}
+
+
+
+
 
 /* Estilos de salidas de shiny */
 /* Radio Botones */
 
 
+.shiny-input-container:not(.shiny-input-container-inline) {
+  width: 100% !important;
+}
+
+.shiny-input-container {
+  width: 100% !important;
+}
+
 .shiny-options-group{
   display: flex;
-  /*justify-content: space-between;*/
+  flex-wrap: wrap;
   margin-top: 7px !important;
 }
 
@@ -190,11 +267,11 @@ input[type="radio"] {
   -webkit-appearance: none;
   background-color: #8097A4;
   border-radius: 50%;
-  border: 5px solid #8097A4; /*#B70F7F;*/
+  border: 3px solid #8097A4; /*#B70F7F;*/
   cursor: pointer;
   margin: 0px;
   outline: none;
-  padding: 5px;
+  padding: 3px;
   position: relative;
   transition: all 0.25s;
 }
@@ -202,7 +279,7 @@ input[type="radio"] {
 input[type="radio"]:active,
 input[type="radio"]:checked:active,
 input[type="radio"]:checked {
-  background-color: transparent;
+  background-color: #B70F7F;
 }
 
 
@@ -244,8 +321,9 @@ h4 {
 /* Selectores */
 
 .form-group {
-  display: grid;
+  display: flex;
   margin-bottom: 13px;
+  flex-direction: column;
 }
 
 /*.selectize-control.single .selectize-input{
@@ -265,3 +343,44 @@ label {
   padding: 5px;
 }
 
+.irs-bar-edge {
+  border: 0px !important;
+  border-right: 0 !important;
+  background: #b70f7f !important;
+}
+
+
+.irs-bar {
+  border-top: 1px solid #b70f7f !important;
+  border-bottom: 1px solid #b70f7f !important;
+  background: #b70f7f !important;
+}
+
+
+.irs-slider {
+  top: 18px !important;
+  width: 19px !important;
+  height: 19px !important;
+  border: 2px solid #FFFFFF !important;
+  background: #b70f7f !important;
+  border-radius: 50% !important;
+}
+
+.irs-line {
+    height: 8px !important;
+    top: 25px !important;
+    background: #E2EAED !important;
+    background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+    border: 0px !important;
+}
+
+
+.irs-from, .irs-to, .irs-single {
+    color: #8097A4 !important;
+    background: transparent !important;
+}
+
+
+.irs-min, .irs-max {
+  display: none !important;
+}
