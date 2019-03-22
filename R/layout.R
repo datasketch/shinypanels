@@ -76,9 +76,13 @@ dsAppPage <- function(dataControls, dataPreview,
             )
         ),
         div(class="panel is-not-collapsable top-chardonnay", id="viz-prev",
-            div(class="panel-head",
-                div(class="panel-title text-chardonnay", "Vista previa"),
-                tags$a(href="", class="btn", "Publicar")
+            HTML(
+              '
+              <div class="panel-head">
+				        <div class="panel-title text-chardonnay">Vista previa</div>
+				          <a id="publish-trigger" href="" class="btn">Publicar</a>
+			        </div>
+              '
             ),
             div(class="panel-body box-shadow",
                 div(class="panel-content",
@@ -87,7 +91,7 @@ dsAppPage <- function(dataControls, dataPreview,
             ),
             div(class="panel-footer box-shadow",
                 div(class="panel-title", "Tipos de visualización"),
-                    vizIcons
+                vizIcons
             )
         )
     ),
@@ -101,26 +105,26 @@ dsAppPage <- function(dataControls, dataPreview,
 }
 
 
-#' #' @export
-#' dataControls <- function(..., label = NULL, on = NULL){
-#'   x <- list(...)
-#'   tagList(
-#'     shiny::tags$form(class="settings data__settings",
-#'                      shiny::tags$fieldset(
-#'                        shiny::tags$legend(label),
-#'                        x
-#'                      )
-#'     )
-#'   )
-#' }
-#'
-#' #' @export
-#' dataPreview <- function(..., on = NULL){
-#'   x <- list(...)
-#'   tagList(
-#'     x
-#'   )
-#' }
+#' @export
+dataControls <- function(..., label = NULL, on = NULL){
+  x <- list(...)
+  tagList(
+    shiny::tags$form(class="settings data__settings",
+                     shiny::tags$fieldset(
+                       shiny::tags$legend(label),
+                       x
+                     )
+    )
+  )
+}
+
+#' @export
+dataPreview <- function(..., on = NULL){
+  x <- list(...)
+  tagList(
+    x
+  )
+}
 
 #' @export
 vizControls <- function(...,
@@ -139,21 +143,22 @@ vizControls <- function(...,
       <polyline points="3 5 8 12 12 5" />
       </svg>
       </div>')),
-      div(class="contenido-avanzados",
-          advanced
-      )
+        div(class="contenido-avanzados",
+            advanced
+        )
     )
   )
 }
 
-#' #' @export
-#' vizPreview <- function(..., on = NULL){
-#'   x <- list(...)
-#'   tagList(
-#'     x
-#'   )
-#' }
-#'
+#' @export
+vizPreview <- function(..., on = NULL){
+  x <- list(...)
+  tagList(
+    x
+  )
+}
+
+#' @export
 stepsCSS <- function(styles = ""){
   tags$style(
     styles

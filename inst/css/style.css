@@ -16,6 +16,13 @@ body {
 	width: 100%;
 }
 
+.shiny-output-error {
+  visibility: hidden;
+  }
+.shiny-output-error:before {
+  visibility: hidden; }
+
+
 .app-container {
 	background-color: #fbfdfe;
 	display: flex;
@@ -120,6 +127,97 @@ body {
 	transform: scale(0);
 }
 
+/* ==== Modal ==== */
+
+.modal-wrapper {
+	background: rgba(0, 0, 0, 0.8);
+	bottom: 0;
+	display: flex;
+	left: 0;
+	padding: 0 15px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: scale(0);
+	transition: all 0.3s ease;
+}
+
+.modal-wrapper.opened {
+	z-index: 10;
+	transform: scale(1);
+}
+
+.modal {
+	background: #ffffff;
+	margin: auto;
+	max-width: 100%;
+	padding: 15px;
+	width: 600px;
+}
+
+.modal-dismiss {
+	text-align: right;
+}
+
+.modal-title {
+	text-transform: uppercase;
+	text-align: center;
+	margin: 5px 0 15px;
+}
+
+.modal-content {
+	display: grid;
+	grid-template-columns: 1fr 250px;
+}
+
+.modal-action-label {
+	background: white;
+	cursor: pointer;
+	padding: 15px 30px;
+	border-radius: 10px;
+	display: block;
+	font-weight: 700;
+	font-size: 13px;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+}
+
+.modal-action-label.active {
+	background: #B70F7F;
+	color: #ffffff;
+}
+
+.modal-action-form {
+	display: none;
+}
+
+.modal-action-form.active {
+	display: block;
+}
+
+.form-group {
+	margin-bottom: 10px;
+}
+
+.form-group label {
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 10px;
+	outline: none;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.form-group textarea {
+	resize: none;
+}
 
 /* ==== Helpers ==== */
 .box-shadow {

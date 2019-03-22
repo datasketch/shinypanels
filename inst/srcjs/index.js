@@ -6,6 +6,14 @@ var panels = Array.prototype.map.call(document.querySelectorAll('.is-collapsable
 	return panel;
 });
 var preview = document.querySelector('.is-not-collapsable');
+var publish = document.getElementById('publish-trigger');
+var modal = document.querySelector('.modal-wrapper');
+var modalDismiss = document.querySelector('.modal-dismiss');
+var modalActions = Array.prototype.map.call(document.querySelectorAll('.modal-action-label'), function (action) {
+	action.addEventListener('click', actionHandler);
+	return action
+});
+
 
 function countPanelsCollapsed () {
 	var collapsed = panels.filter(function (panel) {
@@ -100,23 +108,18 @@ function panelHandler (event) {
 var clickAvanzados = document.querySelector(".titulo-avanzados");
 var contentAvanzados  = document.querySelector(".contenido-avanzados");
 
-
+/*
 clickAvanzados.addEventListener("click", function() {
 	clickAvanzados.classList.toggle( 'title-active' );
 	clickAvanzados.childNodes[1].classList.toggle( 'show-active' );
 	contentAvanzados.classList.toggle('content-avanzados');
   });
+*/
 
 
+publish.addEventListener('click', function (event) {
+	event.preventDefault()
+	console.log("hola");
+	modal.classList.add('opened')
+});
 
-function resizeContent() {
-    var wh = $(window).height();
-    var content = $("#plotHc");
-    var h = wh - content.offset().top;
-    content.height(h);
-}
-
-$(document).ready(function() {
-    resizeContent();
-    $(window).bind('resize', resizeContent);
-})
