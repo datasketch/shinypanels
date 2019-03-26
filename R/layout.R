@@ -1,8 +1,8 @@
 
 #' @export
 dsAppPage <- function(dataControls, dataPreview,
-                      vizControls, vizPreview, vizIcons, ...,
-                      skin = "magenta", styles = "", debug = FALSE){
+                      vizControls, vizPreview, vizIcons, plotModal, downloadModal,
+                      skin = "magenta", styles = "", debug = FALSE, ...){
   deps <- list(
     htmlDependency("font-awesome", "4.1.0",
                    src = c(href = "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/"),
@@ -26,6 +26,54 @@ dsAppPage <- function(dataControls, dataPreview,
   page <- tagList(
 
     div(class="app-container",
+       HTML('
+        <div class="modal-wrapper">
+          <div class="modal">
+          <div class="modal-header">
+          <div class="modal-dismiss">
+          <svg class="icon-close icon-close--gray" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+          <line x1="0" y1="0" x2="10" y2="10" />
+          <line x1="10" y1="0" x2="0" y2="10" />
+          </svg>
+          </div>
+          <h3 class="modal-title text-magenta">Exportar gráfica</h3>
+          </div>
+          <div class="modal-content"> '
+           ),
+          div(class="modal-preview",
+          plotModal
+          ),
+       HTML('
+          <div class="modal-actions">
+          <div class="modal-action">
+          <a class="modal-action-label box-shadow text-magenta">Guardar</a>
+          <div class="modal-action-form">
+          <div class="form-group">
+          <label class="text-magenta">Título</label>
+          <input type="text" class="box-shadow">
+          </div>
+          <div class="form-group">
+          <label class="text-magenta">Descripción</label>
+          <textarea rows="4" class="box-shadow"></textarea>
+          </div>
+          <div class="form-group">
+          <label class="text-magenta">Etiquetas</label>
+          <input type="text" class="box-shadow">
+          </div>
+          </div>
+          </div>
+          <div class="modal-action">
+          <a class="modal-action-label box-shadow text-magenta">Descargar</a>
+'),
+   div(class="modal-action-form",
+        downloadModal
+   ),
+   HTML(' </div>
+          </div>
+          </div>
+          </div>
+          </div>
+        '),
         div(class="panel is-collapsable box-shadow top-malibu is-collapsed has-settings", id="data-edit",
             HTML(paste0('
       <div class="panel-head">

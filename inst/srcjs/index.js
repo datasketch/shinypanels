@@ -8,6 +8,7 @@ var panels = Array.prototype.map.call(document.querySelectorAll('.is-collapsable
 var preview = document.querySelector('.is-not-collapsable');
 var publish = document.getElementById('publish-trigger');
 var modal = document.querySelector('.modal-wrapper');
+console.log(modal);
 var modalDismiss = document.querySelector('.modal-dismiss');
 var modalActions = Array.prototype.map.call(document.querySelectorAll('.modal-action-label'), function (action) {
 	action.addEventListener('click', actionHandler);
@@ -105,21 +106,53 @@ function panelHandler (event) {
 }
 
 
+publish.addEventListener('click', function (event) {
+	event.preventDefault()
+	modal.classList.add('opened')
+});
+
+document.addEventListener('keyup', function (event) {
+	var keyCode = event.keyCode
+	if (!(keyCode === 27)) {
+		return
+	}
+	if (modal.classList.contains('opened')) {
+		closeModal()
+	}
+})
+
+modalDismiss.addEventListener('click', function (event) {
+	event.preventDefault()
+	closeModal()
+})
+
+modal.addEventListener('click', function (event) {
+	if (event.target !== this) {
+		return
+	}
+	closeModal()
+})
+
+function closeModal () {
+	modal.classList.remove('opened')
+}
+
+function actionHandler (event) {
+	var element = this;
+	var content = this.parentNode.querySelector('.modal-action-form')
+	this.classList.toggle('active')
+	content.classList.toggle('active')
+}
+
+
+
 var clickAvanzados = document.querySelector(".titulo-avanzados");
 var contentAvanzados  = document.querySelector(".contenido-avanzados");
 
-/*
+
 clickAvanzados.addEventListener("click", function() {
 	clickAvanzados.classList.toggle( 'title-active' );
 	clickAvanzados.childNodes[1].classList.toggle( 'show-active' );
 	contentAvanzados.classList.toggle('content-avanzados');
-  });
-*/
-
-
-publish.addEventListener('click', function (event) {
-	event.preventDefault()
-	console.log("hola");
-	modal.classList.add('opened')
 });
 

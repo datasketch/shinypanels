@@ -6,7 +6,9 @@ ui <- dsAppPage(dataControls = "ja",
                 dataPreview = "hola",
                 vizControls = uiOutput("bla"),
                 vizPreview = highchartOutput("viz"),
-                vizIcons = uiOutput("test"))
+                vizIcons = "bla bla bla",
+                plotModal = "grafco",
+                downloadModal = "opciones de descarga")
 
 server <- function(input, output, session) {
 
