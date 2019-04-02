@@ -195,6 +195,10 @@ body {
 	display: block;
 }
 
+/*.modal-preview {
+width: 65% !important;
+}*/
+
 .form-group {
 	margin-bottom: 10px;
 }
@@ -208,7 +212,7 @@ body {
 .form-group input,
 .form-group textarea {
 	display: block;
-	width: 100%;
+	/*width: 100%;*/
 	border: none;
 	padding: 10px;
 	outline: none;

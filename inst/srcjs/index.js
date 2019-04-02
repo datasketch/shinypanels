@@ -144,7 +144,9 @@ function actionHandler (event) {
 	content.classList.toggle('active')
 }
 
-
+$(document).on('click', '.buttonDown', function () {
+        Shiny.onInputChange('last_btn',this.id);
+});
 
 var clickAvanzados = document.querySelector(".titulo-avanzados");
 var contentAvanzados  = document.querySelector(".contenido-avanzados");

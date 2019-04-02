@@ -19,7 +19,7 @@ server <- function(input, output, session) {
   output$bla <- renderUI({
     #textInput("hola", "sda", "valr")
     #sliderInput("hasd", "test", 0, 100, 30)
-    selectizeInput("asd", "David es un gil", c("Si", "obvio", "Sin duda"))
+    radioButtons("asd", "David es un gil", c("Si", "obvio", "Sin duda"))
   })
 
   output$test <- renderUI({
