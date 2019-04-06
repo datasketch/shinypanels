@@ -179,7 +179,7 @@ body {
 }
 
 .panel.is-collapsed .panel-body .panel-content,
-.panel.is-collapsable .panel-footer {
+.panel.is-collapsed .panel-footer {
 	transform: scale(0);
 	overflow: hidden;
 }
