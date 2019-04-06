@@ -486,3 +486,9 @@ label {
 .irs-min, .irs-max {
   display: none !important;
 }
+
+
+.checkbox label {
+  display: flex;
+  align-items: center;
+}
