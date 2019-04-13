@@ -340,3 +340,144 @@ body {
 	stroke: #8097A4;
 }
 /* ================= */
+
+
+/* Estilos de salidas de shiny */
+/* Radio Botones */
+
+
+.shiny-input-container:not(.shiny-input-container-inline) {
+  width: 100% !important;
+}
+
+.shiny-input-container {
+  width: 100% !important;
+}
+
+.shiny-options-group{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 7px !important;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  background-color: #8097A4;
+  border-radius: 50%;
+  border: 3px solid #8097A4; /*#B70F7F;*/
+  cursor: pointer;
+  margin: 0px;
+  outline: none;
+  padding: 3px;
+  position: relative;
+  transition: all 0.25s;
+}
+
+input[type="radio"]:active,
+input[type="radio"]:checked:active,
+input[type="radio"]:checked {
+  background-color: #B70F7F;
+}
+
+
+.radio label, .radio-inline{
+  align-items: center;
+  display: inline-flex;
+}
+
+
+input[type="radio"] + span{
+ padding: 10px;
+ margin-right: 15px;
+}
+
+input[type="radio"]:checked + span{
+ font-weight: 700;
+}
+
+
+input[type="radio"]:hover{
+  background: #eef3f5;
+  border-color: #eef3f5;
+}
+
+h4 {
+  color: #B70F7F;
+  font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.7px;
+	text-transform: uppercase;
+	opacity: 1;
+}
+
+.control-label {
+  display: inline-block;
+}
+
+
+/* Selectores */
+
+.form-group {
+  display: flex;
+  margin-bottom: 13px;
+  flex-direction: column;
+}
+
+/*.selectize-control.single .selectize-input{
+  background: #E2EAED;
+}*/
+
+
+label {
+  margin-bottom: 9px;
+}
+
+
+.form-control{
+  background: #E2EAED;
+  border: 0px;
+  border-radius: 0px;
+  padding: 5px;
+}
+
+.irs-bar-edge {
+  border: 0px !important;
+  border-right: 0 !important;
+  background: #b70f7f !important;
+}
+
+
+.irs-bar {
+  border-top: 1px solid #b70f7f !important;
+  border-bottom: 1px solid #b70f7f !important;
+  background: #b70f7f !important;
+}
+
+
+.irs-slider {
+  top: 18px !important;
+  width: 19px !important;
+  height: 19px !important;
+  border: 2px solid #FFFFFF !important;
+  background: #b70f7f !important;
+  border-radius: 50% !important;
+}
+
+.irs-line {
+    height: 8px !important;
+    top: 25px !important;
+    background: #E2EAED !important;
+    background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+    border: 0px !important;
+}
+
+
+.irs-from, .irs-to, .irs-single {
+    color: #8097A4 !important;
+    background: transparent !important;
+}
+
+
+.irs-min, .irs-max {
+  display: none !important;
+}
