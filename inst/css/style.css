@@ -373,11 +373,6 @@ input[type="radio"] {
   transition: all 0.25s;
 }
 
-input[type="radio"]:active,
-input[type="radio"]:checked:active,
-input[type="radio"]:checked {
-  background-color: #B70F7F;
-}
 
 
 .radio label, .radio-inline{
