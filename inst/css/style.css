@@ -373,6 +373,11 @@ input[type="radio"] {
   transition: all 0.25s;
 }
 
+input[type="radio"]:active,
+input[type="radio"]:checked:active,
+input[type="radio"]:checked {
+  background-color: #B70F7F;
+}
 
 
 .radio label, .radio-inline{
@@ -391,10 +396,6 @@ input[type="radio"]:checked + span{
 }
 
 
-input[type="radio"]:hover{
-  background: #eef3f5;
-  border-color: #eef3f5;
-}
 
 h4 {
   color: #B70F7F;
@@ -475,4 +476,10 @@ label {
 
 .irs-min, .irs-max {
   display: none !important;
+}
+
+
+.checkbox label {
+  display: flex;
+  align-items: center;
 }
