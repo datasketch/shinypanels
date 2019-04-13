@@ -6,6 +6,14 @@
 	box-sizing: inherit;
 }
 
+
+.shiny-output-error {
+  visibility: hidden;
+  }
+.shiny-output-error:before {
+  visibility: hidden; }
+
+
 html,
 body {
 	box-sizing: border-box;
