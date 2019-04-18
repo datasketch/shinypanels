@@ -5,7 +5,8 @@ ui <- dsAppPanels(
         head = h2("Head"),
         body = div(
           h2("Body"),
-          tableInputUI("dataIn",  selected = "sample", lang = "es",
+          selectizeInput("lang", "Reactive lang", choices = c("es", "en"), selected = "en"),
+          tableInputUI("dataIn",  selected = "sample",
                        choices = list("Copiar & Pegar"="pasted",
                                       "Cargar"="fileUpload",
                                       "GoogleSheet" = "googleSheet",
@@ -32,9 +33,37 @@ ui <- dsAppPanels(
 
 server <- function(input, output, session) {
 
-  inputData <- callModule(tableInput, "dataIn",
-                          lang = "es",
-                          sampleFile = list())
+  labels <- reactive({
+    lang <- input$lang
+    labels_en <- list(
+      "copy_paste" = "Copy and paste",
+      "copy_paste_placeholder" = "Paste here",
+      "choose_file" = "Choose file",
+      "choose_file_button" = "Browse",
+      "choose_file_placeholder" = "No file selected",
+      "select_sample_data" = "Select Sample Data"
+    )
+    labels_es <- list(
+      "copy_paste" = "Copiar y pegar",
+      "copy_paste_placeholder" = "Pegar aquí",
+      "choose_file" = "Seleccione archivo",
+      "choose_file_button" = "Cargar",
+      "choose_file_placeholder" = "Ningún archivo seleccionado",
+      "select_sample_data" = "Seleccione tabla de ejemplo")
+    if(lang == "es"){
+      return(labels_es)
+    }else{
+      return(labels_en)
+    }
+  })
+
+
+  observe({
+    inputData <- callModule(tableInput, "dataIn",
+                            labels = labels(),
+                            sampleFile = list())
+  })
+
 
   # output$test <- renderUI({
   #   dsAppWidgets::buttonImage(id = c('perro', 'gato', 'jirafa', 'elefante', 'coco'),

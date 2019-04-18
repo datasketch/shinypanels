@@ -2,7 +2,7 @@
 #' @export
 tableInputUI <- function(id,
                          choices = c("pasted","fileUpload","sampleData", "googleSheet", "dsLibrary"),
-                         selected = "pasted", lang = "en"){
+                         selected = "pasted"){
   # UI
   ns <- NS(id)
   #choiceNames <-  choiceNames %||% choices
@@ -18,18 +18,22 @@ tableInputUI <- function(id,
 
 #' @export
 tableInput <- function(input,output,session,
-                       sampleFiles = NULL, lang = "en"){
+                       sampleFiles = NULL, labels = NULL){
 
-  if(!lang %in% c("en", "es"))
-    lang <- "en"
-  texts <- list(
-    "copy_paste" = list(en = "Copy and paste", es = "Copiar y pegar"),
-    "copy_paste_placeholder" = list(en = "Paste here", es = "Pegar aquí"),
-    "choose_file" = list(en = "Choose file", es = "Seleccione archivo"),
-    "choose_file_button" = list(en = "Browse", es = "Cargar"),
-    "choose_file_placeholder" = list(en = "No file selected", es = "Ningún archivo seleccionado"),
-    "select_sample_data" = list(en = "Select Sample Data", es = "Seleccione tabla de ejemplo")
+  if(is.reactive(labels)){
+    labels <- labels()
+  }
+  labels_default <- list(
+    "copy_paste" = "Copy and paste",
+    "copy_paste_placeholder" = "Paste here",
+    "choose_file" = "Choose file",
+    "choose_file_button" = "Browse",
+    "choose_file_placeholder" = "No file selected",
+    "select_sample_data" = "Select Sample Data",
+    "gsheet" = "Googlesheet URL",
+    "gsheet_sheet" = "Sheet"
   )
+  labels <- modifyList(labels_default, labels)
 
   output$tableInputControls <- renderUI({
 
@@ -47,20 +51,20 @@ tableInput <- function(input,output,session,
         stop("All Sample Files must exist")
     }
     tableInputControls <- list(
-      "pasted" = textAreaInput(ns("inputDataPasted"),label = texts[["copy_paste"]][[lang]],
-                               placeholder = texts[["copy_paste_placeholder"]][[lang]],
+      "pasted" = textAreaInput(ns("inputDataPasted"),label = labels[["copy_paste"]],
+                               placeholder = labels[["copy_paste_placeholder"]],
                                rows = 5),
-      "fileUpload" =  fileInput(ns('inputDataUpload'), texts[["choose_file"]][[lang]],
-                                buttonLabel = texts[["choose_file_button"]][[lang]],
-                                placeholder = texts[["choose_file_placeholder"]][[lang]],
+      "fileUpload" =  fileInput(ns('inputDataUpload'), labels[["choose_file"]],
+                                buttonLabel = labels[["choose_file_button"]],
+                                placeholder = labels[["choose_file_placeholder"]],
                                 accept=c('text/csv',
                                          'text/comma-separated-values,text/plain',
                                          '.csv','.xls', '.xlsx')),
-      "sampleData" = selectInput(ns("inputDataSample"),texts[["select_file"]][[lang]],
+      "sampleData" = selectInput(ns("inputDataSample"),labels[["select_file"]],
                                  choices = sampleFiles),
       "googleSheet" = list(
-        textInput(ns("inputDataGoogleSheet"),"GoogleSheet URL"),
-        numericInput(ns("inputDataGoogleSheetSheet"),"Sheet",1)
+        textInput(ns("inputDataGoogleSheet"), labels[["gsheet"]]),
+        numericInput(ns("inputDataGoogleSheetSheet"),labels[["gsheet_sheet"]],1)
       ),
       "dsLibrary" = dsDataInputUI(ns("dsFileInput"))
     )
