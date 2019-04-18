@@ -2,8 +2,7 @@
 #' @export
 tableInputUI <- function(id,
                          choices = c("pasted","fileUpload","sampleData", "googleSheet", "dsLibrary"),
-                         selected = "pasted"
-){
+                         selected = "pasted", lang = "en"){
   # UI
   ns <- NS(id)
   #choiceNames <-  choiceNames %||% choices
@@ -19,7 +18,18 @@ tableInputUI <- function(id,
 
 #' @export
 tableInput <- function(input,output,session,
-                       sampleFiles = NULL){
+                       sampleFiles = NULL, lang = "en"){
+
+  if(!lang %in% c("en", "es"))
+    lang <- "en"
+  texts <- list(
+    "copy_paste" = list(en = "Copy and paste", es = "Copiar y pegar"),
+    "copy_paste_placeholder" = list(en = "Paste here", es = "Pegar aquí"),
+    "choose_file" = list(en = "Choose file", es = "Seleccione archivo"),
+    "choose_file_button" = list(en = "Browse", es = "Cargar"),
+    "choose_file_placeholder" = list(en = "No file selected", es = "Ningún archivo seleccionado"),
+    "select_sample_data" = list(en = "Select Sample Data", es = "Seleccione tabla de ejemplo")
+  )
 
   output$tableInputControls <- renderUI({
 
@@ -37,14 +47,16 @@ tableInput <- function(input,output,session,
         stop("All Sample Files must exist")
     }
     tableInputControls <- list(
-      "pasted" = textAreaInput(ns("inputDataPasted"),label = "Paste",
-                               placeholder = "placeholder",
+      "pasted" = textAreaInput(ns("inputDataPasted"),label = texts[["copy_paste"]][[lang]],
+                               placeholder = texts[["copy_paste_placeholder"]][[lang]],
                                rows = 5),
-      "fileUpload" =  fileInput(ns('inputDataUpload'), 'Choose CSV File',
+      "fileUpload" =  fileInput(ns('inputDataUpload'), texts[["choose_file"]][[lang]],
+                                buttonLabel = texts[["choose_file_button"]][[lang]],
+                                placeholder = texts[["choose_file_placeholder"]][[lang]],
                                 accept=c('text/csv',
                                          'text/comma-separated-values,text/plain',
-                                         '.csv','.xls')),
-      "sampleData" = selectInput(ns("inputDataSample"),"Seleccione Datos de Muestra",
+                                         '.csv','.xls', '.xlsx')),
+      "sampleData" = selectInput(ns("inputDataSample"),texts[["select_file"]][[lang]],
                                  choices = sampleFiles),
       "googleSheet" = list(
         textInput(ns("inputDataGoogleSheet"),"GoogleSheet URL"),
