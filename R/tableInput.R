@@ -44,7 +44,7 @@ tableInput <- function(input,output,session,
                                 accept=c('text/csv',
                                          'text/comma-separated-values,text/plain',
                                          '.csv','.xls')),
-      "sampleData" = selectInput(ns("inputDataSample"),"Seleccione Datos de Muestra",
+      "sampleData" = selectInput(ns("inputDataSample"),"Select Sample Data",
                                  choices = sampleFiles),
       "googleSheet" = list(
         textInput(ns("inputDataGoogleSheet"),"GoogleSheet URL"),

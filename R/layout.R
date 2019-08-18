@@ -36,7 +36,7 @@ dsAppPage <- function(dataControls, dataPreview,
           <line x1="10" y1="0" x2="0" y2="10" />
           </svg>
           </div>
-          <h3 class="modal-title text-magenta">Exportar gráfica</h3>
+          <h3 class="modal-title text-magenta">Export Graph</h3>
           </div>
           <div class="modal-content"> '
            ),
@@ -46,24 +46,11 @@ dsAppPage <- function(dataControls, dataPreview,
        HTML('
           <div class="modal-actions">
           <div class="modal-action">
-          <a class="modal-action-label box-shadow text-magenta">Guardar</a>
           <div class="modal-action-form">
-          <div class="form-group">
-          <label class="text-magenta">Título</label>
-          <input type="text" class="box-shadow">
-          </div>
-          <div class="form-group">
-          <label class="text-magenta">Descripción</label>
-          <textarea rows="4" class="box-shadow"></textarea>
-          </div>
-          <div class="form-group">
-          <label class="text-magenta">Etiquetas</label>
-          <input type="text" class="box-shadow">
-          </div>
           </div>
           </div>
           <div class="modal-action">
-          <a class="modal-action-label box-shadow text-magenta">Descargar</a>
+
 '),
    div(class="modal-action-form",
         downloadModal
@@ -77,7 +64,7 @@ dsAppPage <- function(dataControls, dataPreview,
         div(class="panel is-collapsable box-shadow top-malibu is-collapsed has-settings", id="data-edit",
             HTML(paste0('
       <div class="panel-head">
-      <div class="panel-title text-malibu">Editar datos</div>
+      <div class="panel-title text-malibu">Edit data</div>
       <svg class="icon-close icon-close--malibu" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
       <line x1="0" y1="0" x2="10" y2="10" />
       <line x1="10" y1="0" x2="0" y2="10" />
@@ -93,7 +80,7 @@ dsAppPage <- function(dataControls, dataPreview,
         div(class="panel is-collapsable box-shadow top-malibu panel--expanded", id="data-prev",
             HTML(paste0('
       <div class="panel-head">
-      <div class="panel-title text-malibu">Ver datos</div>
+      <div class="panel-title text-malibu">SEE DATA</div>
       <svg class="icon-close icon-close--malibu" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
       <line x1="0" y1="0" x2="10" y2="10" />
       <line x1="10" y1="0" x2="0" y2="10" />
@@ -110,7 +97,7 @@ dsAppPage <- function(dataControls, dataPreview,
         div(class="panel is-collapsable box-shadow top-chardonnay is-collapsed has-settings", id="viz-edit",
             HTML(paste0('
       <div class="panel-head">
-      <div class="panel-title text-chardonnay">Editar visualización</div>
+      <div class="panel-title text-chardonnay">EDIT VISUALIZATION</div>
       <svg class="icon-close icon-close--chardonnay" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
       <line x1="0" y1="0" x2="10" y2="10" />
       <line x1="10" y1="0" x2="0" y2="10" />
@@ -127,8 +114,8 @@ dsAppPage <- function(dataControls, dataPreview,
             HTML(
               '
               <div class="panel-head">
-				        <div class="panel-title text-chardonnay">Vista previa</div>
-				          <a id="publish-trigger" href="" class="btn">Publicar</a>
+				        <div class="panel-title text-chardonnay">preview</div>
+				          <a id="publish-trigger" href="" class="btn">Publish</a>
 			        </div>
               '
             ),
