@@ -125,7 +125,7 @@ dsAppPage <- function(dataControls, dataPreview,
                 )
             ),
             div(class="panel-footer box-shadow",
-                div(class="panel-title", "Tipos de visualización"),
+                div(class="panel-title", "Visualization types"),
                 vizIcons
             )
         )
