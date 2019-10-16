@@ -33,7 +33,7 @@ dsDataInput <- function(input, output, session, username = NULL){
     if(is.reactive(user_files)) user_files <- user_files()
     data_id <- user_files %>% slice(data_id)
     #data_id
-    read_csv(paste0("http://data.datasketch.co/drops/",data_id$uid,"/",data_id$uid,".csv"))
+    read_csv(paste0("http://data.datasketch.co/drop/",data_id$uid,"/",data_id$uid,".csv"))
   })
   selectedData
 }
