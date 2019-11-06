@@ -33,7 +33,7 @@ tableInput <- function (input, output, session, sampleFiles = NULL, image = FALS
     tableInputControls <- list(pasted = textAreaInput(ns("inputDataPasted"),
                                                       label = "Paste", placeholder = "placeholder", rows = 5),
                                fileUpload = fileInput(ns("inputDataUpload"), "Choose CSV File", accept = c("text/csv", "text/comma-separated-values,text/plain", ".csv", ".xls")),
-                               sampleData = selectInput(ns("inputDataSample"), "Select sample image", choices = sampleFiles),
+                               sampleData = selectInput(ns("inputDataSample"), "Select sample data", choices = sampleFiles),
                                googleSheet = list(textInput(ns("inputDataGoogleSheet"), "GoogleSheet URL"),
                                                   numericInput(ns("inputDataGoogleSheetSheet"), "Sheet", 1)),
                                url = textInput(ns("inputURL"), "Image URL"),
