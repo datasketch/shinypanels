@@ -52,13 +52,13 @@ $(document).on('click', '.buttonDown', function () {
 
 
 
-const collapsables = Array.prototype.map.call(
-  document.getElementsByClassName("box-collapsable-trigger"),
+const collapsibles = Array.prototype.map.call(
+  document.getElementsByClassName("box-collapsible-trigger"),
   function (el) { return el }
 );
 
-collapsables.forEach(function (collapsable) {
-  collapsable.addEventListener('click', function () {
+collapsibles.forEach(function (collapsible) {
+  collapsible.addEventListener('click', function () {
     this.classList.toggle('active');
     const content = this.nextElementSibling;
     if (content.style.maxHeight){

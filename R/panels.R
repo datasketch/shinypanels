@@ -9,7 +9,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
 
   #if(!is.null(width)) width <- glue("data-width='{width}'")
 
-  div(class=glue("panel is-collapsable box-shadow top-{color} {collapsed} "),
+  div(class=glue("panel is-collapsible box-shadow top-{color} {collapsed} "),
       `data-width` = width,
       id=id,
       div(class="panel-head",
@@ -32,16 +32,16 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
 box <- function(..., title = NULL, collapsed = TRUE, color = ""){
   # contents <- list(...)
   contents <- rlang::dots_list(...)
-  div(class = "box-collapsable",
-      tags$button(class = "box-collapsable-trigger", span(title),
+  div(class = "box-collapsible",
+      tags$button(class = "box-collapsible-trigger", span(title),
                   svgArrow()
                   ),
-      div(class = "box-collapsable-content", div(contents))
+      div(class = "box-collapsible-content", div(contents))
       )
 }
 
 svgArrow <- function(color){
-  HTML(glue('<svg class="box-collapsable-icon box-collapsable-icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+  HTML(glue('<svg class="box-collapsible-icon box-collapsible-icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
   <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z"/></svg>
 '))
 }

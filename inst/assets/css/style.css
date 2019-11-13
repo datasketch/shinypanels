@@ -51,7 +51,7 @@ body {
 	flex: 1 0 auto;
 }
 
-/* .panel.is-collapsable {
+/* .panel.is-collapsible {
 	width: 31.5%;
 	margin-right: 1%;
 } */
@@ -60,17 +60,17 @@ body {
 	width: 45.5%;
 } */
 
-.panel.is-not-collapsable {
+.panel.is-not-collapsible {
 	width: 46.5%;
 	grid-template-rows: 20px 1fr auto;
 	padding-bottom: 0;
 }
 
-.panel.is-not-collapsable.shrinked {
+.panel.is-not-collapsible.shrinked {
 	width: 31.5%;
 }
 
-.panel.is-not-collapsable.expanded {
+.panel.is-not-collapsible.expanded {
 	width: 89.5%;
 }
 
@@ -504,12 +504,12 @@ label {
 
 
 
-.box-collapsable {
+.box-collapsible {
   background-color: #ffffff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-.box-collapsable-trigger {
+.box-collapsible-trigger {
   background-color: transparent;
   text-transform: uppercase;
   font-weight: 700;
@@ -526,21 +526,21 @@ label {
   justify-content: space-between;
 }
 
-.box-collapsable-trigger.active .collapsable-icon {
+.box-collapsible-trigger.active .collapsible-icon {
   transform: rotate(0);
 }
 
-.box-collapsable-icon {
+.box-collapsible-icon {
   width: 1.25rem;
   height: 1.25rem;
   transform: rotate(180deg);
 }
 
-.box-collapsable-trigger:hover {
+.box-collapsible-trigger:hover {
   background-color: #F7FAFC;
 }
 
-.box-collapsable-content {
+.box-collapsible-content {
   padding: 0 1.25rem;
   overflow: hidden;
   background-color: transparent;
