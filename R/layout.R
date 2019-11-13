@@ -12,13 +12,13 @@ dsAppPanels <- function(..., styles = "", title = NULL, debug = FALSE){
     #                script = "index.js"
     # ),
     htmlDependency("style", "0.0.1",
-                   src = (file = system.file("css", package = "dsAppLayout")),
+                   src = (file = system.file("assets","css", package = "dsAppLayout")),
                    stylesheet = "style.css"
     )
   )
   panels <- list(...)
 
-  jsfile <- system.file("srcjs", "index.js", package = "dsAppLayout")
+  jsfile <- system.file("assets","js", "index.js", package = "dsAppLayout")
   indexJS <- tags$script(HTML(paste0(readLines(jsfile),collapse="\n")))
   #debugJS <- tags$script(ifelse(debug,"var debug = true;","var debug = false;"))
 

@@ -2,12 +2,12 @@
 #' @export
 panel <- function(head = NULL, body = NULL, footer = NULL,
                   title = NULL, color = "malibu",
-                  id = NULL, collapsed = TRUE, width = NULL,
+                  id = NULL, collapsed = FALSE, width = NULL,
                   ...){
   collapsed <- ifelse(collapsed, "is-collapsed", "panel--expanded")
   if(is.null(title)) stop("Need panel title")
 
- #if(!is.null(width)) width <- glue("data-width='{width}'")
+  #if(!is.null(width)) width <- glue("data-width='{width}'")
 
   div(class=glue("panel is-collapsable box-shadow top-{color} {collapsed} "),
       `data-width` = width,
@@ -15,7 +15,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
       div(class="panel-head",
           div(class="panel-title text-{color}", title),
           svgX(color)
-          ),
+      ),
       div(class="panel-body",
           div(class="panel-content",
               body
@@ -28,9 +28,26 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
 }
 
 
-svgX <- function(color){
+#' @export
+box <- function(..., title = NULL, collapsed = TRUE, color = ""){
+  # contents <- list(...)
+  contents <- rlang::dots_list(...)
+  div(class = "box-collapsable",
+      tags$button(class = "box-collapsable-trigger", span(title),
+                  svgArrow()
+                  ),
+      div(class = "box-collapsable-content", div(contents))
+      )
+}
 
-HTML(glue('<svg class="icon-close icon-close--{color}" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+svgArrow <- function(color){
+  HTML(glue('<svg class="box-collapsable-icon box-collapsable-icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+  <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z"/></svg>
+'))
+}
+
+svgX <- function(color = ""){
+  HTML(glue('<svg class="icon-close icon-close--{color}" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
                         <line x1="0" y1="0" x2="10" y2="10" />
                         <line x1="10" y1="0" x2="0" y2="10" />
                         </svg>
