@@ -81,7 +81,7 @@ if (modalTriggers) {
       var modal = document.getElementById(this.dataset.modal);
       modal.classList.add('is-visible');
       modal.addEventListener('click', function(event) {
-        if (event.target.matches('._modal-title button') || event.target.matches('._modal') || event.target.matches('._modal-title svg')) {
+        if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg')) {
           modal.classList.remove('is-visible');
         }
       });

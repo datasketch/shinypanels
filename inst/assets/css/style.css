@@ -192,78 +192,6 @@ body {
 	overflow: hidden;
 }
 
-.modal-wrapper {
-  background: rgba(0, 0, 0, 0.5);
-	bottom: 0;
-	display: flex;
-	left: 0;
-	padding: 0 15px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	transform: scale(0);
-	/*transition: all 0.3s ease;*/
-}
-
-.modal-wrapper.opened {
-	z-index: 10;
-	transform: scale(1);
-}
-
-.modal {
-	background: #ffffff;
-	/*box-shadow: 5px 5px 7px 0 #999999;*/
-	margin: auto;
-	max-width: 100%;
-	padding: 15px;
-	width: 600px;
-	text-align: center;
-}
-
-.modal-dismiss {
-	text-align: right;
-}
-
-.modal-title {
-	text-transform: uppercase;
-	text-align: center;
-	margin: 5px 0 15px;
-}
-
-/*.modal-content {
-	display: grid;
-	grid-template-columns: 1fr 250px;
-}*/
-
-.modal-action-label {
-	background: white;
-	cursor: pointer;
-	padding: 15px 30px;
-	border-radius: 10px;
-	display: block;
-	font-weight: 700;
-	font-size: 13px;
-	letter-spacing: 1px;
-	margin-bottom: 10px;
-}
-
-.modal-action-label.active {
-	background: #B70F7F;
-	color: #ffffff;
-}
-
-.modal-action-form {
-	display: none;
-}
-
-.modal-action-form.active {
-	display: block;
-}
-
-/*.modal-preview {
-width: 65% !important;
-}*/
-
 .form-group {
 	margin-bottom: 10px;
 }
@@ -549,7 +477,7 @@ label {
 }
 
 /* MODAL */
-._modal {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -562,7 +490,7 @@ label {
   z-index: -1;
 }
 
-._modal-wrapper {
+.modal-wrapper {
   width: 80%;
   background-color: #ffffff;
   box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
@@ -579,37 +507,37 @@ label {
   height: 300px;
 }
 
-._modal-content {
+.modal-content {
   padding: 1rem;
   opacity: 0;
   transition: opacity .25s ease-in;
   transition-delay: 0s;
 }
 
-._modal.is-visible {
+.modal.is-visible {
   opacity: 1;
   transition-delay: 0s;
   z-index: 1;
 }
 
-._modal.is-visible ._modal-wrapper {
+.modal.is-visible .modal-wrapper {
   top: 50%;
   opacity: 1;
   transition-delay: 0s;
 }
 
-._modal.is-visible ._modal-content {
+.modal.is-visible .modal-content {
   opacity: 1;
   transition-delay: 0.5s;
 }
-._modal-title {
+.modal-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid #eee;
 }
-._modal-title h3 {
+.modal-title h3 {
   margin: 0;
 }
 

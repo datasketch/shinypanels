@@ -43,13 +43,13 @@ box <- function(..., title = NULL, collapsed = TRUE, color = ""){
 #' @export
 modal <- function(..., title = NULL, id = NULL){
   contents <- rlang::dots_list(...)
-  div(class = "_modal", id = id,
-      div(class = "_modal-wrapper",
-          div(class = "_modal-title",
+  div(class = "modal", id = id,
+      div(class = "modal-wrapper",
+          div(class = "modal-title",
                 tags$h3(title),
                 tags$button(svgX())
               ),
-          div(class = "_modal-content", div(contents))
+          div(class = "modal-content", div(contents))
           )
       )
 }
@@ -75,54 +75,3 @@ svgX <- function(color = ""){
                         </svg>
              '))
 }
-
-#' #' @export
-#' modal <- function(){
-#'   (
-#'   HTML('
-#'              <div class="modal-wrapper">
-#'        <div class="modal">
-#'        <div class="modal-header">
-#'        <div class="modal-dismiss">
-#'        <svg class="icon-close icon-close--gray" xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-#'        <line x1="0" y1="0" x2="10" y2="10" />
-#'        <line x1="10" y1="0" x2="0" y2="10" />
-#'        </svg>
-#'        </div>
-#'        <h3 class="modal-title text-magenta">Exportar gráfica</h3>
-#'        </div>
-#'        <div class="modal-content"> '
-#'   ),
-#'   div(class="modal-preview",
-#'       plotModal
-#'   ),
-#'   HTML('
-#'              <div class="modal-actions">
-#'              <div class="modal-action">
-#'              <a class="modal-action-label box-shadow text-magenta">Guardar</a>
-#'              <div class="modal-action-form">
-#'              <div class="form-group">
-#'              <label class="text-magenta">Título</label>
-#'              <input type="text" class="box-shadow">
-#'              </div>
-#'              <div class="form-group">
-#'              <label class="text-magenta">Descripción</label>
-#'              <textarea rows="4" class="box-shadow"></textarea>
-#'              </div>
-#'              <div class="form-group">
-#'              <label class="text-magenta">Etiquetas</label>
-#'              <input type="text" class="box-shadow">
-#'              </div>
-#'              </div>
-#'              </div>
-#'              <div class="modal-action">
-#'              <a class="modal-action-label box-shadow text-magenta">Descargar</a>
-#'              '),
-#'   div(class="modal-action-form",
-#'       downloadModal
-#'   )
-#'   )
-#'
-#' }
-
-
