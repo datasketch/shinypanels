@@ -50,24 +50,46 @@ $(document).on('click', '.buttonDown', function () {
 //	contentAvanzados.classList.toggle('content-avanzados');
 //});
 
-
-
 const collapsibles = Array.prototype.map.call(
   document.getElementsByClassName("box-collapsible-trigger"),
-  function (el) { return el }
+  function (el) { return el; }
 );
 
-collapsibles.forEach(function (collapsible) {
-  collapsible.addEventListener('click', function () {
-    this.classList.toggle('active');
-    const content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
+if (collapsibles) {
+  collapsibles.forEach(function (collapsible) {
+    collapsible.addEventListener('click', function () {
+      this.classList.toggle('active');
+      const content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
   });
-});
+}
+
+
+const modalTriggers = Array.prototype.map.call(
+  document.querySelectorAll('.modal-trigger'),
+  function (e) { return e; }
+);
+
+if (modalTriggers) {
+  modalTriggers.forEach(function (modalTrigger) {
+    function handleModalTrigger(event) {
+      var modal = document.getElementById(this.dataset.modal);
+      modal.classList.add('is-visible');
+      modal.addEventListener('click', function(event) {
+        if (event.target.matches('._modal-title button') || event.target.matches('._modal') || event.target.matches('._modal-title svg')) {
+          modal.classList.remove('is-visible');
+        }
+      });
+    }
+    modalTrigger.addEventListener('click', handleModalTrigger);
+  });
+}
+
 
 
 

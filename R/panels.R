@@ -40,6 +40,28 @@ box <- function(..., title = NULL, collapsed = TRUE, color = ""){
       )
 }
 
+#' @export
+modal <- function(..., title = NULL, id = NULL){
+  contents <- rlang::dots_list(...)
+  div(class = "_modal", id = id,
+      div(class = "_modal-wrapper",
+          div(class = "_modal-title",
+                tags$h3(title),
+                tags$button(svgX())
+              ),
+          div(class = "_modal-content", div(contents))
+          )
+      )
+}
+
+#' @export
+modalBtn <- function(modal_id = NULL, label = NULL){
+  tags$button('data-modal' = modal_id,
+              class="modal-trigger",
+                tags$span(label)
+              )
+}
+
 svgArrow <- function(color){
   HTML(glue('<svg class="box-collapsible-icon box-collapsible-icon-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
   <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z"/></svg>

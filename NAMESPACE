@@ -3,4 +3,6 @@
 export(box)
 export(customCSS)
 export(dsAppPanels)
+export(modal)
+export(modalBtn)
 export(panel)

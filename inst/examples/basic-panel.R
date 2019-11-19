@@ -1,6 +1,7 @@
 library(dsAppLayout)
 
 ui <- dsAppPanels(
+  modal(id = 'test', title = 'Test modal title', p('Modal ipsum')),
   panel(title = "First Panel", color = "chardonnay", collapsed = FALSE, width =  400,
         head = h2("Head"),
         body = div(
@@ -9,7 +10,8 @@ ui <- dsAppPanels(
           textInput("text", "Text input"),
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
           radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
-          img(src="https://placeimg.com/640/180/any")
+          img(src="https://placeimg.com/640/180/any"),
+          modalBtn(modal_id = 'test', label = 'Test modal'),
         ),
         footer = NULL
   ),
