@@ -27,6 +27,17 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
   )
 }
 
+#' @export
+topbar <- function(title = NULL, image = NULL, background_color = NULL){
+  HTML(
+    glue('
+     <div style="background-color: {background_color}" class="topbar">
+      <img class="topbar__img" src="{image}"/>
+      <h3 class="topbar__title">{title}</h3>
+     </div>
+    ')
+  )
+}
 
 #' @export
 box <- function(..., title = NULL, collapsed = TRUE, color = ""){

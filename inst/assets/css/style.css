@@ -541,5 +541,22 @@ label {
   margin: 0;
 }
 
+/* Topbar */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
 
+.topbar__img {
+  width: 80px;
+}
+
+.topbar__title {
+  margin-left: 1rem;
+}
 
