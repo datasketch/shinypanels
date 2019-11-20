@@ -1,6 +1,6 @@
 
 #' @export
-dsAppPanels <- function(..., styles = "", title = NULL, debug = FALSE){
+dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = FALSE){
   deps <- list(
 
     htmlDependency("font-awesome", "4.1.0",
@@ -28,8 +28,15 @@ dsAppPanels <- function(..., styles = "", title = NULL, debug = FALSE){
       tags$meta(`http-equiv` = "X-UA-Compatible", content="ie=edge"),
       tags$title(title)
     ),
-    div(class="app-container",
-        panels
+    div(class = "layout-container",
+        div(class = "layout-header",
+            header
+        ),
+        div(class = "layout-panels",
+            div(class="app-container",
+                panels
+            )
+        )
     ),
     #debugJS,
     indexJS,

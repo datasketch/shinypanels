@@ -22,7 +22,7 @@ app-container {
 
 ui <- dsAppPanels( styles = styles,
   panel(title = "First Panel", color = "olive", collapsed = FALSE, width =  300,
-        head = h2("Head"),
+        #head = h2("Head"),
         body = div(
           h2("Body"),
           selectizeInput("selector", "Select One", choices = c("First", "Second"), selected = "Fist"),
