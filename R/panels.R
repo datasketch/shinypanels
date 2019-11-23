@@ -28,15 +28,18 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
 }
 
 #' @export
-topbar <- function(title = NULL, image = NULL, background_color = NULL){
-  HTML(
-    glue('
-     <div style="background-color: {background_color}" class="topbar">
-      <img class="topbar__img" src="{image}"/>
-      <h3 class="topbar__title">{title}</h3>
-     </div>
-    ')
-  )
+topbar <- function(..., title = NULL, image = NULL, background_color = NULL){
+  if(is.null(title) && is.null(image)){
+    contents <- list(...)
+  } else{
+    contents <- ""
+  }
+  message(contents)
+  div(style=glue("background-color:{background_color}"), class="topbar",
+      img(class="topbar__img", src = image),
+      h3(class = "topbar__title", title),
+      contents
+      )
 }
 
 #' @export

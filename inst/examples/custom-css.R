@@ -21,7 +21,8 @@ app-container {
 
 
 ui <- dsAppPanels( styles = styles,
-  panel(title = "First Panel", color = "olive", collapsed = FALSE, width =  300,
+  header = p("THIS IS A CUSTOM TITLE"),
+  panel(title = "First Panel", color = "olive", collapsed = FALSE, width =  400,
         #head = h2("Head"),
         body = div(
           h2("Body"),
