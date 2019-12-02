@@ -2,7 +2,7 @@
 #' @export
 panel <- function(head = NULL, body = NULL, footer = NULL,
                   title = NULL, color = "malibu",
-                  id = NULL, id_head = NULL, collapsed = FALSE, width = NULL,
+                  id = NULL, id_head = NULL, id_body = NULL, collapsed = FALSE, width = NULL,
                   ...){
   collapsed <- ifelse(collapsed, "is-collapsed", "panel--expanded")
   if(is.null(title)) stop("Need panel title")
@@ -16,7 +16,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
           div(class="panel-title text-{color}", title),
           svgX(color)
       ),
-      div(class="panel-body",
+      div(class="panel-body", id = id_body,
           div(class="panel-content",
               body
           )
