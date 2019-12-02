@@ -2,7 +2,7 @@
 #' @export
 panel <- function(head = NULL, body = NULL, footer = NULL,
                   title = NULL, color = "malibu",
-                  id = NULL, collapsed = FALSE, width = NULL,
+                  id = NULL, id_head = NULL, collapsed = FALSE, width = NULL,
                   ...){
   collapsed <- ifelse(collapsed, "is-collapsed", "panel--expanded")
   if(is.null(title)) stop("Need panel title")
@@ -12,7 +12,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
   div(class=glue("panel is-collapsible box-shadow top-{color} {collapsed} "),
       `data-width` = width,
       id=id,
-      div(class="panel-head",
+      div(class="panel-head", id = id_head,
           div(class="panel-title text-{color}", title),
           svgX(color)
       ),
@@ -69,9 +69,10 @@ modal <- function(..., title = NULL, id = NULL){
 }
 
 #' @export
-modalBtn <- function(modal_id = NULL, label = NULL){
+modalBtn <- function(modal_id = NULL, label = NULL, id_modal = NULL) {
   tags$button('data-modal' = modal_id,
               class="modal-trigger",
+              id = id_modal,
                 tags$span(label)
               )
 }
