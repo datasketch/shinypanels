@@ -22,7 +22,7 @@ panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
               body
           )
       ),
-      div(class="panel-footer box-shadow", style = style_panel,
+      div(class="panel-footer", style = style_panel,
           footer
       )
   )
