@@ -44,15 +44,15 @@ topbar <- function(..., title = NULL, image = NULL, background_color = NULL){
 }
 
 #' @export
-box <- function(..., title = NULL, collapsed = TRUE, color = "", body = NULL) {
+box <- function(..., title = NULL, collapsed = TRUE, color = "") {
 
-  collapsed <- ifelse(collapsed, "box-collapsed", "no-box-collapsed")
+  contents <- rlang::dots_list(...)
 
   div(class="box-collapsible",
     tags$button(class="box-collapsible-trigger",  span(title),
     svgArrow()),
         div(class="box-collapsible-content",
-          body
+            div(contents)
         )
   )
 }
