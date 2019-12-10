@@ -50,24 +50,24 @@ $(document).on('click', '.buttonDown', function () {
 //	contentAvanzados.classList.toggle('content-avanzados');
 //});
 
-const collapsibles = Array.prototype.map.call(
+const collapsible = Array.prototype.map.call(
   document.getElementsByClassName("box-collapsible-trigger"),
-  function (el) { return el; }
+  function (el) { return el }
 );
 
-if (collapsibles) {
-  collapsibles.forEach(function (collapsible) {
-    collapsible.addEventListener('click', function () {
-      this.classList.toggle('active');
-      const content = this.nextElementSibling;
-      if (content.style.maxHeight){
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
+
+collapsible.forEach(function (collapsible) {
+  collapsible.addEventListener('click', function () {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
   });
-}
+});
+
 
 
 const modalTriggers = Array.prototype.map.call(

@@ -1,6 +1,6 @@
 
 #' @export
-panel <- function(head = NULL, body = NULL, footer = NULL,
+panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
                   title = NULL, color = "malibu",
                   id = NULL, id_head = NULL, id_body = NULL, collapsed = FALSE, width = NULL,
                   ...){
@@ -8,6 +8,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
   if(is.null(title)) stop("Need panel title")
 
   #if(!is.null(width)) width <- glue("data-width='{width}'")
+  style_panel <- ifelse(show_footer,"display: block;", "display: none !important;")
 
   div(class=glue("panel is-collapsible box-shadow top-{color} {collapsed} "),
       `data-width` = width,
@@ -21,7 +22,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
               body
           )
       ),
-      div(class="panel-footer box-shadow",
+      div(class="panel-footer box-shadow", style = style_panel,
           footer
       )
   )
@@ -43,15 +44,17 @@ topbar <- function(..., title = NULL, image = NULL, background_color = NULL){
 }
 
 #' @export
-box <- function(..., title = NULL, collapsed = TRUE, color = ""){
-  # contents <- list(...)
-  contents <- rlang::dots_list(...)
-  div(class = "box-collapsible",
-      tags$button(class = "box-collapsible-trigger", span(title),
-                  svgArrow()
-                  ),
-      div(class = "box-collapsible-content", div(contents))
-      )
+box <- function(..., title = NULL, collapsed = TRUE, color = "", body = NULL) {
+
+  collapsed <- ifelse(collapsed, "box-collapsed", "no-box-collapsed")
+
+  div(class="box-collapsible",
+    tags$button(class="box-collapsible-trigger",  span(title),
+    svgArrow()),
+        div(class="box-collapsible-content",
+          body
+        )
+  )
 }
 
 #' @export
