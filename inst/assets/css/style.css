@@ -23,6 +23,27 @@ body {
 	width: 100%;
 }
 
+.orientation-notice {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.orientation-notice-content {
+  width: 90%;
+  margin: auto;
+}
+
+.orientation-notice svg {
+  fill: currentColor;
+}
+
 .layout-container {
   height: 100%;
   display: grid;
@@ -566,5 +587,17 @@ label {
 
 .topbar__title {
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  .orientation-notice {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .orientation-notice {
+    display: none;
+  }
 }
 
