@@ -30,6 +30,7 @@ dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = F
     ),
     div(class = "orientation-notice", 
       div(class="orientation-notice-content",
+        p('Gira tu dispositivo', style = "text-align: center;"),
         svgRotate()
       ),
     ),
