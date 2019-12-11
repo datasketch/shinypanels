@@ -47,11 +47,12 @@ topbar <- function(..., title = NULL, image = NULL, background_color = NULL){
 box <- function(..., title = NULL, collapsed = TRUE, color = "") {
 
   contents <- rlang::dots_list(...)
+  state <- ifelse(collapsed, '', 'active')
 
   div(class="box-collapsible",
-    tags$button(class="box-collapsible-trigger",  span(title),
+    tags$button(class=glue("box-collapsible-trigger {state}"),  span(title),
     svgArrow()),
-        div(class="box-collapsible-content",
+        div(class=glue("box-collapsible-content {state}"),
             div(contents)
         )
   )

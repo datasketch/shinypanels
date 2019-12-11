@@ -22,6 +22,7 @@ ui <- dsAppPanels(
         head = h2("Head 2"),
         body = list(
           box(title = "New box",
+          collapsed = FALSE,
             p("Lorem ipsum 3"),
             selectInput("selector2", "Select", choices = 1980:2019)
           ),
