@@ -11,11 +11,14 @@ Authors@R:
 Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
 Description: This package allows to lay out shiny apps with collapsible horizontal panels.
 Depends:
-    R (>= 3.1.2),
+    R (>= 3.1.2)
+Imports:
     htmltools,
     glue,
     shiny,
     shinyjs
+Suggests:
+    rlang
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
