@@ -38,6 +38,12 @@ dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = F
       tags$meta(`http-equiv` = "X-UA-Compatible", content="ie=edge"),
       tags$title(title)
     ),
+    div(class = "orientation-notice", 
+      div(class="orientation-notice-content",
+        p('Gira tu dispositivo', style = "text-align: center;"),
+        svgRotate()
+      ),
+    ),
     div(class = "layout-container",
         div(class = "layout-header",
             header

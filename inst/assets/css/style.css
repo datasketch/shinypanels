@@ -20,7 +20,29 @@ body {
 	font-family: 'Ralleway', sans-serif;
 	height: 100%;
 	margin: 0;
-	width: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.orientation-notice {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.orientation-notice-content {
+  width: 90%;
+  margin: auto;
+}
+
+.orientation-notice svg {
+  fill: currentColor;
 }
 
 .layout-container {
@@ -566,5 +588,23 @@ label {
 
 .topbar__title {
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  body {
+    overflow: unset;
+  }
+  .orientation-notice {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    overflow: unset;
+  }
+  .orientation-notice {
+    display: none;
+  }
 }
 

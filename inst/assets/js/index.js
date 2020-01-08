@@ -50,17 +50,22 @@ $(document).on('click', '.buttonDown', function () {
 //	contentAvanzados.classList.toggle('content-avanzados');
 //});
 
-const collapsible = Array.prototype.map.call(
+const collapsibles = Array.prototype.map.call(
   document.getElementsByClassName("box-collapsible-trigger"),
   function (el) { return el }
 );
 
 
-collapsible.forEach(function (collapsible) {
+collapsibles.forEach(function (collapsible) {
+  const content = collapsible.nextElementSibling;
+  if (content.classList.contains('active')) {
+    content.style.maxHeight = content.scrollHeight + "px";
+  }
+  
   collapsible.addEventListener('click', function () {
     this.classList.toggle('active');
-    const content = this.nextElementSibling;
-    if (content.style.maxHeight){
+    content.classList.toggle('active');
+    if (content.style.maxHeight) {
       content.style.maxHeight = null;
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
