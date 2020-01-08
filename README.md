@@ -1,8 +1,12 @@
 
 # dsAppLayout
 
-First attemp to have a layout for shiny apps that have step by step "pages". 
+`dsAppLayout` provides a new layout with collapsible horizontal panels for building shiny apps.
 
-## Check html template
+![dsAppLayout](man/figures/dsAppLayout.png)
 
-https://codepen.io/ddazal/pen/vabOyV
+# Instalation
+
+```
+remotes::install_github("datasketch/dsAppLayout")
+```

@@ -1,7 +1,7 @@
 Package: dsAppLayout
 Type: Package
 Title: Shiny layout with collapsible panels
-Version: 1.0.0
+Version: 0.5.0
 Date: 2017-04-07
 Authors@R: 
     person(given = "Juan Pablo",
@@ -18,7 +18,8 @@ Imports:
     shiny,
     shinyjs
 Suggests:
-    rlang
+    rlang,
+    testthat
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

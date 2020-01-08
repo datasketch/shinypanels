@@ -8,6 +8,10 @@ dsAppPanels(..., styles = "", header = NULL, title = NULL,
   debug = FALSE)
 }
 \arguments{
+\item{...}{html list contents for the panel}
+
+\item{styles}{custom css styles}
+
 \item{header}{html list with custom header}
 
 \item{title}{Title html page attribute}

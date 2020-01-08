@@ -3,6 +3,8 @@
 #' @param header html list with custom header
 #' @param title Title html page attribute
 #' @param debug Used for debugging layout html
+#' @param styles custom css styles
+#' @param ... html list contents for the panel
 #'
 #' @return None
 #'
@@ -38,7 +40,7 @@ dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = F
       tags$meta(`http-equiv` = "X-UA-Compatible", content="ie=edge"),
       tags$title(title)
     ),
-    div(class = "orientation-notice", 
+    div(class = "orientation-notice",
       div(class="orientation-notice-content",
         p('Gira tu dispositivo', style = "text-align: center;"),
         svgRotate()
@@ -56,18 +58,12 @@ dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = F
     ),
     #debugJS,
     indexJS,
-    customCSS(styles)
+    tags$style(styles)
   )
   old <- attr(page, "html_dependencies", TRUE)
   htmlDependencies(page) <- c(old, deps)
   page
 }
 
-#' @export
-customCSS <- function(styles = ""){
-  tags$style(
-    styles
-  )
-}
 
 

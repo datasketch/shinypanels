@@ -8,14 +8,14 @@
 #' @param id panel div id
 #' @param collapsed panel starts as collapsed
 #' @param width panel width in pixels
-#' @param id panel div id
+#' @param title panel title
+#' @param ... html list contents for the panel
 #'
 #' @return None
 #'
 #' @examples
 #' dsAppPanels()
 #'
-#' @export
 #' @export
 panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
                   title = NULL, color = "malibu",
@@ -47,6 +47,18 @@ panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
   )
 }
 
+#' Panel component for shiny panels layout
+#'
+#' @param title Top bar panel
+#' @param image Logo image
+#' @param background_color background color for top bar
+#' @param ... html list contents for the panel
+#'
+#' @return None
+#'
+#' @examples
+#' dsAppPanels()
+#'
 #' @export
 topbar <- function(..., title = NULL, image = NULL, background_color = NULL){
   if(is.null(title) && is.null(image)){
@@ -62,6 +74,20 @@ topbar <- function(..., title = NULL, image = NULL, background_color = NULL){
       )
 }
 
+#' Box like component
+#'
+#' @param title title for the box
+#' @param collapsed defines initial state
+#' @param color color name as defined in custom css
+#' @param ... html list contents for the panel
+#'
+#' @return None
+#'
+#' @import htmltools
+#' @import glue
+#' @examples
+#' box()
+#'
 #' @export
 box <- function(..., title = NULL, collapsed = TRUE, color = "") {
 
@@ -77,6 +103,16 @@ box <- function(..., title = NULL, collapsed = TRUE, color = "") {
   )
 }
 
+#' Modal window
+#'
+#' @param title title for the modal
+#' @param id html attribute id for the component
+#' @param ... html list contents for the panel
+#'
+#' @return None
+#'
+#' @examples
+#' modal()
 #' @export
 modal <- function(..., title = NULL, id = NULL){
   contents <- rlang::dots_list(...)
@@ -91,11 +127,21 @@ modal <- function(..., title = NULL, id = NULL){
       )
 }
 
+#' Modal button to trigger a modal
+#'
+#' @param label label for the button
+#' @param modal_id modal id to be triggered by the button
+#' @param id html attribute id for the button
+#'
+#' @return None
+#'
+#' @examples
+#' modal()
 #' @export
-modalBtn <- function(modal_id = NULL, label = NULL, id_modal = NULL) {
+modalButton <- function(modal_id = NULL, label = NULL, id = NULL) {
   tags$button('data-modal' = modal_id,
               class="modal-trigger",
-              id = id_modal,
+              id = id,
                 tags$span(label)
               )
 }

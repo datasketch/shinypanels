@@ -17,6 +17,8 @@ panel(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
 
 \item{footer}{footer contents}
 
+\item{title}{panel title}
+
 \item{color}{color name as defined in custom css}
 
 \item{id}{panel div id}
@@ -25,7 +27,7 @@ panel(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
 
 \item{width}{panel width in pixels}
 
-\item{id}{panel div id}
+\item{...}{html list contents for the panel}
 }
 \value{
 None
