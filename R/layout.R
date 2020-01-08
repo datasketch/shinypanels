@@ -1,4 +1,14 @@
-
+#' Shiny panels layout
+#'
+#' @param header html list with custom header
+#' @param title Title html page attribute
+#' @param debug Used for debugging layout html
+#'
+#' @return None
+#'
+#' @examples
+#' dsAppPanels()
+#'
 #' @export
 dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = FALSE){
   deps <- list(

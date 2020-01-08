@@ -1,14 +1,33 @@
-
+#' Panel component for shiny panels layout
+#'
+#' @param head html for the panel header
+#' @param body html tag list for panel body contents
+#' @param show_footer include footer
+#' @param footer footer contents
+#' @param color color name as defined in custom css
+#' @param id panel div id
+#' @param collapsed panel starts as collapsed
+#' @param width panel width in pixels
+#' @param id panel div id
+#'
+#' @return None
+#'
+#' @examples
+#' dsAppPanels()
+#'
+#' @export
 #' @export
 panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
                   title = NULL, color = "malibu",
-                  id = NULL, id_head = NULL, id_body = NULL, collapsed = FALSE, width = NULL,
+                  id = NULL, collapsed = FALSE, width = NULL,
                   ...){
   collapsed <- ifelse(collapsed, "is-collapsed", "panel--expanded")
   if(is.null(title)) stop("Need panel title")
 
   #if(!is.null(width)) width <- glue("data-width='{width}'")
   style_panel <- ifelse(show_footer,"display: block;", "display: none !important;")
+  id_head <- paste0(id,"_head")
+  id_body <- paste0(id,"_body")
 
   div(class=glue("panel is-collapsible box-shadow top-{color} {collapsed} "),
       `data-width` = width,
