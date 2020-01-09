@@ -5,7 +5,7 @@
 
 ![dsAppLayout](man/figures/dsAppLayout.png)
 
-# Instalation
+# Installation
 
 ```
 remotes::install_github("datasketch/dsAppLayout")
