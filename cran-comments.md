@@ -1,3 +1,7 @@
+## Resubmission
+
+Fixed LICENSE according to CRAN template for MIT License.
+
 ## Test environments
 * local Ubuntu 18. R version 3.6.2 (2019-12-12)
 * Windows with devtools::check_win_*
