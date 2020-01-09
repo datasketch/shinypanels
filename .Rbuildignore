@@ -12,6 +12,7 @@
 ^appveyor\.yml$
 ^codecov\.yml$
 ^cran-comments\.md$
+^NEWS\.md$
 ^CRAN-RELEASE$
 ^revdep$
 
