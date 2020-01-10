@@ -1,5 +1,6 @@
-## Resubmission
+## Resubmission 2
 
+Removed ORGANIZATION from LICENSE.
 Fixed LICENSE according to CRAN template for MIT License.
 
 ## Test environments
