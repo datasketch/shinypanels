@@ -36,6 +36,6 @@ None
 Panel component for shiny panels layout
 }
 \examples{
-dsAppPanels()
+panel(title = "My title")
 
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/panels.R
 \name{topbar}
 \alias{topbar}
-\title{Panel component for shiny panels layout}
+\title{Top bar component for shiny panels layout}
 \usage{
 topbar(..., title = NULL, image = NULL, background_color = NULL)
 }
@@ -19,9 +19,9 @@ topbar(..., title = NULL, image = NULL, background_color = NULL)
 None
 }
 \description{
-Panel component for shiny panels layout
+Top bar component for shiny panels layout
 }
 \examples{
-dsAppPanels()
+topbar()
 
 }

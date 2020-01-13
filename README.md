@@ -1,12 +1,12 @@
 
-# dsAppLayout
+# shinypanels
 
-`dsAppLayout` provides a new layout with collapsible horizontal panels for building shiny apps.
+`shinypanels` provides a new layout with collapsible horizontal panels for building shiny apps.
 
-![dsAppLayout](man/figures/dsAppLayout.png)
+![shinypanels](man/figures/shinypanels.png)
 
 # Installation
 
 ```
-remotes::install_github("datasketch/dsAppLayout")
+remotes::install_github("datasketch/shinypanels")
 ```

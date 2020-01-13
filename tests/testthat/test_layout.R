@@ -5,6 +5,6 @@ test_that("Layout",{
    topbar(p("ds"))
 
 
-  dsAppPanels()
+  panelsPage()
 
 })

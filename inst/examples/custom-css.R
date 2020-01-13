@@ -1,4 +1,4 @@
-library(dsAppLayout)
+library(shinypanels)
 
 styles <- "
 
@@ -20,7 +20,7 @@ app-container {
 "
 
 
-ui <- dsAppPanels( styles = styles,
+ui <- panelsPage( styles = styles,
   header = p("THIS IS A CUSTOM TITLE"),
   panel(title = "First Panel", color = "olive", collapsed = FALSE, width =  400,
         #head = h2("Head"),

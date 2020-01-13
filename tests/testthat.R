@@ -1,4 +1,4 @@
 library(testthat)
-suppressMessages(library(dsAppLayout))
+suppressMessages(library(shinypanels))
 
-test_check("dsAppLayout")
+test_check("shinypanels")

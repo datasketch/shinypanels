@@ -1,6 +1,6 @@
-library(dsAppLayout)
+library(shinypanels)
 
-ui <- dsAppPanels(
+ui <- panelsPage(
   header =  topbar(title = 'Herramienta | CO2',
          image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0b%2FQt_logo_2016.svg%2F1200px-Qt_logo_2016.svg.png&f=1&nofb=1',
          background_color = 'steelblue'),
@@ -14,7 +14,7 @@ ui <- dsAppPanels(
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
           radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
           img(src="https://placeimg.com/640/180/any"),
-          modalBtn(modal_id = 'test', label = 'Test modal'),
+          modalButton(modal_id = 'test', label = 'Test modal'),
         ),
         footer = NULL
   ),

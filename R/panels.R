@@ -14,7 +14,7 @@
 #' @return None
 #'
 #' @examples
-#' dsAppPanels()
+#' panel(title = "My title")
 #'
 #' @export
 panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
@@ -47,7 +47,7 @@ panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
   )
 }
 
-#' Panel component for shiny panels layout
+#' Top bar component for shiny panels layout
 #'
 #' @param title Top bar panel
 #' @param image Logo image
@@ -57,7 +57,7 @@ panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
 #' @return None
 #'
 #' @examples
-#' dsAppPanels()
+#' topbar()
 #'
 #' @export
 topbar <- function(..., title = NULL, image = NULL, background_color = NULL){

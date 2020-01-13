@@ -9,10 +9,10 @@
 #' @return None
 #'
 #' @examples
-#' dsAppPanels()
+#' panelsPage()
 #'
 #' @export
-dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = FALSE){
+panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FALSE){
   deps <- list(
 
     htmlDependency("font-awesome", "4.1.0",
@@ -20,17 +20,17 @@ dsAppPanels <- function(..., styles = "", header = NULL, title = NULL, debug = F
                    stylesheet = "font-awesome.min.css"
     ),
     # htmlDependency("index", "0.0.1",
-    #                src = (file = system.file("srcjs", package = "dsAppLayout")),
+    #                src = (file = system.file("srcjs", package = "shinypanels")),
     #                script = "index.js"
     # ),
     htmlDependency("style", "0.0.1",
-                   src = (file = system.file("assets","css", package = "dsAppLayout")),
+                   src = (file = system.file("assets","css", package = "shinypanels")),
                    stylesheet = "style.css"
     )
   )
   panels <- list(...)
 
-  jsfile <- system.file("assets","js", "index.js", package = "dsAppLayout")
+  jsfile <- system.file("assets","js", "index.js", package = "shinypanels")
   indexJS <- tags$script(HTML(paste0(readLines(jsfile),collapse="\n")))
   #debugJS <- tags$script(ifelse(debug,"var debug = true;","var debug = false;"))
 
