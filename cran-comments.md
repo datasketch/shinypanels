@@ -6,6 +6,12 @@ Provided better Description of package in DESCRIPTION.
 Renamed package for a clearer name
 dsAppLayout -> shinypanels
 
+There were no ERRORs, WARNINGs or NOTES on Ubuntu.
+One note on CRAN Win Builder 
+Maintainer: 'Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>'
+
+New submission
+
 
 ## Resubmission 2
 
