@@ -60,7 +60,7 @@ body {
 .app-container {
 	display: flex;
 	height: 100%;
-	overflow-x: visible;
+	overflow-x: auto;
 	/*padding: 30px;
 	width: 100%;
 	overflow: visible;*/
@@ -590,18 +590,18 @@ label {
   margin-left: 1rem;
 }
 
-@media only screen and (max-width: 767px) and (orientation: landscape) {
+@media screen and (min-width: 0px) and (orientation: landscape) {
   body {
-    overflow: unset;
+    overflow: visible;
   }
   .orientation-notice {
     display: none;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   body {
-    overflow: unset;
+    overflow: visible;
   }
   .orientation-notice {
     display: none;

@@ -1,9 +1,59 @@
 library(shinypanels)
 
+styles <- "
+.topbar {
+    padding: 20px 55px;
+    background-color: #2e4856;
+    font-size: 14px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.top_title {
+  margin-left: 24px;
+  display: flex;
+}
+
+.topbar__img {
+  height: auto;
+  width: 72px;
+}
+
+.top_line {
+  border-left: 1px solid #ffffff;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+
+.topbar-modal, .tex_sub {
+  font-size: 14px;
+  color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  .topbar, .tex_sub {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .topbar, .tex_sub {
+    font-size: 32px;
+  }
+}
+"
+
 ui <- panelsPage(
-  header =  topbar(title = 'Herramienta | CO2',
-         image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0b%2FQt_logo_2016.svg%2F1200px-Qt_logo_2016.svg.png&f=1&nofb=1',
-         background_color = 'steelblue'),
+  styles = styles,
+  # header =  topbar(title = 'Herramienta | CO2',
+  #        image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0b%2FQt_logo_2016.svg%2F1200px-Qt_logo_2016.svg.png&f=1&nofb=1',
+  #        background_color = 'steelblue'),
+  header = div(style="", class="topbar",
+      img(class="topbar__img", src = "https://datasketch.github.io/landing-gcs/images/logo.webp"),
+      HTML("<div class = 'top_title'> HERRAMIENTA <div class = 'top_line'> <div style = 'margin-left: 10px;'> ESTIMACIÓN DE BIODIVERSIDAD Y <span class = 'tex_sub'>CAPTURA DE CO<sub>2</sub></span></div></div></div>"),
+      modalButton(id = 'id-but-mod', modal_id = 'test', label = HTML('<i class="fa fa-info-circle" style="font-size:31px;color:#fff"></i>'))
+  ),
   modal(id = 'test', title = 'Test modal title', p('Modal ipsum')),
   panel(title = "First Panel", color = "chardonnay", collapsed = FALSE, width =  400,
         head = h2("Head"),
