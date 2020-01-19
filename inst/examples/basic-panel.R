@@ -64,7 +64,7 @@ ui <- panelsPage(
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
           radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
           img(src="https://placeimg.com/640/180/any"),
-          modalButton(modal_id = 'test', label = 'Test modal'),
+          modalButton(modal_id = 'test', label = 'Test modal')
         ),
         footer = NULL
   ),
