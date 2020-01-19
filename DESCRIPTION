@@ -2,7 +2,7 @@ Package: shinypanels
 Type: Package
 Title: Shiny Layout with Collapsible Panels
 Version: 0.5.0
-Date: 2020-01-08
+Date: 2020-01-19
 Authors@R: 
     person(given = "Juan Pablo",
            family = "Marin Diaz",
