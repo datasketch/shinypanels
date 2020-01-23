@@ -68,6 +68,19 @@ ui <- panelsPage(
         ),
         footer = NULL
   ),
+  panel(title = "Second Panel", color = "chardonnay", collapsed = FALSE, width =  400,
+        head = h2("Head"),
+        body = div(
+          h2("Body"),
+          selectizeInput("selector", "Select One", choices = c("First", "Second"), selected = "Fist"),
+          textInput("text", "Text input"),
+          radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
+          radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
+          img(src="https://placeimg.com/640/180/any"),
+          modalButton(modal_id = 'test', label = 'Test modal')
+        ),
+        footer = NULL
+  ),
   panel(title = "Visualize", color = "magenta", collapsed = FALSE,
         head = h2("Head 2"),
         body = list(

@@ -17,7 +17,7 @@
 html,
 body {
 	box-sizing: border-box;
-	font-family: 'Ralleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	height: 100%;
 	margin: 0;
   width: 100%;
@@ -47,23 +47,26 @@ body {
 
 .layout-container {
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
 }
 
 .layout-panels {
   background-color: #fbfdfe;
   padding: 30px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow-x: auto;
 }
 
 .app-container {
 	display: flex;
 	height: 100%;
-	overflow-x: auto;
-	/*padding: 30px;
-	width: 100%;
-	overflow: visible;*/
+}
+
+.app-container:after {
+  content: '';
+  flex: 0 0 30px;
 }
 
 .panel {
