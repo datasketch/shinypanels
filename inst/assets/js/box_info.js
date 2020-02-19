@@ -1,13 +1,10 @@
-console.log("hola mundo");
+
 
 const collapsibles = Array.prototype.map.call(
   document.getElementsByClassName("box-collapsible-trigger"),
-  function (el) {
-     console.log("blabla");
-    return el }
+  function (el) { return el }
 );
 
-console.log(collapsibles);
 
 collapsibles.forEach(function (collapsible) {
   console.log("hola");
