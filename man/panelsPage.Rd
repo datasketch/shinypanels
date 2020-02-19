@@ -4,8 +4,7 @@
 \alias{panelsPage}
 \title{Shiny panels layout}
 \usage{
-panelsPage(..., styles = "", header = NULL, title = NULL,
-  debug = FALSE)
+panelsPage(..., styles = "", header = NULL, title = NULL, debug = FALSE)
 }
 \arguments{
 \item{...}{html list contents for the panel}

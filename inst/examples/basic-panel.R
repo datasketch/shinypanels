@@ -52,7 +52,7 @@ ui <- panelsPage(
   header = div(style="", class="topbar",
       img(class="topbar__img", src = "https://datasketch.github.io/landing-gcs/images/logo.webp"),
       HTML("<div class = 'top_title'> HERRAMIENTA <div class = 'top_line'> <div style = 'margin-left: 10px;'> ESTIMACIÓN DE BIODIVERSIDAD Y <span class = 'tex_sub'>CAPTURA DE CO<sub>2</sub></span></div></div></div>"),
-      modalButton(id = 'id-but-mod', modal_id = 'test', label = HTML('<i class="fa fa-info-circle" style="font-size:31px;color:#fff"></i>'))
+      shinypanels::modalButton(id = 'id-but-mod', modal_id = 'test', label = HTML('<i class="fa fa-info-circle" style="font-size:31px;color:#fff"></i>'))
   ),
   modal(id = 'test', title = 'Test modal title', p('Modal ipsum')),
   panel(title = "First Panel", color = "chardonnay", collapsed = FALSE, width =  400,
@@ -64,7 +64,7 @@ ui <- panelsPage(
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
           radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
           img(src="https://placeimg.com/640/180/any"),
-          modalButton(modal_id = 'test', label = 'Test modal')
+          shinypanels::modalButton(id = "ss", modal_id = 'test', label = 'Test modal')
         ),
         footer = NULL
   ),
@@ -77,18 +77,19 @@ ui <- panelsPage(
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
           radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
           img(src="https://placeimg.com/640/180/any"),
-          modalButton(modal_id = 'test', label = 'Test modal')
+          shinypanels::modalButton(id = "aa", modal_id = 'test', label = 'Test modal')
         ),
         footer = NULL
   ),
   panel(title = "Visualize", color = "magenta", collapsed = FALSE,
         head = h2("Head 2"),
         body = list(
-          box(title = "New box",
-          collapsed = FALSE,
-            p("Lorem ipsum 3"),
-            selectInput("selector2", "Select", choices = 1980:2019)
-          ),
+          # box(title = "New box",
+          # collapsed = FALSE,
+          #   p("Lorem ipsum 3"),
+          #   selectInput("selector2", "Select", choices = 1980:2019)
+          # ),
+          uiOutput("box_test"),
           h2(textOutput("selected")),
           img(src="https://placeimg.com/640/180/nature")
         ),
@@ -103,6 +104,14 @@ server <- function(input, output, session) {
 
   output$selected <- renderText({
     input$selector
+  })
+
+  output$box_test <- renderUI({
+    box(title = "New box",
+    collapsed = FALSE,
+      p("Lorem ipsum 3"),
+      selectInput("selector2", "Select", choices = 1980:2019)
+    )
   })
 }
 shinyApp(ui, server)

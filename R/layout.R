@@ -19,9 +19,9 @@ panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FA
                    src = c(href = "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/"),
                    stylesheet = "font-awesome.min.css"
     ),
-    # htmlDependency("index", "0.0.1",
-    #                src = (file = system.file("srcjs", package = "shinypanels")),
-    #                script = "index.js"
+    # htmlDependency("box", "0.0.1",
+    #                src = (file = system.file("assets/js", package = "shinypanels")),
+    #                script = "box_info.js"
     # ),
     htmlDependency("style", "0.0.1",
                    src = (file = system.file("assets","css", package = "shinypanels")),
@@ -34,11 +34,22 @@ panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FA
   indexJS <- tags$script(HTML(paste0(readLines(jsfile),collapse="\n")))
   #debugJS <- tags$script(ifelse(debug,"var debug = true;","var debug = false;"))
 
+
+  # addResourcePath(
+  #     prefix = 'box',
+  #     directoryPath = system.file('/assets/js', package='shinypanels')
+  #   )
+  jsbox <-  system.file("assets","js", "box_info.js", package = "shinypanels")
+  boxJS <- tags$script(HTML(paste0(readLines(jsbox),collapse="\n")))
+
+
+
   page <- tagList(
     tags$head(
       tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
       tags$meta(`http-equiv` = "X-UA-Compatible", content="ie=edge"),
-      tags$title(title)
+      tags$title(title)#,
+      #tags$script(src = "box/box_info.js")
     ),
     div(class = "orientation-notice",
       div(class="orientation-notice-content",
@@ -56,8 +67,8 @@ panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FA
             )
         )
     ),
-    #debugJS,
     indexJS,
+    boxJS,
     tags$style(styles)
   )
   old <- attr(page, "html_dependencies", TRUE)

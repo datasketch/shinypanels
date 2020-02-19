@@ -94,8 +94,16 @@ box <- function(..., title = NULL, collapsed = TRUE, color = "") {
   contents <- rlang::dots_list(...)
   state <- ifelse(collapsed, '', 'active')
 
-  # shiny::div(
-  #   l,
+
+  # addResourcePath(
+  #   prefix = 'box',
+  #   directoryPath = system.file('/lib/', package='shinypanels')
+  # )
+
+  shiny::div(
+    #shiny::singleton(
+    #   shiny::tags$body(
+    # shiny::tags$script(type="text/javascript", src = "box/box_info.js")),#),
   div(class="box-collapsible",
       tags$button(class=glue("box-collapsible-trigger {state}"),  span(title),
                   svgArrow()),
@@ -103,6 +111,7 @@ box <- function(..., title = NULL, collapsed = TRUE, color = "") {
           div(contents)
       )
   )
+)
 }
 
 #' Modal window

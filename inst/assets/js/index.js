@@ -50,6 +50,7 @@ $(document).on('click', '.buttonDown', function () {
 //	contentAvanzados.classList.toggle('content-avanzados');
 //});
 
+/*
 const collapsibles = Array.prototype.map.call(
   document.getElementsByClassName("box-collapsible-trigger"),
   function (el) { return el }
@@ -75,7 +76,7 @@ collapsibles.forEach(function (collapsible) {
   });
 });
 
-
+*/
 
 const modalTriggers = Array.prototype.map.call(
   document.querySelectorAll('.modal-trigger'),
