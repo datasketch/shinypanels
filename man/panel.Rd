@@ -7,7 +7,6 @@
 panel(
   head = NULL,
   body = NULL,
-  show_footer = TRUE,
   footer = NULL,
   title = NULL,
   color = "malibu",
@@ -22,8 +21,6 @@ panel(
 
 \item{body}{html tag list for panel body contents}
 
-\item{show_footer}{include footer}
-
 \item{footer}{footer contents}
 
 \item{title}{panel title}
@@ -37,6 +34,8 @@ panel(
 \item{width}{panel width in pixels}
 
 \item{...}{html list contents for the panel}
+
+\item{show_footer}{include footer}
 }
 \value{
 None

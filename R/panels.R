@@ -17,7 +17,7 @@
 #' panel(title = "My title")
 #'
 #' @export
-panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
+panel <- function(head = NULL, body = NULL, footer = NULL,
                   title = NULL, color = "malibu",
                   id = NULL, collapsed = FALSE, width = NULL,
                   ...){
@@ -25,7 +25,7 @@ panel <- function(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
   if(is.null(title)) stop("Need panel title")
 
   #if(!is.null(width)) width <- glue("data-width='{width}'")
-  style_panel <- ifelse(show_footer,"display: block;", "display: none !important;")
+  style_panel <- ifelse(!is.null(footer),"display: block;", "display: none !important;")
   id_head <- paste0(id,"_head")
   id_body <- paste0(id,"_body")
 
@@ -94,16 +94,6 @@ box <- function(..., title = NULL, collapsed = TRUE, color = "") {
   contents <- rlang::dots_list(...)
   state <- ifelse(collapsed, '', 'active')
 
-
-  # addResourcePath(
-  #   prefix = 'box',
-  #   directoryPath = system.file('/lib/', package='shinypanels')
-  # )
-
-  shiny::div(
-    #shiny::singleton(
-    #   shiny::tags$body(
-    # shiny::tags$script(type="text/javascript", src = "box/box_info.js")),#),
   div(class="box-collapsible",
       tags$button(class=glue("box-collapsible-trigger {state}"),  span(title),
                   svgArrow()),
@@ -111,7 +101,7 @@ box <- function(..., title = NULL, collapsed = TRUE, color = "") {
           div(contents)
       )
   )
-)
+
 }
 
 #' Modal window
