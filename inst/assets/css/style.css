@@ -643,6 +643,24 @@ input[type="radio"] {
 /*
 scroll STYLES
 */
+::-webkit-scrollbar{
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track{
+  background: #e2eaed;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #CCCCCC;
+}
+
+::-webkit-scrollbar:focus {
+    overflow: scroll;
+    display:block;
+    background: #CCCCCC;
+}
 
 
 @media screen and (min-width: 0px) and (orientation: landscape) {
