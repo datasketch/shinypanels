@@ -1,0 +1,42 @@
+#' Modal window
+#'
+#' @param title title for the modal
+#' @param id html attribute id for the component
+#' @param ... html list contents for the panel
+#'
+#' @return None
+#'
+#' @examples
+#' modal()
+#' @export
+modal <- function(..., title = NULL, id = NULL){
+  contents <- rlang::dots_list(...)
+  div(class = "modal", id = id,
+      div(class = "modal-wrapper",
+          div(class = "modal-title",
+              tags$h3(title),
+              tags$button(svgX())
+          ),
+          div(class = "modal-content", div(contents))
+      )
+  )
+}
+
+#' Modal button to trigger a modal
+#'
+#' @param label label for the button
+#' @param modal_id modal id to be triggered by the button
+#' @param id html attribute id for the button
+#'
+#' @return None
+#'
+#' @examples
+#' modal()
+#' @export
+modalButton <- function(modal_id = NULL, label = NULL, id = NULL) {
+  tags$button('data-modal' = modal_id,
+              class="modal-trigger",
+              id = id,
+              tags$span(label)
+  )
+}
