@@ -4,9 +4,18 @@
 \alias{panel}
 \title{Panel component for shiny panels layout}
 \usage{
-panel(head = NULL, body = NULL, show_footer = TRUE, footer = NULL,
-  title = NULL, color = "malibu", id = NULL, collapsed = FALSE,
-  width = NULL, ...)
+panel(
+  head = NULL,
+  body = NULL,
+  show_footer = TRUE,
+  footer = NULL,
+  title = NULL,
+  color = "malibu",
+  id = NULL,
+  collapsed = FALSE,
+  width = NULL,
+  ...
+)
 }
 \arguments{
 \item{head}{html for the panel header}

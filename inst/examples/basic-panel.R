@@ -42,6 +42,10 @@ styles <- "
     font-size: 32px;
   }
 }
+
+
+}
+
 "
 
 ui <- panelsPage(
@@ -59,6 +63,10 @@ ui <- panelsPage(
         head = h2("Head"),
         body = div(
           h2("Body"),
+          infomessage(type = "warning", p("Hello, this is a warning")),
+          infomessage(type = "info", p("Oh yes, this is some information")),
+          infomessage(type = "success", p("You did it!")),
+          infomessage(type = "error", p("Ups!, try again")),
           selectizeInput("selector", "Select One", choices = c("First", "Second"), selected = "Fist"),
           textInput("text", "Text input"),
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),

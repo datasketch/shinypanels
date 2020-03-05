@@ -629,6 +629,31 @@ label {
 }
 
 
+.infomessage{
+  color: #666;
+  padding: 10px;
+  margin: 10px auto;
+}
+.infomessage.warning{
+  background-color: #fff7e8;
+  border: orange solid 1px;
+}
+.infomessage.success{
+  background-color: #e8fff5;
+  border: green solid 1px;
+}
+.infomessage.info{
+  background-color: #e8f6ff;
+  border: #6898ca solid 1px;
+}
+.infomessage.error{
+  background-color: #fbeaea;
+  border: #f28484 solid 1px;
+}
+
+
+
+
 @media screen and (min-width: 0px) and (orientation: landscape) {
   .orientation-notice {
     display: none;
