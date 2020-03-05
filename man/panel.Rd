@@ -7,6 +7,7 @@
 panel(
   head = NULL,
   body = NULL,
+  show_footer = TRUE,
   footer = NULL,
   title = NULL,
   color = "malibu",
