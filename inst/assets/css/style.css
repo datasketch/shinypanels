@@ -21,7 +21,8 @@ body {
 	height: 100%;
 	margin: 0;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .orientation-notice {
@@ -57,6 +58,7 @@ body {
   flex-grow: 1;
   flex-shrink: 1;
   overflow-x: auto;
+  min-height: 400px;
 }
 
 .app-container {
@@ -628,18 +630,12 @@ label {
 
 
 @media screen and (min-width: 0px) and (orientation: landscape) {
-  body {
-    overflow: visible;
-  }
   .orientation-notice {
     display: none;
   }
 }
 
 @media screen and (min-width: 768px) {
-  body {
-    overflow: visible;
-  }
   .orientation-notice {
     display: none;
   }
