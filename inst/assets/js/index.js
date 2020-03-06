@@ -1,82 +1,63 @@
-var COLLAPSED_CLASS = 'is-collapsed';
-
-var panels = Array.prototype.map.call(
-  document.querySelectorAll('.panel'),
-  function (panel) {
-    // Max width is set by a data-width attribute.
-    !panel.dataset.width
-      ? panel.classList.add('is-limitless')
-      : savePanelConstraint(panel);
-    panel.addEventListener('click', panelHandler);
-    return panel;
-  }
-);
-
-function panelHandler (event) {
-  if (!(event.target.matches('.icon-close') || event.target.matches('line'))) {
-		return;
-	}
-  var clickedPanel = this;
-  this.classList.toggle(COLLAPSED_CLASS);
+const settings = {
+  minWidth: '600px',
+  panelClass: 'panel',
+  panelCollapsedClass: 'collapsed',
+  panelHeaderClass: 'panel-header',
+  panelHeaderTitleClass: 'panel-header-title',
+  panelDismissClass: 'panel-header-dismiss',
+  panelBodyClass: 'panel-body'
 }
+const panels = Array.from(document.querySelectorAll('.' + settings.panelClass));
+const headers = Array.from(document.querySelectorAll('.' + settings.panelHeaderClass));
+const dismiss = Array.from(document.querySelectorAll('.' + settings.panelDismissClass));
 
-function savePanelConstraint (panel) {
-  var width = parseInt(panel.dataset.width);
-  // Set initial width value if panel is not collapsed
-  if (!panel.classList.contains('is-collapsed')) {
-    panel.style.width = width + 'px';
-    panel.style.minWidth = width + 'px';
-  }
-}
-
-function actionHandler (event) {
-	var element = this;
-	var content = this.parentNode.querySelector('.modal-action-form');
-	this.classList.toggle('active');
-	content.classList.toggle('active');
-}
-
-$(document).on('click', '.buttonDown', function () {
-        Shiny.onInputChange('last_btn',this.id);
-});
-
-//var clickAvanzados = document.querySelector(".titulo-avanzados");
-//var contentAvanzados  = document.querySelector(".contenido-avanzados");
-
-
-//clickAvanzados.addEventListener("click", function() {
-//	clickAvanzados.classList.toggle( 'title-active' );
-//	clickAvanzados.childNodes[1].classList.toggle( 'show-active' );
-//	contentAvanzados.classList.toggle('content-avanzados');
-//});
-
-/*
-const collapsibles = Array.prototype.map.call(
-  document.getElementsByClassName("box-collapsible-trigger"),
-  function (el) { return el }
-);
-
-
-collapsibles.forEach(function (collapsible) {
-  console.log("hola");
-  console.log(collapsible);
-  const content = collapsible.nextElementSibling;
-  if (content.classList.contains('active')) {
-    content.style.maxHeight = content.scrollHeight + "px";
-  }
-
-  collapsible.addEventListener('click', function () {
-    this.classList.toggle('active');
-    content.classList.toggle('active');
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
+function setPanelWidth(panel, reset) {
+  if (!reset) {
+    if (panel.dataset.width) {
+      panel.style.width = `${panel.dataset.width}px`;
     } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+      panel.style['flex-grow'] = '1';
+      panel.style['min-width'] = settings.minWidth;
+    }
+  } else {
+    if (!panel.dataset.width) {
+      panel.style['flex-grow'] = '0';
+      panel.style['min-width'] = '0';
+    }
+    panel.style.width = 'auto';
+  }
+}
+
+for (let panel of panels) {
+  setPanelWidth(panel, panel.classList.contains('collapsed'));
+}
+
+for (let button of dismiss) {
+  button.addEventListener('click', function(event) {
+    console.log("cuqla");
+    const panel = this.parentNode.parentNode;
+    if (!panel.classList.contains(settings.panelCollapsedClass)) {
+      setPanelWidth(panel, true);
+    } else {
+      setPanelWidth(panel);
+    }
+    panel.classList.toggle(settings.panelCollapsedClass);
+  });
+}
+
+for (let header of headers) {
+  header.addEventListener('click', function(event) {
+    const panel = this.parentNode;
+    if (
+      panel.classList.contains(settings.panelCollapsedClass) &&
+      (event.target === this || event.target.matches('.' + settings.panelHeaderTitleClass))
+    ) {
+      panel.classList.toggle(settings.panelCollapsedClass);
+      setPanelWidth(panel);
     }
   });
-});
+}
 
-*/
 
 const modalTriggers = Array.prototype.map.call(
   document.querySelectorAll('.modal-trigger'),

@@ -42,6 +42,11 @@ panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FA
   jsbox <-  system.file("assets","js", "box_info.js", package = "shinypanels")
   boxJS <- tags$script(HTML(paste0(readLines(jsbox),collapse="\n")))
 
+  header <- header
+  if (!is.null(header)) {
+  div(class = "layout-header",
+      header)
+    }
 
 
   page <- tagList(
@@ -58,9 +63,7 @@ panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FA
       ),
     ),
     div(class = "layout-container",
-        div(class = "layout-header",
-            header
-        ),
+       header,
         div(class = "layout-panels",
             div(class="app-container",
                 panels

@@ -12,6 +12,7 @@ panel(
   color = "malibu",
   id = NULL,
   collapsed = FALSE,
+  can_collapse = TRUE,
   width = NULL,
   ...
 )
