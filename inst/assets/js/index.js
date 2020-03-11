@@ -1,4 +1,4 @@
-const settings = {
+const layoutSettings = {
   minWidth: '600px',
   panelClass: 'panel',
   panelCollapsedClass: 'collapsed',
@@ -6,10 +6,10 @@ const settings = {
   panelHeaderTitleClass: 'panel-header-title',
   panelDismissClass: 'panel-header-dismiss',
   panelBodyClass: 'panel-body'
-}
-const panels = Array.from(document.querySelectorAll('.' + settings.panelClass));
-const headers = Array.from(document.querySelectorAll('.' + settings.panelHeaderClass));
-const dismiss = Array.from(document.querySelectorAll('.' + settings.panelDismissClass));
+};
+const panels = Array.from(document.querySelectorAll('.' + layoutSettings.panelClass));
+const headers = Array.from(document.querySelectorAll('.' + layoutSettings.panelHeaderClass));
+const dismiss = Array.from(document.querySelectorAll('.' + layoutSettings.panelDismissClass));
 
 function setPanelWidth(panel, reset) {
   if (!reset) {
@@ -17,7 +17,7 @@ function setPanelWidth(panel, reset) {
       panel.style.width = `${panel.dataset.width}px`;
     } else {
       panel.style['flex-grow'] = '1';
-      panel.style['min-width'] = settings.minWidth;
+      panel.style['min-width'] = layoutSettings.minWidth;
     }
   } else {
     if (!panel.dataset.width) {
@@ -36,12 +36,12 @@ for (let button of dismiss) {
   button.addEventListener('click', function(event) {
     console.log("cuqla");
     const panel = this.parentNode.parentNode;
-    if (!panel.classList.contains(settings.panelCollapsedClass)) {
+    if (!panel.classList.contains(layoutSettings.panelCollapsedClass)) {
       setPanelWidth(panel, true);
     } else {
       setPanelWidth(panel);
     }
-    panel.classList.toggle(settings.panelCollapsedClass);
+    panel.classList.toggle(layoutSettings.panelCollapsedClass);
   });
 }
 
@@ -49,10 +49,10 @@ for (let header of headers) {
   header.addEventListener('click', function(event) {
     const panel = this.parentNode;
     if (
-      panel.classList.contains(settings.panelCollapsedClass) &&
-      (event.target === this || event.target.matches('.' + settings.panelHeaderTitleClass))
+      panel.classList.contains(layoutSettings.panelCollapsedClass) &&
+      (event.target === this || event.target.matches('.' + layoutSettings.panelHeaderTitleClass))
     ) {
-      panel.classList.toggle(settings.panelCollapsedClass);
+      panel.classList.toggle(layoutSettings.panelCollapsedClass);
       setPanelWidth(panel);
     }
   });
