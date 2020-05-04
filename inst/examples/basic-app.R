@@ -27,7 +27,7 @@ ui <- panelsPage(
     can_collapse = FALSE,
     body = div(
     ),
-    footer = HTML("NEGRO MK")
+    footer = HTML("Footer")
   )
 )
 

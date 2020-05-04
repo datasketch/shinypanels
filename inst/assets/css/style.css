@@ -86,10 +86,11 @@ body {
 
 .panel-header-dismiss {
   line-height: 0;
-  padding: 0 0.5rem;
+  padding: 0;
   cursor: pointer;
   background-color: transparent;
   border: none;
+  margin: 0;
 }
 
 .panel-header-dismiss:focus {
@@ -115,24 +116,27 @@ body {
   width: auto;
   display: block;
   overflow: hidden;
-}
-
-.panel.collapsed .panel-header-title {
-  margin-bottom: 1rem;
+  writing-mode: vertical-lr;
 }
 
 .panel.collapsed .panel-header {
-  writing-mode: vertical-lr;
   transform: rotateZ(180deg);
-  height: 100%;
-  justify-content: flex-end;
   cursor: pointer;
-  padding: 1rem 0.5rem;
+}
+
+.panel.collapsed .panel-header-title {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.panel.collapsed .panel-header-dismiss {
+  margin: 1rem 0 0;
 }
 
 .panel.collapsed .panel-body,
 .panel.collapsed .panel-footer {
   opacity: 0;
+  padding: 0;
 }
 
 .panel.collapsed .panel-content, .panel.collapsed .panel-footer {
