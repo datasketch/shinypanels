@@ -457,7 +457,7 @@ BOTONS STYLE
 }
 
 .btn-default {
- border-radius: 0px;
+ border-radius: 0.35rem;
  display: block;
  margin-bottom: 10px;
  text-align: center;
