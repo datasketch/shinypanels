@@ -4,7 +4,14 @@
 \alias{infoTooltip}
 \title{Text with tooltip}
 \usage{
-infoTooltip(title, info, icon = "info-circle", style = "")
+infoTooltip(
+  title,
+  info,
+  icon = "info-circle",
+  containerStyle = "",
+  iconStyle = "",
+  tooltipStyle = ""
+)
 }
 \arguments{
 \item{title}{Text}
@@ -13,7 +20,11 @@ infoTooltip(title, info, icon = "info-circle", style = "")
 
 \item{icon}{HTML name of icon}
 
-\item{style}{CSS styles for the container div}
+\item{containerStyle}{CSS styles for the container div}
+
+\item{iconStyle}{CSS styles for the icon}
+
+\item{tooltipStyle}{CSS styles for the tooltip}
 }
 \value{
 None
