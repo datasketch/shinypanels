@@ -9,6 +9,7 @@ panel(
   body = NULL,
   footer = NULL,
   title = NULL,
+  title_plugin = NULL,
   color = "malibu",
   id = NULL,
   collapsed = FALSE,

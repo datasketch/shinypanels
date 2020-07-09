@@ -18,7 +18,7 @@
 #'
 #' @export
 panel <- function(head = NULL, body = NULL, footer = NULL,
-                  title = NULL, color = "malibu",
+                  title = NULL, title_plugin = NULL, color = "malibu",
                   id = NULL, collapsed = FALSE, can_collapse = TRUE, width = NULL,
                   ...){
   collapsed <- ifelse(collapsed, "collapsed", "")
@@ -35,6 +35,13 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
   }
 
 
+  title_plugin <- title_plugin
+  if (!is.null(title_plugin)) {
+    title_plugin  <- div(class="panel-title_plugin",
+                           title_plugin
+    )
+  }
+
 
   can_collapse <- can_collapse
   if (can_collapse) {
@@ -48,6 +55,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
       id=id,
       div(class="panel-header", id = id_head,
           p(class=glue("panel-header-title text-{color}"), title),
+          title_plugin,
           can_collapse
       ),
       div(class="panel-body", id = id_body,

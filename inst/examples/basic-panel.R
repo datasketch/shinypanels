@@ -59,7 +59,7 @@ ui <- panelsPage(
       shinypanels::modalButton(id = 'id-but-mod', modal_id = 'test', label = HTML('<i class="fa fa-info-circle" style="font-size:31px;color:#fff"></i>'))
   ),
   modal(id = 'test', title = 'Test modal title', p('Modal ipsum')),
-  panel(title = "First Panel", color = "chardonnay", collapsed = FALSE, width =  400,
+  panel(title = "First Panel", title_complent = "HOLAAAA",color = "chardonnay", collapsed = FALSE, width =  400,
         head = h2("Head"),
         body = div(
           h2("Body"),
