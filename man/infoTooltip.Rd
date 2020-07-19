@@ -4,7 +4,14 @@
 \alias{infoTooltip}
 \title{Text with tooltip}
 \usage{
-infoTooltip(title, info, icon = "info-circle")
+infoTooltip(
+  title,
+  info,
+  icon = "info-circle",
+  containerStyle = "",
+  iconStyle = "",
+  tooltipStyle = ""
+)
 }
 \arguments{
 \item{title}{Text}
@@ -12,6 +19,12 @@ infoTooltip(title, info, icon = "info-circle")
 \item{info}{Message which appears when a cursor is positioned over an icon}
 
 \item{icon}{HTML name of icon}
+
+\item{containerStyle}{CSS styles for the container div}
+
+\item{iconStyle}{CSS styles for the icon}
+
+\item{tooltipStyle}{CSS styles for the tooltip}
 }
 \value{
 None

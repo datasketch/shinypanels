@@ -689,6 +689,7 @@ scroll STYLES
     margin-bottom: 1rem;
     border-bottom: 1px solid #f2f2f2;
     padding-bottom: 0.5rem;
+    font-size: 0.875rem !important;
 }
 
 @media screen and (min-width: 0px) and (orientation: landscape) {
