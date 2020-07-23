@@ -58,29 +58,25 @@ for (let header of headers) {
   });
 }
 
+$(document).on('shiny:sessioninitialized', function(event) {
 
-const modalTriggers = Array.prototype.map.call(
-  document.querySelectorAll('.modal-trigger'),
-  function (e) { return e; }
-);
+  const modalTriggers = Array.prototype.map.call(
+    document.querySelectorAll('.modal-trigger'),
+    function (e) { return e; });
 
-if (modalTriggers) {
-  modalTriggers.forEach(function (modalTrigger) {
-    function handleModalTrigger(event) {
-      var modal = document.getElementById(this.dataset.modal);
-      modal.classList.add('is-visible');
-      modal.addEventListener('click', function(event) {
-        if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg')) {
-          modal.classList.remove('is-visible');
-        }
-      });
-    }
-    modalTrigger.addEventListener('click', handleModalTrigger);
-  });
-}
+  if (modalTriggers) {
+    modalTriggers.forEach(function (modalTrigger) {
+      function handleModalTrigger(event) {
+        var modal = document.getElementById(this.dataset.modal);
+        modal.classList.add('is-visible');
+        modal.addEventListener('click', function(event) {
+          if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg')) {
+            modal.classList.remove('is-visible');
+          }
+        });
+      }
+      modalTrigger.addEventListener('click', handleModalTrigger);
+    });
+  }
 
-
-
-
-
-
+});
