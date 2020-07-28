@@ -56,7 +56,7 @@ ui <- panelsPage(
   header = div(style="", class="topbar",
       img(class="topbar__img", src = "https://datasketch.github.io/landing-gcs/images/logo.webp"),
       HTML("<div class = 'top_title'> HERRAMIENTA <div class = 'top_line'> <div style = 'margin-left: 10px;'> ESTIMACIÓN DE BIODIVERSIDAD Y <span class = 'tex_sub'>CAPTURA DE CO<sub>2</sub></span></div></div></div>"),
-      shinypanels::modalButton(id = 'id-but-mod', modal_id = 'test', label = HTML('<i class="fa fa-info-circle" style="font-size:31px;color:#fff"></i>'))
+      uiOutput("for_modal"),
   ),
   modal(id = 'test', title = 'Test modal title', p('Modal ipsum')),
   panel(title = "First Panel", title_complent = "HOLAAAA",color = "chardonnay", collapsed = FALSE, width =  400,
@@ -110,6 +110,11 @@ ui <- panelsPage(
 
 server <- function(input, output, session) {
 
+  # modal button rendered within server
+  output$for_modal <- renderUI({
+    shinypanels::modalButton(id = 'id-but-mod', modal_id = 'test', label = HTML('<i class="fa fa-info-circle" style="font-size:31px;color:#fff"></i>'))
+  })
+
   output$selected <- renderText({
     input$selector
   })
@@ -121,6 +126,7 @@ server <- function(input, output, session) {
       selectInput("selector2", "Select", choices = 1980:2019)
     )
   })
+
 }
 shinyApp(ui, server)
 
