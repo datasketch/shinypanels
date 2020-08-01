@@ -15,6 +15,12 @@ body {
     background-color: "#fcfcfc";
 }
 
+hr {
+    margin: 10px 0 20px 0;
+    color: #eef3f5;
+    border-top: 1px solid #eef3f5;
+}
+
 .shiny-output-error {
     visibility: hidden;
 }
