@@ -12,6 +12,7 @@ body {
     height: 100%;
     font-family: 'Ubuntu', sans-serif;
     box-sizing: border-box;
+    background-color: "#fcfcfc";
 }
 
 .shiny-output-error {
@@ -38,7 +39,7 @@ body {
 }
 
 .layout-panels {
-    background-color: #edf2f7;
+    background-color: #fcfcfc;
     flex-grow: 1;
     flex-shrink: 1;
     padding: 1rem;
