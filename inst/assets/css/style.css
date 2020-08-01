@@ -341,7 +341,7 @@ h4 {
     transition: all .5s ease-in;
     transition-delay: 0.25s;
     /* Para diseño */
-    height: 300px;
+    max-height: 90%;
 }
 
 .modal-content {
