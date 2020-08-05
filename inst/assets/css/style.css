@@ -16,6 +16,13 @@ body {
     font-weight: 300;
     box-sizing: border-box;
     color: #435b69;
+    background-color: #fbfdfe;
+}
+
+hr {
+    margin: 10px 0 20px 0;
+    color: #eef3f5;
+    border-top: 1px solid #eef3f5;
 }
 
 .shiny-output-error {
@@ -367,7 +374,7 @@ h4 {
     transition: all .5s ease-in;
     transition-delay: 0.25s;
     /* Para diseño */
-    height: 300px;
+    max-height: 90%;
 }
 
 .modal-content {

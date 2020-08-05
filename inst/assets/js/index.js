@@ -58,7 +58,8 @@ for (let header of headers) {
   });
 }
 
-$(document).on('shiny:sessioninitialized', function(event) {
+
+$(document).on('shiny:value', function(event) {
 
   const modalTriggers = Array.prototype.map.call(
     document.querySelectorAll('.modal-trigger'),
