@@ -1,6 +1,6 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');*/
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;700&family=Ubuntu:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;700&family=Ubuntu:wght@300;700&display=swap');
 
 *,
 *:before,
@@ -119,8 +119,12 @@ hr {
     margin-top: 2rem;
     padding-right: 1rem;
     flex-grow: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+}
+
+#edit_viz_body {
+  overflow-y: auto;
 }
 
 .panel-content {
@@ -458,7 +462,8 @@ h4 {
     border: 1px solid #e6eaed;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
     letter-spacing: normal;
-    font-size: 0.75rem;
+    font-size: 0.75rem !important;
+    font-weight: 300 !important;
     text-align: left;
     width: 250px;
 }
@@ -467,8 +472,9 @@ h4 {
     visibility: visible;
 }
 
+
 /*
-BOTONS STYLE
+BUTTONS STYLE
 */
 
 .input-group {
@@ -476,45 +482,46 @@ BOTONS STYLE
     display: inline-flex;
     border-collapse: separate;
     align-items: baseline;
+    flex-direction: column;
 }
 
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-    background-color: #eee;
+    background-color: #eef3f5;
     opacity: 1;
     width: 100%;
-    margin-left: 3px;
+    border-radius: 2px;
 }
 
 
 .btn,
 .modal-trigger {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    padding: 10px;
+    padding: 10px 15px;
     text-decoration: none;
-    text-transform: uppercase;
     transition: background 0.3s linear;
     cursor: pointer;
-    background: #B70F7F;
+    background: #da1c95;
     border: 0px;
-    border-radius: 0.35rem;
+    border-radius: 5px;
     color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
 }
 
 .btn-default {
     border-radius: 0.35rem;
     display: block;
-    margin-bottom: 10px;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
 }
 
 .btn:hover {
-    background: rgba(50, 50, 100, 0.5);
+    background: #b70f7f;
 }
 
 
@@ -570,11 +577,94 @@ fieldset[disabled] .form-control {
 
 .control-label {
     display: inline-block;
+    font-weight: 500;
 }
+
+#initial_data-tableInputControls .control-label {
+    margin-bottom: 5px;
+}
+
+/*
+TEXTAREA STYLE
+*/
+
+textarea.form-control {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+
+
+/*
+CHECKBOX STYLE (Not working)
+*/
+
+/*.checkbox label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox label span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.checkbox label:hover input[type="checkbox"] ~ .checkbox label span {
+  background-color: #ccc;
+}
+
+.checkbox label input[type="checkbox"]:checked ~ .checkbox label span {
+  background-color: #2196F3;
+}
+
+.checkbox label span:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox label input[type="checkbox"]:checked ~ .checkbox label span:after {
+  display: block;
+}
+
+.checkbox label .checkbox label span:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}*/
 
 
 /* Selectores */
 
+.shiny-input-checkboxgroup label ~ .shiny-options-group, .shiny-input-radiogroup label ~ .shiny-options-group {
+  margin-top: 0px;
+}
 
 .shiny-input-container:not(.shiny-input-container-inline) {
     width: 100% !important;
@@ -587,6 +677,18 @@ fieldset[disabled] .form-control {
     flex-direction: column;
 }
 
+#initial_data-tableInputControls .form-group {
+  margin-bottom: 20px;
+}
+
+/*#initial_data-tableInputControls .input-group {
+  margin-top: 10px;
+}*/
+
+#initial_data-tableInput.form-group {
+  margin-bottom: 25px;
+}
+
 .selectize-input {
   border: 1px solid #e6eaed !important;
   border-radius: 5px !important;
@@ -594,6 +696,22 @@ fieldset[disabled] .form-control {
 
 .selectize-input.focus {
   box-shadow: none !important;
+}
+
+.selectize-dropdown, .selectize-input, .selectize-input input {
+  color: #435b69 !important;
+}
+
+.selectize-dropdown .active {
+  color: #435b69 !important;
+}
+
+.selectize-dropdown, .selectize-dropdown.form-control {
+  border: 1px solid #e6eaed !important;
+}
+
+.selectize-control.single .selectize-input::after {
+  border-color: #cad5dd transparent transparent transparent !important;
 }
 
 .selectize-control.multi .selectize-input.has-items {
@@ -612,21 +730,30 @@ fieldset[disabled] .form-control {
 
 
 label {
-    margin-bottom: 9px;
+    margin-bottom: 5px;
 }
-
 
 .form-control {
     background: #eef3f5;
     border: 0px;
     border-radius: 0px;
     padding: 5px;
+    color: #435b69;
+    font-family: 'IBM Plex Sans';
+    font-size: 0.8rem;
+    font-weight: 300;
+    outline: none;
 }
+
+.form-control.selectize-control, .form-control .selectize-dropdown-content {
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
 
 /*
 SLIDER STYLES
 */
-
 
 .irs-bar-edge {
     border: 0px !important;
@@ -650,6 +777,10 @@ SLIDER STYLES
     box-shadow: none !important;
     background: #DA1C95 !important;
     border-radius: 50% !important;
+}
+
+.irs-slider:hover {
+  background-color: #b70f7f !important;
 }
 
 .irs-line {
@@ -756,6 +887,10 @@ scroll STYLES
 
 /*TITLES STYLES*/
 
+.section_0 {
+  margin-bottom: 1.5rem;
+}
+
 .style_section {
     color: #DA1C95;
     text-transform: uppercase;
@@ -763,8 +898,7 @@ scroll STYLES
     font-size: 0.875rem !important;
     font-weight: 700 !important;
     letter-spacing: 0.055em;
-    margin-top: 2.5rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 1rem;
     padding-top: 0.5rem;
 }
 
