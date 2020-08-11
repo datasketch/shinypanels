@@ -907,7 +907,7 @@ scroll STYLES
 }
 
 .title-data-select {
-  color: #DA1C95;
+  color: #DA1C95 !important;
   font-family: 'Ubuntu', sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
