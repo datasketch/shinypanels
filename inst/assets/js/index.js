@@ -71,7 +71,7 @@ $(document).on('shiny:value', function(event) {
         var modal = document.getElementById(this.dataset.modal);
         modal.classList.add('is-visible');
         modal.addEventListener('click', function(event) {
-          if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg')) {
+          if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
             modal.classList.remove('is-visible');
           }
         });
