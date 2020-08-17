@@ -2,7 +2,7 @@ const layoutSettings = {
   minWidth: '600px',
   panelClass: 'panel',
   panelCollapsedClass: 'collapsed',
-  panelHeaderClass: 'panel-header',
+  panelHeaderClass: 'panel',
   panelHeaderTitleClass: 'panel-header-title',
   panelDismissClass: 'panel-header-dismiss',
   panelBodyClass: 'panel-body'
@@ -47,7 +47,7 @@ for (let button of dismiss) {
 
 for (let header of headers) {
   header.addEventListener('click', function(event) {
-    const panel = this.parentNode;
+    const panel = this;
     if (
       panel.classList.contains(layoutSettings.panelCollapsedClass) &&
       (event.target === this || event.target.matches('.' + layoutSettings.panelHeaderTitleClass))

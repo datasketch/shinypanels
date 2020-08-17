@@ -146,9 +146,13 @@ hr {
 
 .panel.collapsed .panel-header {
     transform: rotateZ(180deg);
-    cursor: pointer;
     padding-right: 0rem;
 }
+
+.panel.collapsed {
+    cursor: pointer;
+}
+
 
 .panel.collapsed .panel-header-title {
     flex-grow: 1;
