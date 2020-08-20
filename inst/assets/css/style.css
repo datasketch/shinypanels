@@ -369,7 +369,7 @@ h4 {
 }
 
 .modal-wrapper {
-    width: 90%;
+    max-width: 80%;
     background-color: #ffffff;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px;
@@ -399,7 +399,7 @@ h4 {
 }
 
 .modal.is-visible .modal-wrapper {
-    top: 200px;
+    top: 40%;
     opacity: 1;
     transition-delay: 0s;
 }
