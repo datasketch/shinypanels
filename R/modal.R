@@ -40,3 +40,9 @@ modalButton <- function(modal_id = NULL, label = NULL, id = NULL) {
               tags$span(label)
   )
 }
+
+
+#' @export
+showModal <- function(modal_id, session = getDefaultReactiveDomain()) {
+  session$sendCustomMessage("showModalManually", modal_id)
+}

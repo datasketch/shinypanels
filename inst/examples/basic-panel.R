@@ -99,7 +99,8 @@ ui <- panelsPage(
           # ),
           uiOutput("box_test"),
           h2(textOutput("selected")),
-          img(src="https://placeimg.com/640/180/nature")
+          img(src="https://placeimg.com/640/180/nature"),
+          actionButton("show", label = "Test modal 2")
         ),
         footer = list(
           div(class="panel-title", "Tipos de visualización"),
@@ -127,6 +128,9 @@ server <- function(input, output, session) {
     )
   })
 
+  observeEvent(input$show, {
+    showModal('test')
+  })
 }
 shinyApp(ui, server)
 
