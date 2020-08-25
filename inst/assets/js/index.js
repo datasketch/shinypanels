@@ -58,6 +58,17 @@ for (let header of headers) {
   });
 }
 
+$(document).ready(function() {
+  Shiny.addCustomMessageHandler('showModalManually', function(modalID) {
+  	var modal = document.getElementById(modalID);
+  	modal.classList.add('is-visible');
+  	modal.addEventListener('click', function(event) {
+  		if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
+  			modal.classList.remove('is-visible');
+  		}
+  	});
+  })
+});
 
 $(document).on('shiny:value', function(event) {
 
