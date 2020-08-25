@@ -70,6 +70,13 @@ $(document).ready(function() {
   })
 });
 
+$(document).ready(function() {
+  Shiny.addCustomMessageHandler('removeModalManually', function(modalID) {
+  	var modal = document.getElementById(modalID);
+  	modal.classList.remove('is-visible');
+  })
+});
+
 $(document).on('shiny:value', function(event) {
 
   const modalTriggers = Array.prototype.map.call(
