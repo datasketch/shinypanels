@@ -46,3 +46,8 @@ modalButton <- function(modal_id = NULL, label = NULL, id = NULL) {
 showModal <- function(modal_id, session = getDefaultReactiveDomain()) {
   session$sendCustomMessage("showModalManually", modal_id)
 }
+
+#' @export
+removeModal <- function(modal_id, session = getDefaultReactiveDomain()) {
+  session$sendCustomMessage("removeModalManually", modal_id)
+}
