@@ -15,7 +15,7 @@ modal <- function(..., title = NULL, id = NULL){
       div(class = "modal-wrapper",
           div(class = "modal-title",
               tags$h3(title),
-              tags$button(svgX())
+              tags$button(style = "background-color: inherit; border: none;", svgX())
           ),
           div(class = "modal-content", div(contents))
       )

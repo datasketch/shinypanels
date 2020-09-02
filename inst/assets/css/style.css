@@ -303,9 +303,13 @@ h4 {
     color: #DA1C95;
 }
 
-/* Loader GIF */
+/* Loader GIF -- rewriting shinycostumloader package styles */
+.load-container {
+  transform: translateY(37%) !important;
+}
+
 .loader-img {
-  width: 100px !important;
+  width: 20% !important;
 }
 
 
@@ -399,7 +403,7 @@ h4 {
 }
 
 .modal.is-visible .modal-wrapper {
-    top: 40%;
+    top: 46%;
     opacity: 1;
     transition-delay: 0s;
 }
