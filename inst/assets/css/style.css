@@ -75,7 +75,8 @@ hr {
   font-size: 0.875rem;
   margin-right: 1.3rem;
   overflow-y: auto;
-  padding: 0 0 1.5rem 0;
+  /* padding: 0 0 1.5rem 0; */
+  padding: 0;
 }
 
 .panel::-webkit-scrollbar-thumb {
@@ -124,6 +125,10 @@ hr {
   padding: 0 2rem;
 }
 
+.panel-body.footerless {
+  padding-bottom: 1.5rem;
+}
+
 #edit_viz_body {
   overflow-y: auto;
 }
@@ -134,7 +139,12 @@ hr {
 }
 
 .panel-footer {
-  padding: 0.5rem 2rem 0.5rem 3rem;
+  background-color: #ffffff;
+  bottom: 0;
+  /* padding: 0.5rem 2rem 2rem 3rem; */
+  padding: 1rem 2rem;
+  position: sticky;
+  z-index: 10;
 }
 
 .panel.collapsed {
