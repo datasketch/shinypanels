@@ -60,21 +60,21 @@ for (let header of headers) {
 
 $(document).ready(function() {
   Shiny.addCustomMessageHandler('showModalManually', function(modalID) {
-  	var modal = document.getElementById(modalID);
-  	modal.classList.add('is-visible');
-  	modal.addEventListener('click', function(event) {
-  		if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
-  			modal.classList.remove('is-visible');
-  		}
-  	});
+    var modal = document.getElementById(modalID);
+    modal.classList.add('is-visible');
+    modal.addEventListener('click', function(event) {
+      if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
+        modal.classList.remove('is-visible');
+      }
+    });
   })
 });
 
 $(document).ready(function() {
   Shiny.addCustomMessageHandler('removeModalManually', function(modalID) {
-  	var modal = document.getElementById(modalID);
-  	modal.classList.remove('is-visible');
-  })
+    var modal = document.getElementById(modalID);
+    modal.classList.remove('is-visible');
+  });
 });
 
 $(document).on('shiny:value', function(event) {
@@ -85,16 +85,28 @@ $(document).on('shiny:value', function(event) {
 
   if (modalTriggers) {
     modalTriggers.forEach(function (modalTrigger) {
-      function handleModalTrigger(event) {
-        var modal = document.getElementById(this.dataset.modal);
-        modal.classList.add('is-visible');
-        modal.addEventListener('click', function(event) {
-          if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
-            modal.classList.remove('is-visible');
+      // ### con esto no sirve en las apps (quedan dos modales iguales --mismo id)
+        //  var modal_0 = document.getElementById(modalTrigger.dataset.modal)
+        //  if (modal_0.getAttribute("whole_window") === "TRUE") {
+          //    var parent_div = document.querySelector('body div.layout-container');
+          //    parent_div.appendChild(modal_0);
+          //  }
+        function handleModalTrigger(event) {
+          var modal = document.getElementById(this.dataset.modal);
+          var parent = modal.parentElement;
+          // ### con esto sirve pero la transición del modal no se ve en el primer click
+          if (!parent.classList.contains("layout-container") && modal.getAttribute("whole_window") === "TRUE") {
+            var parent_div = document.querySelector('body div.layout-container');
+            parent_div.appendChild(modal);
           }
-        });
-      }
-      modalTrigger.addEventListener('click', handleModalTrigger);
+          modal.classList.add('is-visible');
+          modal.addEventListener('click', function(event) {
+            if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
+              modal.classList.remove('is-visible');
+            }
+          });
+        }
+        modalTrigger.addEventListener('click', handleModalTrigger);
     });
   }
 

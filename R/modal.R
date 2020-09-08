@@ -9,17 +9,15 @@
 #' @examples
 #' modal()
 #' @export
-modal <- function(..., title = NULL, id = NULL){
+modal <- function(..., title = NULL, id = NULL, whole_window = FALSE){
   contents <- rlang::dots_list(...)
-  div(class = "modal", id = id,
+  div(class = "modal", id = id, whole_window = whole_window,
       div(class = "modal-wrapper",
           div(class = "modal-title",
               tags$h3(title),
-              tags$button(style = "background-color: inherit; border: none;", svgX())
-          ),
-          div(class = "modal-content", div(contents))
-      )
-  )
+              tags$button(style = "background-color: inherit; border: none;",
+                          svgX())),
+          div(class = "modal-content", div(contents))))
 }
 
 #' Modal button to trigger a modal
