@@ -5,11 +5,17 @@ const layoutSettings = {
   panelHeaderClass: 'panel',
   panelHeaderTitleClass: 'panel-header-title',
   panelDismissClass: 'panel-header-dismiss',
-  panelBodyClass: 'panel-body'
+  panelBodyClass: 'panel-body',
 };
-const panels = Array.from(document.querySelectorAll('.' + layoutSettings.panelClass));
-const headers = Array.from(document.querySelectorAll('.' + layoutSettings.panelHeaderClass));
-const dismiss = Array.from(document.querySelectorAll('.' + layoutSettings.panelDismissClass));
+const panels = Array.from(
+  document.querySelectorAll('.' + layoutSettings.panelClass)
+);
+const headers = Array.from(
+  document.querySelectorAll('.' + layoutSettings.panelHeaderClass)
+);
+const dismiss = Array.from(
+  document.querySelectorAll('.' + layoutSettings.panelDismissClass)
+);
 
 function setPanelWidth(panel, reset) {
   if (!reset) {
@@ -33,8 +39,7 @@ for (let panel of panels) {
 }
 
 for (let button of dismiss) {
-  button.addEventListener('click', function(event) {
-    console.log("cuqla");
+  button.addEventListener('click', function (event) {
     const panel = this.parentNode.parentNode;
     if (!panel.classList.contains(layoutSettings.panelCollapsedClass)) {
       setPanelWidth(panel, true);
@@ -46,11 +51,12 @@ for (let button of dismiss) {
 }
 
 for (let header of headers) {
-  header.addEventListener('click', function(event) {
+  header.addEventListener('click', function (event) {
     const panel = this;
     if (
       panel.classList.contains(layoutSettings.panelCollapsedClass) &&
-      (event.target === this || event.target.matches('.' + layoutSettings.panelHeaderTitleClass))
+      (event.target === this ||
+        event.target.matches('.' + layoutSettings.panelHeaderTitleClass))
     ) {
       panel.classList.toggle(layoutSettings.panelCollapsedClass);
       setPanelWidth(panel);
@@ -58,56 +64,72 @@ for (let header of headers) {
   });
 }
 
-$(document).ready(function() {
-  Shiny.addCustomMessageHandler('showModalManually', function(modalID) {
+$(document).ready(function () {
+  Shiny.addCustomMessageHandler('showModalManually', function (modalID) {
     var modal = document.getElementById(modalID);
     modal.classList.add('is-visible');
-    modal.addEventListener('click', function(event) {
-      if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
+    modal.addEventListener('click', function (event) {
+      if (
+        event.target.matches('.modal-title button') ||
+        event.target.matches('.modal') ||
+        event.target.matches('.modal-title svg') ||
+        event.target.matches('.modal-title path')
+      ) {
         modal.classList.remove('is-visible');
       }
     });
-  })
+  });
 });
 
-$(document).ready(function() {
-  Shiny.addCustomMessageHandler('removeModalManually', function(modalID) {
+$(document).ready(function () {
+  Shiny.addCustomMessageHandler('removeModalManually', function (modalID) {
     var modal = document.getElementById(modalID);
     modal.classList.remove('is-visible');
   });
 });
 
-$(document).on('shiny:value', function(event) {
-
+$(document).on('shiny:value', function (event) {
   const modalTriggers = Array.prototype.map.call(
     document.querySelectorAll('.modal-trigger'),
-    function (e) { return e; });
-
-  if (modalTriggers) {
-    modalTriggers.forEach(function (modalTrigger) {
-      // ### con esto no sirve en las apps (quedan dos modales iguales --mismo id)
-        //  var modal_0 = document.getElementById(modalTrigger.dataset.modal)
-        //  if (modal_0.getAttribute("whole_window") === "TRUE") {
-          //    var parent_div = document.querySelector('body div.layout-container');
-          //    parent_div.appendChild(modal_0);
-          //  }
-        function handleModalTrigger(event) {
-          var modal = document.getElementById(this.dataset.modal);
-          var parent = modal.parentElement;
-          // ### con esto sirve pero la transición del modal no se ve en el primer click
-          if (!parent.classList.contains("layout-container") && modal.getAttribute("whole_window") === "TRUE") {
-            var parent_div = document.querySelector('body div.layout-container');
-            parent_div.appendChild(modal);
-          }
-          modal.classList.add('is-visible');
-          modal.addEventListener('click', function(event) {
-            if (event.target.matches('.modal-title button') || event.target.matches('.modal') || event.target.matches('.modal-title svg') || event.target.matches('.modal-title path')) {
-              modal.classList.remove('is-visible');
-            }
-          });
-        }
-        modalTrigger.addEventListener('click', handleModalTrigger);
+    function (e) {
+      return e;
+    }
+  );
+  const modals = Array.prototype.map.call(
+    document.querySelectorAll('.modal'),
+    function (e) {
+      return e;
+    }
+  );
+  if (modals) {
+    const refNode = document.querySelector('.layout-container');
+    modals.forEach(function (modal) {
+      if (
+        modal.dataset.fullscreen &&
+        modal.dataset.fullscreen.match(/T|TRUE/)
+      ) {
+        refNode.parentNode.insertBefore(modal, refNode);
+      }
     });
   }
-
+  if (modalTriggers) {
+    // Add listener to triggers
+    modalTriggers.forEach(function (modalTrigger) {
+      function handleModalTrigger(event) {
+        var modal = document.getElementById(this.dataset.modal);
+        modal.classList.add('is-visible');
+        modal.addEventListener('click', function (event) {
+          if (
+            event.target.matches('.modal-title button') ||
+            event.target.matches('.modal') ||
+            event.target.matches('.modal-title svg') ||
+            event.target.matches('.modal-title path')
+          ) {
+            modal.classList.remove('is-visible');
+          }
+        });
+      }
+      modalTrigger.addEventListener('click', handleModalTrigger);
+    });
+  }
 });
