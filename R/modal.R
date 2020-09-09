@@ -9,9 +9,9 @@
 #' @examples
 #' modal()
 #' @export
-modal <- function(..., title = NULL, id = NULL, whole_window = FALSE){
+modal <- function(..., title = NULL, id = NULL, fullscreen = FALSE){
   contents <- rlang::dots_list(...)
-  div(class = "modal", id = id, whole_window = whole_window,
+  div(class = "modal", id = id, `data-fullscreen` = fullscreen,
       div(class = "modal-wrapper",
           div(class = "modal-title",
               tags$h3(title),
