@@ -14,12 +14,18 @@
 #'
 #' @export
 infoTooltip <- function(title, info, icon = "info-circle", containerStyle = "", iconStyle = "", tooltipStyle = "") {
-  HTML(paste0('<div style = "display: inline-flex; align-items:baseline; ', containerStyle, '">',
+  HTML(paste0('<div class="tooltip" style="',
+              containerStyle,
+              '"><span>',
               title,
-              '<div class = "info-tool">
-               <div class="tooltip-inf" style = "', iconStyle, '">',
+              '</span><div class="tooltip-slot"><span class="tooltip-icon" style="',
+              iconStyle,
+              '">',
               icon(icon),
-              '<span class="tooltiptext" style = "', tooltipStyle,'">',
+              '</span><div class="tooltip-content" style="',
+              tooltipStyle,
+              '">',
               info,
-              '</span></div></div></div>'))
+              '</div></div></div>'
+              ))
 }
