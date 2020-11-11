@@ -42,19 +42,32 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
     )
   }
 
+  if (!color %in% c("malibu", "chardonnay", "magenta")) {
+    class0 <- glue("panel-header-dismiss")
+    style0 <- style2 <- glue("color: {color};")
+    class1 <- glue("panel {collapsed}")
+    style1 <- glue("border-top: 1.5px solid {color};")
+    class2 <- "panel-header-title"
+  } else {
+    class0 <- glue("panel-header-dismiss text-{color}")
+    class1 <- glue("panel top-{color} {collapsed}")
+    class2 <- glue("panel-header-title text-{color}")
+    style0 <- style1 <- style2 <- ""
+  }
 
   can_collapse <- can_collapse
   if (can_collapse) {
-    can_collapse <- tags$button(class = glue("panel-header-dismiss text-{color}"), svgX(color))
+    can_collapse <- tags$button(class = class0, style = style0, svgX(color))
   } else {
     can_collapse <- NULL
   }
 
-  div(class= glue("panel top-{color} {collapsed}"),
+  div(class = class1,
+      style = style1,
       `data-width` = width,
       id=id,
       div(class="panel-header", id = id_head,
-          p(class=glue("panel-header-title text-{color}"), title),
+          p(class=class2, style = style2, title),
           title_plugin,
           can_collapse
       ),

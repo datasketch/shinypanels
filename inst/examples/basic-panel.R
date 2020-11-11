@@ -59,7 +59,7 @@ ui <- panelsPage(
       uiOutput("for_modal"),
   ),
   modal(id = 'test', title = 'Test modal title', p('Modal ipsum')),
-  panel(title = "First Panel", title_complent = "HOLAAAA",color = "chardonnay", collapsed = FALSE, width =  400,
+  panel(title = "First Panel", title_complent = "HOLAAAA", color = "#04bb7a", collapsed = FALSE, width =  400,
         head = h2("Head"),
         body = div(
           h2("Body"),
