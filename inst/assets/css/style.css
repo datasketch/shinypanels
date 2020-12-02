@@ -964,3 +964,23 @@ pre {
   border-radius: 4px;
   overflow: auto;
 }
+
+
+/* end session style */
+
+#ss-connect-dialog {
+  font-family: 'IBM Plex Sans' !important;
+}
+
+
+#ss-connect-dialog a{
+ text-decoration: none !important;
+}
+
+#ss-connect-dialog a::before {
+    font-size: 0.875rem;
+    border-radius: 0.35rem !important;
+    background: #b707f7 !important;
+    padding: 10px !important;
+    font-family: 'Ubuntu' !important;
+}
