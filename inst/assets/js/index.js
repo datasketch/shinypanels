@@ -133,3 +133,7 @@ $(document).on('shiny:value', function (event) {
     });
   }
 });
+
+
+
+$('#ss-reload-link').attr('style', 'margin-top: 31px !important;');
