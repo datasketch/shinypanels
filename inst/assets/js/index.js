@@ -34,21 +34,6 @@ function setPanelWidth(panel, reset) {
   }
 }
 
-function showModalJs(modalID) {
-  var modal = document.getElementById(modalID);
-  modal.classList.add('is-visible');
-  modal.addEventListener('click', function (event) {
-      if (
-        event.target.matches('.modal-title button') ||
-        event.target.matches('.modal') ||
-        event.target.matches('.modal-title svg') ||
-        event.target.matches('.modal-title path')
-      ) {
-        modal.classList.remove('is-visible');
-      }
-    });
-}
-
 for (let panel of panels) {
   setPanelWidth(panel, panel.classList.contains('collapsed'));
 }
@@ -81,7 +66,18 @@ for (let header of headers) {
 
 $(document).ready(function () {
   Shiny.addCustomMessageHandler('showModalManually', function (modalID) {
-    showModalJs(modalID);
+    var modal = document.getElementById(modalID);
+    modal.classList.add('is-visible');
+    modal.addEventListener('click', function (event) {
+      if (
+        event.target.matches('.modal-title button') ||
+        event.target.matches('.modal') ||
+        event.target.matches('.modal-title svg') ||
+        event.target.matches('.modal-title path')
+      ) {
+        modal.classList.remove('is-visible');
+      }
+    });
   });
 });
 
@@ -141,18 +137,3 @@ $(document).on('shiny:value', function (event) {
 
 
 $('#ss-reload-link').attr('style', 'margin-top: 31px !important;');
-
-
-
-
-$(document).ready(function () {
-  Shiny.addCustomMessageHandler('showModalMultiple', function (e) {
-    var id_click = "#" + e.apply_id; // id del div que al hacer click genera la acción
-    var id_modal = e.inputId;
-$(id_click).on('click', ' * ', function() {
-    showModalJs(id_modal);
-});
-});
-
-
-});

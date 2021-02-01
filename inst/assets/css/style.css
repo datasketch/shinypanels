@@ -403,7 +403,7 @@ h4 {
 .modal.is-visible {
   opacity: 1;
   transition-delay: 0s;
-  z-index: 9999;
+  z-index: 666;
 }
 
 .modal.is-visible .modal-wrapper {
