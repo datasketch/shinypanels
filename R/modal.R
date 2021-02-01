@@ -49,3 +49,11 @@ showModal <- function(modal_id, session = getDefaultReactiveDomain()) {
 removeModal <- function(modal_id, session = getDefaultReactiveDomain()) {
   session$sendCustomMessage("removeModalManually", modal_id)
 }
+
+#' @export
+showModalMultipleId <- function(modal_id, list_id, session = getDefaultReactiveDomain()) {
+  purrr::map(list_id, ~ session$sendCustomMessage("showModalMultiple", message = list(
+    apply_id = .x, inputId = modal_id))
+  )
+}
+
