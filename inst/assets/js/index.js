@@ -38,15 +38,15 @@ function showModalJs(modalID) {
   var modal = document.getElementById(modalID);
   modal.classList.add('is-visible');
   modal.addEventListener('click', function (event) {
-      if (
-        event.target.matches('.modal-title button') ||
-        event.target.matches('.modal') ||
-        event.target.matches('.modal-title svg') ||
-        event.target.matches('.modal-title path')
-      ) {
-        modal.classList.remove('is-visible');
-      }
-    });
+    if (
+      event.target.matches('.modal-title button') ||
+      event.target.matches('.modal') ||
+      event.target.matches('.modal-title svg') ||
+      event.target.matches('.modal-title path')
+    ) {
+      modal.classList.remove('is-visible');
+    }
+  });
 }
 
 for (let panel of panels) {
@@ -138,21 +138,26 @@ $(document).on('shiny:value', function (event) {
   }
 });
 
-
-
 $('#ss-reload-link').attr('style', 'margin-top: 31px !important;');
-
-
-
 
 $(document).ready(function () {
   Shiny.addCustomMessageHandler('showModalMultiple', function (e) {
-    var id_click = "#" + e.apply_id; // id del div que al hacer click genera la acción
-    var id_modal = e.inputId;
-$(id_click).on('click', ' * ', function() {
-    showModalJs(id_modal);
-});
-});
+    const modalId = e.inputId;
+    const triggerEl = document.getElementById(e.apply_id);
+    const container = document.createElement('div');
+    const mask = document.createElement('div');
 
+    // Add attrs
+    container.style.position = 'relative';
+    mask.setAttribute('style', 'height: 100%; left: 0; top: 0; width: 100%; z-index: 1; position: absolute;');
 
+    // Append
+    triggerEl.insertAdjacentElement('beforebegin', container)
+    container.appendChild(mask);
+    container.appendChild(triggerEl);
+
+    container.addEventListener('click', function () {
+      showModalJs(modalId);
+    });
+  });
 });
