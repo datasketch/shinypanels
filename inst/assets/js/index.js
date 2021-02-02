@@ -34,6 +34,21 @@ function setPanelWidth(panel, reset) {
   }
 }
 
+function showModalJs(modalID) {
+  var modal = document.getElementById(modalID);
+  modal.classList.add('is-visible');
+  modal.addEventListener('click', function (event) {
+    if (
+      event.target.matches('.modal-title button') ||
+      event.target.matches('.modal') ||
+      event.target.matches('.modal-title svg') ||
+      event.target.matches('.modal-title path')
+    ) {
+      modal.classList.remove('is-visible');
+    }
+  });
+}
+
 for (let panel of panels) {
   setPanelWidth(panel, panel.classList.contains('collapsed'));
 }
@@ -66,18 +81,7 @@ for (let header of headers) {
 
 $(document).ready(function () {
   Shiny.addCustomMessageHandler('showModalManually', function (modalID) {
-    var modal = document.getElementById(modalID);
-    modal.classList.add('is-visible');
-    modal.addEventListener('click', function (event) {
-      if (
-        event.target.matches('.modal-title button') ||
-        event.target.matches('.modal') ||
-        event.target.matches('.modal-title svg') ||
-        event.target.matches('.modal-title path')
-      ) {
-        modal.classList.remove('is-visible');
-      }
-    });
+    showModalJs(modalID);
   });
 });
 
@@ -134,6 +138,26 @@ $(document).on('shiny:value', function (event) {
   }
 });
 
-
-
 $('#ss-reload-link').attr('style', 'margin-top: 31px !important;');
+
+$(document).ready(function () {
+  Shiny.addCustomMessageHandler('showModalMultiple', function (e) {
+    const modalId = e.inputId;
+    const triggerEl = document.getElementById(e.apply_id);
+    const container = document.createElement('div');
+    const mask = document.createElement('div');
+
+    // Add attrs
+    container.style.position = 'relative';
+    mask.setAttribute('style', 'height: 100%; left: 0; top: 0; width: 100%; z-index: 1; position: absolute;');
+
+    // Append
+    triggerEl.insertAdjacentElement('beforebegin', container)
+    container.appendChild(mask);
+    container.appendChild(triggerEl);
+
+    container.addEventListener('click', function () {
+      showModalJs(modalId);
+    });
+  });
+});
