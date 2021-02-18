@@ -772,6 +772,7 @@ label {
   font-size: 0.8rem;
   font-weight: 300;
   outline: none;
+  width: 100% !important;
 }
 
 .form-control.selectize-control,
