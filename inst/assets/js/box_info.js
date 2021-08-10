@@ -1,5 +1,3 @@
-
-
 const collapsibles = Array.prototype.map.call(
   document.getElementsByClassName("box-collapsible-trigger"),
   function (el) { return el }
