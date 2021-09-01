@@ -1,10 +1,16 @@
 library(shinypanels)
 
 ui <- panelsPage(
+  panel(title = "Panel Hidden",
+        width = 300,
+        hidden = TRUE,
+        body = h1("Nothing here")
+        ),
   panel(
     title = "Panel 1",
     width = 300,
     color = "magenta",
+    hidden = FALSE,
     body = div(
       h3("Here is some info"),
       hr(),

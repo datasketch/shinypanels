@@ -20,6 +20,7 @@
 panel <- function(head = NULL, body = NULL, footer = NULL,
                   title = NULL, header_right = NULL, color = "malibu",
                   id = NULL, collapsed = FALSE, can_collapse = TRUE, width = NULL,
+                  hidden = FALSE,
                   ...){
   collapsed <- ifelse(collapsed, "collapsed", "")
   if(is.null(title)) stop("Need panel title")
@@ -53,6 +54,9 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
     class1 <- glue("panel top-{color} {collapsed}")
     class2 <- glue("panel-header-title text-{color}")
     style0 <- style1 <- style2 <- ""
+  }
+  if(hidden){
+    style1<- paste0(style1, "display:none;")
   }
 
   can_collapse <- can_collapse
