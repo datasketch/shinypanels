@@ -56,12 +56,12 @@ panelsPage <- function(..., styles = "", header = NULL, title = NULL, debug = FA
       tags$title(title)#,
       #tags$script(src = "box/box_info.js")
     ),
-    div(class = "orientation-notice",
-      div(class="orientation-notice-content",
-        p('Gira tu dispositivo', style = "text-align: center;"),
-        svgRotate()
-      ),
-    ),
+    # div(class = "orientation-notice",
+    #   div(class="orientation-notice-content",
+    #     p('Gira tu dispositivo', style = "text-align: center;"),
+    #     svgRotate()
+    #   ),
+    # ),
     div(class = "layout-container",
        header,
         div(class = "layout-panels",
