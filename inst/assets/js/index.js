@@ -14,6 +14,30 @@ const dismiss = Array.from(
   document.querySelectorAll(`.${layoutSettings.panelDismissClass}`)
 )
 
+const modalTrigger = document.querySelector(".modal-trigger");
+const modal = document.querySelector(".modal");
+const modalWrapper = document.querySelector('.modal-wrapper')
+const closeModal = document.getElementById("close-modal");
+
+
+modalTrigger.addEventListener("click", function (event) {
+  modal.classList.add("is-visible");
+});
+
+modal.addEventListener("click", function (event) {
+  modal.classList.remove("is-visible");
+});
+
+
+modalWrapper.addEventListener('click', function (event) { event.stopPropagation() });
+
+
+closeModal.addEventListener("click", function (event) {
+  modal.classList.remove("is-visible");
+});
+
+
+
 function setPanelWidth (panel, reset) {
   if (!reset) {
     if (panel.dataset.width) {

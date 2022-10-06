@@ -9,13 +9,13 @@
 #' @examples
 #' modal()
 #' @export
-modal <- function(..., title = NULL, id = NULL, fullscreen = FALSE, id_wrapper = NULL, id_content = NULL){
+modal <- function(..., title = NULL, id = NULL, fullscreen = FALSE, id_wrapper = NULL, id_title = NULL, id_content = NULL){
   contents <- rlang::dots_list(...)
   div(class = "modal", id = id, `data-fullscreen` = fullscreen,
       div(class = "modal-wrapper",id = id_wrapper,
-          div(class = "modal-title",
+          div(class = "modal-title", id = id_title,
               tags$h3(title),
-              tags$button(style = "background-color: inherit; border: none;",
+              tags$button(style = "background-color: inherit; border: none;", id = "close-modal",
                           svgX())),
           div(class = "modal-content", id = id_content, div(contents))))
 }

@@ -10,6 +10,7 @@ modal(
   id = NULL,
   fullscreen = FALSE,
   id_wrapper = NULL,
+  id_title = NULL,
   id_content = NULL
 )
 }

@@ -58,7 +58,7 @@ ui <- panelsPage(
       HTML("<div class = 'top_title'> HERRAMIENTA <div class = 'top_line'> <div style = 'margin-left: 10px;'> ESTIMACIÓN DE BIODIVERSIDAD Y <span class = 'tex_sub'>CAPTURA DE CO<sub>2</sub></span></div></div></div>"),
       uiOutput("for_modal"),
   ),
-  modal(id = 'test', title = 'Test modal title', p('Modal ipsum'), id_wrapper = "wrapper"),
+  modal(id = 'test', title = uiOutput("title_modal"), p('Modal ipsum'), id_wrapper = "wrapper"),
   panel(title = "First Panel", title_complent = "HOLAAAA", color = "#04bb7a", collapsed = FALSE, width =  400,
         head = h2("Head"),
         body = div(
@@ -110,6 +110,21 @@ ui <- panelsPage(
 )
 
 server <- function(input, output, session) {
+
+
+  output$title_modal <- renderUI({
+    HTML(
+      '
+      <div class="tabs" id="download-modal" data-open="db">
+        <!-- Tab links -->
+        <div class="tab-list">
+        <button class="tab" data-panel="db">Base de datos</button>
+        <button class="tab" data-panel="chart">Gráfica</button>
+        <button class="tab" data-panel="api">API</button>
+        </div>
+      '
+    )
+  })
 
   # modal button rendered within server
   output$for_modal <- renderUI({
