@@ -4,7 +4,15 @@
 \alias{modal}
 \title{Modal window}
 \usage{
-modal(..., title = NULL, id = NULL, fullscreen = FALSE)
+modal(
+  ...,
+  title = NULL,
+  id = NULL,
+  fullscreen = FALSE,
+  id_wrapper = NULL,
+  id_title = NULL,
+  id_content = NULL
+)
 }
 \arguments{
 \item{...}{html list contents for the panel}
