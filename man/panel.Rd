@@ -15,6 +15,7 @@ panel(
   collapsed = FALSE,
   can_collapse = TRUE,
   width = NULL,
+  hidden = FALSE,
   ...
 )
 }
