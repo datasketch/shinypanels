@@ -24,10 +24,6 @@ modalTrigger.addEventListener("click", function (event) {
   modal.classList.add("is-visible");
 });
 
-modal.addEventListener("click", function (event) {
-  modal.classList.remove("is-visible");
-});
-
 
 modalWrapper.addEventListener('click', function (event) { event.stopPropagation() });
 

@@ -58,7 +58,7 @@ ui <- panelsPage(
       HTML("<div class = 'top_title'> HERRAMIENTA <div class = 'top_line'> <div style = 'margin-left: 10px;'> ESTIMACIÓN DE BIODIVERSIDAD Y <span class = 'tex_sub'>CAPTURA DE CO<sub>2</sub></span></div></div></div>"),
       uiOutput("for_modal"),
   ),
-  modal(id = 'test', title = uiOutput("title_modal"), p('Modal ipsum'), id_wrapper = "wrapper"),
+  modal(id = 'test', title = uiOutput("title_modal"), p('Modal ipsum')),
   panel(title = "First Panel", title_complent = "HOLAAAA", color = "#04bb7a", collapsed = FALSE, width =  400,
         head = h2("Head"),
         body = div(
@@ -72,7 +72,9 @@ ui <- panelsPage(
           radioButtons("radioButtons1", "Radio Buttons", choices = c("First", "Second"), inline = TRUE),
           radioButtons("radioButtons2", "Radio Buttons", choices = c("First", "Second"), inline = FALSE),
           img(src="https://placeimg.com/640/180/any"),
-          shinypanels::modalButton(id = "ss", modal_id = 'test', label = 'Test modal BLAL')
+          shinypanels::modal(id = "modal_action", title = " ",  "hola"),
+          actionButton(inputId = "ss",label = "test modal")
+          #shinypanels::modalButton(id = "ss", modal_id = 'test', label = 'Test modal BLAL')
         ),
         footer = NULL
   ),
@@ -146,6 +148,11 @@ server <- function(input, output, session) {
   observeEvent(input$show, {
     showModal('test')
   })
+
+  observeEvent(input$ss, {
+    showModal("modal_action")
+  })
+
 }
 shinyApp(ui, server)
 
