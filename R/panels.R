@@ -76,7 +76,7 @@ panel <- function(head = NULL, body = NULL, footer = NULL,
           can_collapse
       ),
       div(class="panel-body", id = id_body,
-          div(class="panel-content",icon(""),
+          div(class="panel-content",
               body
           )
       ),
